@@ -75,6 +75,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotPeriodic() {
+
+		// Push telemetry data from subsystems
+		m_subsystemLooper.outputTelemetry();
 	}
 
 	/**

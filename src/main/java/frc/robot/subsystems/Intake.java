@@ -5,6 +5,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lib5k.loops.loopables.LoopableSubsystem;
 import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
@@ -30,6 +32,7 @@ public class Intake extends LoopableSubsystem {
     // Buffer readings
     boolean isLeftHall, isRightHall = false;
     boolean isLeft, isCentre, isRight = false;
+    boolean isPistonExtended, isFingerLowered = false;
     double sliderSpeed = 0.0;
 
     public Intake() {
@@ -63,8 +66,42 @@ public class Intake extends LoopableSubsystem {
         return m_instance;
     }
 
+    /**
+     * Restricts the slider from moving past it's limits
+     * 
+     * Note: sensors are wired backwards on both bots
+     */
+    private double limitSliderMovement(double speed) {
+        double output = speed;
+
+        // Check left limit
+        if (output < 0 && isLeft) {
+            output = 0.0;
+        }
+
+        // Check right limit
+        if (output > 0 && isRight) {
+            output = 0.0;
+        }
+
+        return output;
+    }
+
     @Override
     public void periodicOutput() {
+
+        // Handle finger
+        if (isFingerLowered) {
+            m_fingerSolenoid.set(Value.kForward);
+        } else {
+            m_fingerSolenoid.set(Value.kReverse);
+        }
+
+        // Handle piston
+        m_pistonSolenoid.set(isPistonExtended);
+
+        // Handle slider
+        m_slider.set(limitSliderMovement(sliderSpeed));
         
     }
 
@@ -103,9 +140,37 @@ public class Intake extends LoopableSubsystem {
         isRightHall = !m_rightHall.get();
     }
 
+    /**
+     * @param isFingerLowered Should the finger be lowered
+     */
+    public void setFingerLowered(boolean isFingerLowered) {
+        this.isFingerLowered = isFingerLowered;
+    }
+
+    /**
+     * @param isPistonExtended Should the finger be extended
+     */
+    public void setPistonExtended(boolean isPistonExtended) {
+        this.isPistonExtended = isPistonExtended;
+    }
+
+    /**
+     * @param sliderSpeed Wanted speed for the slider
+     */
+    public void setSliderSpeed(double sliderSpeed) {
+        this.sliderSpeed = sliderSpeed;
+    }
+
     @Override
     public void outputTelemetry() {
+        SmartDashboard.putBoolean("[Intake] Is slider left", isLeft);
+        SmartDashboard.putBoolean("[Intake] Is slider center", isCentre);
+        SmartDashboard.putBoolean("[Intake] Is slider right", isRight);
 
+        SmartDashboard.putBoolean("[Intake] Is piston extended", isPistonExtended);
+        SmartDashboard.putBoolean("[Intake] Is finger lowered", isFingerLowered);
+
+        SmartDashboard.putNumber("[Intake] Slider speed", sliderSpeed);
     }
 
     @Override
