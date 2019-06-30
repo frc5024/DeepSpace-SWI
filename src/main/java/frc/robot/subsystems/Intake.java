@@ -175,12 +175,18 @@ public class Intake extends LoopableSubsystem {
 
     @Override
     public void stop() {
+        m_slider.set(0.0);
 
+        sliderSpeed = 0.0;
+        isFingerLowered = false;
+        isPistonExtended = false;
     }
 
     @Override
     public void reset() {
-
+        stop();
+        isLeft = false;
+        isRight = false;
     }
 
 }
