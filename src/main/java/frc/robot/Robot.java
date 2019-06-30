@@ -10,6 +10,7 @@ import frc.robot.Constants;
 import frc.robot.autonomous.Chooser;
 import frc.robot.commands.DriveControl;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
 	SubsystemLooper m_subsystemLooper;
 	public static OI m_oi;
 	public static DriveTrain m_driveTrain;
+	public static Intake m_intake;
 
 	/* COMMANDS */
 	DriveControl m_driveControl;
@@ -45,9 +47,11 @@ public class Robot extends TimedRobot {
 		logger.log("Constructing Subsystems", Level.kRobot);
 		m_oi = new OI();
 		m_driveTrain = DriveTrain.getInstance();
+		m_intake = Intake.getInstance();
 
 		logger.log("Registering Subsystems with SubsystemLooper", Level.kRobot);
 		m_subsystemLooper.register(m_driveTrain);
+		m_subsystemLooper.register(m_intake);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);

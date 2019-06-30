@@ -18,7 +18,7 @@ import frc.robot.Constants;
  */
 public class DriveTrain extends LoopableSubsystem {
     RobotLogger logger = RobotLogger.getInstance();
-    public static DriveTrain m_instance;
+    public static DriveTrain m_instance = null;
 
     // Gearboxes
     GearBox m_leftGearBox;
@@ -41,10 +41,10 @@ public class DriveTrain extends LoopableSubsystem {
 
         /* Enable current limiting on each gearbox */
         logger.log("[DriveTrain] Limiting current on both gearboxes. Peak: " + Constants.DriveTrain.peakCurrent
-                + "A, Hold: " + Constants.DriveTrain.holdCurrent + "A, Timeout: " + Constants.DriveTrain.holdCurrent
+                + "A, Hold: " + Constants.DriveTrain.holdCurrent + "A, Timeout: " + Constants.DriveTrain.currentTimeout
                 + "ms", Level.kRobot);
         m_leftGearBox.limitCurrent(Constants.DriveTrain.peakCurrent, Constants.DriveTrain.holdCurrent,
-                Constants.DriveTrain.holdCurrent);
+                Constants.DriveTrain.currentTimeout);
         m_rightGearBox.limitCurrent(Constants.DriveTrain.peakCurrent, Constants.DriveTrain.holdCurrent,
                 Constants.DriveTrain.currentTimeout);
 
