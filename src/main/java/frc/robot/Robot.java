@@ -8,9 +8,12 @@ import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
 import frc.robot.Constants;
 import frc.robot.autonomous.Chooser;
+import frc.robot.autonomous.commandgroups.Outtake;
 import frc.robot.commands.DriveControl;
+import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Pneumatics;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,9 +34,14 @@ public class Robot extends TimedRobot {
 	public static OI m_oi;
 	public static DriveTrain m_driveTrain;
 	public static Intake m_intake;
+	public static CargoFlap m_cargoflap;
+	public static Pneumatics m_pneumatics;
 
 	/* COMMANDS */
 	DriveControl m_driveControl;
+
+	/* COMMAND GROUPS */
+	public static Outtake m_outtakeGroup;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -48,14 +56,21 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();
 		m_driveTrain = DriveTrain.getInstance();
 		m_intake = Intake.getInstance();
+		m_cargoflap = new CargoFlap();
+		m_pneumatics = Pneumatics.getInstance();
 
 		logger.log("Registering Subsystems with SubsystemLooper", Level.kRobot);
 		m_subsystemLooper.register(m_driveTrain);
 		m_subsystemLooper.register(m_intake);
+		m_subsystemLooper.register(m_cargoflap);
+		m_subsystemLooper.register(m_pneumatics);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
 		m_driveControl = new DriveControl();
+
+		/* Create CommandGroups */
+		m_outtakeGroup = new Outtake();
 
 		/* Start Threads */
 		logger.log("Starting threads", Level.kRobot);
@@ -88,6 +103,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledInit() {
 		logger.log("Robot Disabled");
+
+		// Disable the brakes on the DriveTrain
+		m_driveTrain.setBrakes(false);
 	}
 
 	@Override
@@ -116,6 +134,9 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
+
+		// Disable the brakes on the DriveTrain
+		m_driveTrain.setBrakes(false);
 	}
 
 	/**
@@ -136,6 +157,9 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+
+		// Enable the brakes on the DriveTrain
+		m_driveTrain.setBrakes(true);
 	}
 
 	/**

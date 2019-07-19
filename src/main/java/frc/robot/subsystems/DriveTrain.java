@@ -157,6 +157,7 @@ public class DriveTrain extends LoopableSubsystem {
 
         logger.log("[DriveTrain] NeutralMode has been set to: " + mode_string);
 
+        // TODO: this should be buffered
         m_leftGearBox.front.setNeutralMode(mode);
         m_leftGearBox.rear.setNeutralMode(mode);
         m_rightGearBox.front.setNeutralMode(mode);

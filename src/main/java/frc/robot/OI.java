@@ -60,8 +60,8 @@ public class OI {
 	public double getThrottle() {
 		double speed = 0.0;
 
-		speed += limitTrigger(this.driverController.getTriggerAxis(GenericHID.Hand.kRight));
-		speed -= limitTrigger(this.driverController.getTriggerAxis(GenericHID.Hand.kLeft));
+		speed += limitTrigger(driverController.getTriggerAxis(GenericHID.Hand.kRight));
+		speed -= limitTrigger(driverController.getTriggerAxis(GenericHID.Hand.kLeft));
 
 		return speed;
 	}
@@ -72,6 +72,35 @@ public class OI {
 	 * @return Turn rate (from -1.0 to 1.0)
 	 */
 	public double getTurn() {
-		return this.driverController.getX(GenericHID.Hand.kLeft);
+		return driverController.getX(GenericHID.Hand.kLeft);
+	}
+
+	/**
+	 * @return Has the operator requested an intake action?
+	 */
+	public boolean getIntake() {
+		return operatorController.getYButtonPressed();
+	}
+
+	/**
+	 * @return Has the operator requested an outtake action?
+	 */
+	public boolean getOuttake() {
+		return operatorController.getBButtonPressed();
+	}
+
+	/**
+	 * @return Has the operator requested an outtake action for cargo?
+	 */
+	public boolean getCargo() {
+		return operatorController.getXButtonPressed();
+	}
+
+	/**
+	 * 
+	 * @return Overriden slider input from operator
+	 */
+	public double getSliderOverride() {
+		return operatorController.getX(GenericHID.Hand.kLeft);
 	}
 }
