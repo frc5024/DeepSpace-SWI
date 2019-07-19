@@ -103,4 +103,14 @@ public class OI {
 	public double getSliderOverride() {
 		return operatorController.getX(GenericHID.Hand.kLeft);
 	}
+
+	public boolean getCompressorEnable() {
+		return operatorController.getStartButton() || driverController.getStartButton();
+	}
+
+	public boolean getCompressorDisable() {
+		return operatorController.getBackButton() || driverController.getBackButton();
+	}
+
+
 }

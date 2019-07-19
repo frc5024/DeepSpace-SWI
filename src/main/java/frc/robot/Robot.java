@@ -9,7 +9,9 @@ import frc.lib5k.utils.RobotLogger.Level;
 import frc.robot.Constants;
 import frc.robot.autonomous.Chooser;
 import frc.robot.autonomous.commandgroups.Outtake;
+import frc.robot.commands.CompressorControl;
 import frc.robot.commands.DriveControl;
+import frc.robot.commands.IntakeControl;
 import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
@@ -39,7 +41,9 @@ public class Robot extends TimedRobot {
 
 	/* COMMANDS */
 	DriveControl m_driveControl;
-
+	IntakeControl m_intakeControl;
+	CompressorControl m_compressorControl;
+	
 	/* COMMAND GROUPS */
 	public static Outtake m_outtakeGroup;
 
@@ -68,6 +72,8 @@ public class Robot extends TimedRobot {
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
 		m_driveControl = new DriveControl();
+		m_intakeControl = new IntakeControl();
+		m_compressorControl = new CompressorControl();
 
 		/* Create CommandGroups */
 		m_outtakeGroup = new Outtake();
