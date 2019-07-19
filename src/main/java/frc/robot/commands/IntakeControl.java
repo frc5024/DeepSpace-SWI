@@ -77,7 +77,7 @@ public class IntakeControl extends Command {
         Robot.m_cargoflap.setFlapLowered(m_shouldDropCargo);
 
         // Enable LED ring if intaking
-        // TODO: implement LEDring
+        Robot.m_ledRing.setEnabled(m_shouldIntake);
 
         // Start the outtake commandgroup if outtaking
         if (m_shouldOuttake) {
