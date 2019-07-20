@@ -8,6 +8,7 @@ targetCompatibility = JavaVersion.VERSION_11
 
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
 
+
 // Define my targets (RoboRIO) and artifacts (deployable files)
 // This is added by GradleRIO's backing project EmbeddedTools.
 deploy {
@@ -67,4 +68,10 @@ javadoc {
     source = sourceSets.main.allJava
     classpath = configurations.compile
     // destinationDir = reporting.file("../docs")
+}
+
+task buildDocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+  classpath = configurations.compile
+  destinationDir = file("docs")
 }
