@@ -6,12 +6,18 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lib5k.components.GearBox;
 import frc.lib5k.loops.loopables.LoopableSubsystem;
 import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
 import frc.robot.Constants;
 
+/**
+ * Subsystem in charge of climb.
+ * 
+ * NOTE: Inputs are not buffered due to safety concerns.
+ */
 public class Climber extends LoopableSubsystem {
     RobotLogger logger = RobotLogger.getInstance();
 
@@ -77,7 +83,7 @@ public class Climber extends LoopableSubsystem {
         logger.log("[Climber] Configuring crawl motors", Level.kRobot);
         m_leftCrawler = new Spark(Constants.Climb.Crawlers.leftId);
         m_rightCrawler = new Spark(Constants.Climb.Crawlers.rightId);
-        
+
         logger.log("[Climber] Configuring crawl differential", Level.kRobot);
         m_crawlDrive = new DifferentialDrive(m_leftCrawler, m_rightCrawler);
         m_crawlDrive.setSafetyEnabled(false);
@@ -99,19 +105,63 @@ public class Climber extends LoopableSubsystem {
     @Override
     public void periodicOutput() {
 
+        // Set arm speed
+        m_armGearBox.set(m_desiredArmSpeed);
+
+        // Set leg speed, but do not allow any pulling past the low sensor
+        if (!getLowLegSensor() || m_desiredLegSpeed <= 0.0) {
+            m_legMotor.set(m_desiredLegSpeed);
+        }
+
+        // Set the crawl speed
+        m_crawlDrive.tankDrive(m_desiredCrawlSpeed, m_desiredCrawlSpeed);
+
     }
 
-    @Override
-    public void periodicInput() {
-
-    }
-    
-    private boolean getArmSensor() {
+    public boolean getArmSensor() {
         return !m_armHall.get();
     }
-    
-    private boolean getOpticSensor() {
+
+    public boolean getOpticSensor() {
         return m_opticSensor.get();
+    }
+
+    private boolean getLowLegSensor() {
+        return !m_legLowLimit.get();
+    }
+
+    private boolean getMidLegSensor() {
+        return !m_legMidLimit.get();
+    }
+
+    private boolean getHighLegSensor() {
+        return !m_legTopLimit.get();
+    }
+
+    /**
+     * Set the offset for the gyro pitch
+     */
+    public void setGyroOffset() {
+        m_pitchOffset = m_gyro.getPitch();
+    }
+
+    /**
+     * Check if the gyro pitch reading is in range +/- of the offset
+     * @param range Range of error around offset
+     * @return Is the pitch in range
+     */
+    public boolean isGyroInRange(double range) {
+        double currentPitch = m_gyro.getPitch();
+        
+        return currentPitch - range <= m_pitchOffset && m_pitchOffset <= currentPitch + range;
+    }
+
+    /**
+     * Get the robot's pitch
+     * @return Gyro pitch reading
+     */
+    public double getGyroPitch() {
+        return m_gyro.getPitch();
     }
 
     /**
@@ -120,6 +170,14 @@ public class Climber extends LoopableSubsystem {
     public void unlock() {
         logger.log("[Climber] System unlocked!");
         m_isLocked = false;
+    }
+
+    /**
+     * Check if the climber is locked
+     * @return Is the climber locked
+     */
+    public boolean isLocked() {
+        return m_isLocked;
     }
 
     /**
@@ -167,27 +225,69 @@ public class Climber extends LoopableSubsystem {
         }
     }
 
+    /**
+     * Sets the desired speed for the crawlers
+     * 
+     * NOTE: Positive values move the robot forwards
+     * 
+     * @param rate
+     */
     public void setCrawlRate(double rate) {
-
+        // If the climber is unlocked
+        if (checkLock()) {
+            // Set the desired speed
+            m_desiredCrawlSpeed = rate;
+        }
     }
 
+    /**
+     * Sets the desired speed for the legs. Will not push past low sensor.
+     * 
+     * NOTE: Positive values push the legs down
+     * 
+     * @param rate Speed to move the legs at
+     */
     public void setLegMovementRate(double rate) {
-
+        // If the climber is unlocked
+        if (checkLock()) {
+            // Set the desired speed
+            m_desiredLegSpeed = rate * -1;
+        }
     }
 
     @Override
     public void outputTelemetry() {
+        SmartDashboard.putBoolean("[Climber] Is locked", m_isLocked);
+        SmartDashboard.putNumber("[Climber] Arm speed", m_desiredArmSpeed);
+        SmartDashboard.putNumber("[Climber] Leg speed", m_desiredLegSpeed);
+        SmartDashboard.putNumber("[Climber] Crawl speed", m_desiredCrawlSpeed);
+
+        SmartDashboard.putBoolean("[Climber] Leg low limit", getLowLegSensor());
+        SmartDashboard.putBoolean("[Climber] Leg mid limit", getMidLegSensor());
+        SmartDashboard.putBoolean("[Climber] Leg high limit", getHighLegSensor());
+        SmartDashboard.putBoolean("[Climber] Arm sensor", getArmSensor());
+        SmartDashboard.putBoolean("[Climber] Optic sensor", getOpticSensor());
 
     }
 
     @Override
     public void stop() {
+        lock();
 
+        m_armGearBox.set(0.0);
+        m_legMotor.set(0.0);
+        m_crawlDrive.tankDrive(0.0, 0.0);
     }
 
     @Override
     public void reset() {
+        stop();
 
+        m_isLocked = true;
+
+        m_desiredArmSpeed = 0.0;
+        m_desiredCrawlSpeed = 0.0;
+        m_desiredLegSpeed = 0.0;
     }
 
 }

@@ -13,6 +13,7 @@ import frc.robot.commands.CompressorControl;
 import frc.robot.commands.DriveControl;
 import frc.robot.commands.IntakeControl;
 import frc.robot.subsystems.CargoFlap;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDring;
@@ -40,6 +41,7 @@ public class Robot extends TimedRobot {
 	public static CargoFlap m_cargoflap;
 	public static Pneumatics m_pneumatics;
 	public static LEDring m_ledRing;
+	public static Climber m_climber;
 
 	/* COMMANDS */
 	DriveControl m_driveControl;
@@ -65,6 +67,7 @@ public class Robot extends TimedRobot {
 		m_cargoflap = new CargoFlap();
 		m_pneumatics = Pneumatics.getInstance();
 		m_ledRing = new LEDring();
+		m_climber = new Climber();
 
 		logger.log("Registering Subsystems with SubsystemLooper", Level.kRobot);
 		m_subsystemLooper.register(m_driveTrain);
@@ -72,6 +75,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_cargoflap);
 		m_subsystemLooper.register(m_pneumatics);
 		m_subsystemLooper.register(m_ledRing);
+		m_subsystemLooper.register(m_climber);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
