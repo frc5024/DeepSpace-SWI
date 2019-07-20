@@ -1,0 +1,9 @@
+[
+  {
+    "name": "DeepSpace-SWI (in project DeepSpace-SWI)",
+    "file": "/home/ewpratten/frc/DeepSpace-SWI/build/libs/DeepSpace-SWI.jar",
+    "extensions": [],
+    "librarydir": "/home/ewpratten/frc/DeepSpace-SWI/build/tmp/jniExtractDir",
+    "mainclass": "frc.robot.Main"
+  }
+]

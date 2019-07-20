@@ -70,6 +70,9 @@ public class Robot extends TimedRobot {
 		m_ledRing = new LEDring();
 		m_climber = new Climber();
 
+		logger.log("Constructing SubsystemLooper", Level.kRobot);
+		m_subsystemLooper = new SubsystemLooper();
+
 		logger.log("Registering Subsystems with SubsystemLooper", Level.kRobot);
 		m_subsystemLooper.register(m_driveTrain);
 		m_subsystemLooper.register(m_intake);

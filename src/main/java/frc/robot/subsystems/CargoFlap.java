@@ -18,8 +18,7 @@ public class CargoFlap extends LoopableSubsystem {
 
     public CargoFlap() {
         logger.log("[CargoFlap] Constructing solenoid", Level.kRobot);
-        m_flapSolenoid = new DoubleSolenoid(Constants.PCM.can_id, Constants.PCM.flap_forward,
-                Constants.PCM.finger_reverse);
+        m_flapSolenoid = new DoubleSolenoid(Constants.PCM.can_id, Constants.PCM.flap_forward, Constants.PCM.flap_reverse);
     }
 
     @Override
