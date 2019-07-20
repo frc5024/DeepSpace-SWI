@@ -25,7 +25,7 @@ public class Chooser{
         m_targetChooser.setName("Autonomous target");
         m_targetChooser.setDefaultOption("Do nothing", 0);
         m_targetChooser.addOption("Front hatch", 10);
-        m_targetChooser.addOption("Close side hatch", 20);
+        m_targetChooser.addOption("Side hatch", 20);
     }
     
     public CommandGroup getAutonomousCommand() {

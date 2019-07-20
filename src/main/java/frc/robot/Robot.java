@@ -32,6 +32,7 @@ public class Robot extends TimedRobot {
 	/* AUTONOMOUS */
 	Command m_autonomousCommand;
 	Chooser m_chooser = new Chooser();
+	boolean m_teleopAssistLock = false;
 
 	/* SUBSYSTEMS */
 	SubsystemLooper m_subsystemLooper;
@@ -47,7 +48,7 @@ public class Robot extends TimedRobot {
 	DriveControl m_driveControl;
 	IntakeControl m_intakeControl;
 	CompressorControl m_compressorControl;
-	
+
 	/* COMMAND GROUPS */
 	public static Outtake m_outtakeGroup;
 
@@ -110,6 +111,14 @@ public class Robot extends TimedRobot {
 	}
 
 	/**
+	 * This is only needed for DeepSpace. Calling this will start Teleop before Autonomous has finished
+	 */
+	private void startTeleopCommands() {
+		m_driveControl.start();
+		m_intakeControl.start();
+	}
+
+	/**
 	 * This function is called once each time the robot enters Disabled mode. You
 	 * can use it to reset any subsystem information you want to clear when the
 	 * robot is disabled.
@@ -120,6 +129,9 @@ public class Robot extends TimedRobot {
 
 		// Disable the brakes on the DriveTrain
 		m_driveTrain.setBrakes(false);
+
+		// Reset the teleop assistance lock
+		m_teleopAssistLock = false;
 	}
 
 	@Override
@@ -151,6 +163,9 @@ public class Robot extends TimedRobot {
 
 		// Disable the brakes on the DriveTrain
 		m_driveTrain.setBrakes(false);
+
+		// Start the compressor control. Drivers may want to turn the compressor on during auto
+		m_compressorControl.start();
 	}
 
 	/**
@@ -158,7 +173,22 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+
+		// Run the scheduler
 		Scheduler.getInstance().run();
+
+		// Check if the auto sequence has finished.
+		if (m_autonomousCommand.isCompleted()) {
+			// If the autoAssistLock is not set
+			if (!m_teleopAssistLock) {
+				// Start teleop commands early
+				startTeleopCommands();
+
+				// Lock the teleop startup boolean
+				m_teleopAssistLock = true;
+			}
+
+		}
 	}
 
 	@Override
@@ -174,6 +204,11 @@ public class Robot extends TimedRobot {
 
 		// Enable the brakes on the DriveTrain
 		m_driveTrain.setBrakes(true);
+
+		// Re-start the teleop commands. (This is only needed in the shop, but leave it in)
+		// During a game, this is not needed.
+		m_compressorControl.start();
+		startTeleopCommands();
 	}
 
 	/**
