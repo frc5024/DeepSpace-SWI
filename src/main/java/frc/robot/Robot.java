@@ -8,7 +8,9 @@ import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
 import frc.robot.Constants;
 import frc.robot.autonomous.Chooser;
+import frc.robot.autonomous.commandgroups.Climb;
 import frc.robot.autonomous.commandgroups.Outtake;
+import frc.robot.commands.ClimbControl;
 import frc.robot.commands.CompressorControl;
 import frc.robot.commands.DriveControl;
 import frc.robot.commands.IntakeControl;
@@ -48,9 +50,11 @@ public class Robot extends TimedRobot {
 	DriveControl m_driveControl;
 	IntakeControl m_intakeControl;
 	CompressorControl m_compressorControl;
+	ClimbControl m_climbControl;
 
 	/* COMMAND GROUPS */
 	public static Outtake m_outtakeGroup;
+	public static Climb m_climbGroup;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -86,9 +90,11 @@ public class Robot extends TimedRobot {
 		m_driveControl = new DriveControl();
 		m_intakeControl = new IntakeControl();
 		m_compressorControl = new CompressorControl();
+		m_climbControl = new ClimbControl();
 
 		/* Create CommandGroups */
 		m_outtakeGroup = new Outtake();
+		m_climbGroup = new Climb();
 
 		/* Start Threads */
 		logger.log("Starting threads", Level.kRobot);
@@ -119,6 +125,7 @@ public class Robot extends TimedRobot {
 	private void startTeleopCommands() {
 		m_driveControl.start();
 		m_intakeControl.start();
+		m_climbControl.start();
 	}
 
 	/**

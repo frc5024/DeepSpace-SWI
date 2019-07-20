@@ -1,6 +1,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import frc.robot.autonomous.commandgroups.Climb;
 import edu.wpi.first.wpilibj.GenericHID;
 
 
@@ -111,6 +113,29 @@ public class OI {
 	public boolean getCompressorDisable() {
 		return operatorController.getBackButton() || driverController.getBackButton();
 	}
+
+	public boolean getClimb2FA() {
+		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 0;
+	}
+
+	// /* 2FA Buttons */
+
+	// public class ClimbButton extends Button {
+
+	// 	@Override
+	// 	public boolean get() {
+	// 		return operatorController.getBumper(GenericHID.Hand.kRight) && operatorController.getPOV() == 0;
+	// 	}
+
+	// }
+	
+	// Button m_climbButton = new ClimbButton();
+
+	// public OI() {
+
+	// 	// Climb
+	// 	m_climbButton.toggleWhenPressed(new Climb());
+	// }
 
 
 }
