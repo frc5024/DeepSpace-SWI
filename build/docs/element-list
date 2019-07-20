@@ -1,0 +1,11 @@
+frc.lib5k.components
+frc.lib5k.control
+frc.lib5k.loops.loopables
+frc.lib5k.loops.loopers
+frc.lib5k.utils
+frc.robot
+frc.robot.autonomous
+frc.robot.autonomous.actions
+frc.robot.autonomous.commandgroups
+frc.robot.commands
+frc.robot.subsystems

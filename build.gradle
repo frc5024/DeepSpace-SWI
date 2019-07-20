@@ -62,3 +62,9 @@ jar {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
 }
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    // destinationDir = reporting.file("../docs")
+}

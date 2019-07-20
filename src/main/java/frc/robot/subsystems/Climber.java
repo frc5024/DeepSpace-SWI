@@ -232,7 +232,7 @@ public class Climber extends LoopableSubsystem {
      * 
      * NOTE: Positive values move the robot forwards
      * 
-     * @param rate
+     * @param rate Movement speed for crawlers
      */
     public void setCrawlRate(double rate) {
         // If the climber is unlocked
