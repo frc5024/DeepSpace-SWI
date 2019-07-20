@@ -18,8 +18,8 @@ public class Chooser{
 
         // Load starting positions
         m_positionChooser.setName("Robot position");
-        m_positionChooser.setDefaultOption("HAB 2 Right", 0);
-        m_positionChooser.addOption("HAB 2 Left", 1);
+        m_positionChooser.setDefaultOption("HAB 1 Right", 0);
+        m_positionChooser.addOption("HAB 1 Left", 1);
 
         // Load target positions
         m_targetChooser.setName("Autonomous target");

@@ -20,4 +20,9 @@ public class FailedAutonomous extends CommandGroup {
         logger.log("!!! Chooser failed to find an autonomous or incorrect options where sent !!!", Level.kWarning);
     }
 
+    @Override
+    protected boolean isFinished() {
+        return true;
+    }
+
 }
