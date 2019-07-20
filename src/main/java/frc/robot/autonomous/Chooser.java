@@ -1,6 +1,7 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.autonomous.commandgroups.FailedAutonomous;
 import frc.robot.autonomous.commandgroups.HabLeftHatchFront;
@@ -30,6 +31,10 @@ public class Chooser{
         m_targetChooser.setDefaultOption("Do nothing", 0);
         m_targetChooser.addOption("Front hatch", 10);
         m_targetChooser.addOption("Side hatch", 20);
+
+        // Push choosers to dashboard
+        Shuffleboard.getTab("DriverStation").add(m_positionChooser);
+        Shuffleboard.getTab("DriverStation").add(m_targetChooser);
     }
     
     public CommandGroup getAutonomousCommand() {

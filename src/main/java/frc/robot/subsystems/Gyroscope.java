@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI.Port;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
 
@@ -15,6 +16,8 @@ public class Gyroscope {
     public Gyroscope() {
         logger.log("[Gyroscope] Attaching to MXP gyro", Level.kRobot);
         m_gyro = new AHRS(Port.kMXP);
+
+        Shuffleboard.getTab("DriverStation").add(m_gyro);
     }
 
     public static Gyroscope getInstance() {

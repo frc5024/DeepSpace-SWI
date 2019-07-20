@@ -6,6 +6,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.lib5k.components.GearBox;
 import frc.lib5k.loops.loopables.LoopableSubsystem;
@@ -100,6 +101,7 @@ public class Climber extends LoopableSubsystem {
         // Optics sensor
         logger.log("[Climber] Configuring Optics sensor", Level.kRobot);
         m_opticSensor = new DigitalInput(Constants.DIO.optics_sensor);
+
     }
 
     @Override
@@ -121,7 +123,7 @@ public class Climber extends LoopableSubsystem {
     public boolean getArmSensor() {
         return !m_armHall.get();
     }
-
+    
     public boolean getOpticSensor() {
         return m_opticSensor.get();
     }
