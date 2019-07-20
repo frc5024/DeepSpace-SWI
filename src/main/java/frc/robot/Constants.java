@@ -1,13 +1,13 @@
 package frc.robot;
 
 /**
- * This is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
+ * This is a mapping from the ports sensors and actuators are wired into to a
+ * variable name. This provides flexibility changing wiring, makes checking the
+ * wiring easier and significantly reduces the number of magic numbers floating
+ * around.
  */
 public class Constants {
-  /* DriveTrain */
+	/* DriveTrain */
 	public class DriveTrain {
 		public static final int leftFrontMotor = 1;
 		public static final int leftRearMotor = 2;
@@ -19,9 +19,30 @@ public class Constants {
 		public static final int currentTimeout = 30;
 	}
 
+	public class Climb {
+		public class Arms {
+			public static final int frontMotor = 5;
+			public static final int rearMotor = 7;
+
+			public static final int peakCurrent = 35;
+			public static final int holdCurrent = 33;
+			public static final int currentTimeout = 30;
+		}
+
+		public class Crawlers {
+			public static final int leftId = 1;
+			public static final int rightId = 0;
+		}
+
+		public class Legs {
+			public static final int motorId = 8;
+		}
+
+	}
+
 	public class EncoderInfo {
-		public static final int ticks_per_rev = 360 * 4;//360;
-		public static final int ticks_per_tick = 1;//4;  // Leave this at 4 unless something breaks // Something broke
+		public static final int ticks_per_rev = 360 * 4;// 360;
+		public static final int ticks_per_tick = 1;// 4; // Leave this at 4 unless something breaks // Something broke
 	}
 
 	public class Robot {
@@ -72,6 +93,13 @@ public class Constants {
 		public static final int slider_centre_limit = 8;
 		public static final int slider_right_limit = 0;
 
+		public static final int arm_sensor = 4;
+
+		public static final int optics_sensor = 7;
+
+		public static final int leg_top = 1;
+		public static final int leg_mid = 5;
+		public static final int leg_low = 6;
 	}
 
 	// Slider motor id
