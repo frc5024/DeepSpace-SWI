@@ -178,16 +178,21 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 
 		// Check if the auto sequence has finished.
-		if (m_autonomousCommand.isCompleted()) {
-			// If the autoAssistLock is not set
-			if (!m_teleopAssistLock) {
-				// Start teleop commands early
-				startTeleopCommands();
+		if (m_autonomousCommand != null) {
+			if (m_autonomousCommand.isCompleted()) {
+				// If the autoAssistLock is not set
+				if (!m_teleopAssistLock) {
+					// Start teleop commands early
+					startTeleopCommands();
 
-				// Lock the teleop startup boolean
-				m_teleopAssistLock = true;
+					// Lock the teleop startup boolean
+					m_teleopAssistLock = true;
+				}
+
 			}
-
+		} else {
+			// Something went horribly wrong. Just give the drivers control
+			startTeleopCommands();
 		}
 	}
 
