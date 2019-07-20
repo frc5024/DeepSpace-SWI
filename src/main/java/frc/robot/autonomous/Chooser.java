@@ -3,7 +3,10 @@ package frc.robot.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.autonomous.commandgroups.FailedAutonomous;
+import frc.robot.autonomous.commandgroups.HabLeftHatchFront;
+import frc.robot.autonomous.commandgroups.HabLeftHatchSide;
 import frc.robot.autonomous.commandgroups.HabRightHatchFront;
+import frc.robot.autonomous.commandgroups.HabRightHatchSide;
 
 /**
  * Reads inputs from smartdashboard to determine correct auto to run
@@ -38,11 +41,11 @@ public class Chooser{
         case 10:
             return new HabRightHatchFront();
         case 20:
-            break;
+            return new HabRightHatchSide();
         case 11:
-            break;
+            return new HabLeftHatchFront();
         case 21:
-            break;
+            return new HabLeftHatchSide();
         default:
             break;
         }
