@@ -3,6 +3,7 @@ package frc.robot.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.autonomous.commandgroups.FailedAutonomous;
+import frc.robot.autonomous.commandgroups.HabRightHatchFront;
 
 /**
  * Reads inputs from smartdashboard to determine correct auto to run
@@ -35,7 +36,7 @@ public class Chooser{
         // Detect commandgorup to use
         switch (key) {
         case 10:
-            break;
+            return new HabRightHatchFront();
         case 20:
             break;
         case 11:

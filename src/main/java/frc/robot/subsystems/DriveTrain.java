@@ -147,6 +147,18 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
+     * Directly drive the gearboxes. This should only be used wile motion profiling
+     * @param l Left speed
+     * @param r Right speed
+     */
+    public void rawDrive(double l, double r) {
+        is_moving = (l + r != 0.0);
+        is_turning = (l != r);
+        m_leftGearBox.set(l);
+        m_rightGearBox.set(r);
+    }
+
+    /**
      * Enables or disables brake mode on all drivebase talons
      * 
      * @param on Should the brakes be enabled?
