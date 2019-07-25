@@ -70,8 +70,28 @@ javadoc {
     // destinationDir = reporting.file("../docs")
 }
 
-task buildDocs(type: Javadoc) {
+task buildUnsafeDocs(type: Javadoc) {
   source = sourceSets.main.allJava
   classpath = configurations.compile
   destinationDir = file("docs")
+
+  
+}
+
+task cleanDocs {
+    println "cleanDocs waiting 10 seconds before starting"
+    sleep(10*1000)
+
+    // Fix search bug
+    // This will force skip any useModuleDirectories-based code, by hardcoding the value "false"
+    ant.replaceregexp(match:'useModuleDirectories', replace:'false', flags:'g', byline:true) {
+            fileset(dir: 'docs', includes: 'search.js')
+    }
+
+    println "Cleaned docs"
+}
+
+task buildDocs(type: GradleBuild) {
+    // Build the docs, then fix JS issues
+    tasks = ['buildUnsafeDocs', 'cleanDocs']
 }

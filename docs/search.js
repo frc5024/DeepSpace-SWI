@@ -42,7 +42,7 @@ function getHighlightedText(item) {
 }
 function getURLPrefix(ui) {
     var urlPrefix="";
-    if (useModuleDirectories) {
+    if (false) {
         var slash = "/";
         if (ui.item.category === catModules) {
             return ui.item.l + slash;
@@ -285,7 +285,7 @@ $(function() {
             if (ui.item.l !== noResult.l) {
                 var url = getURLPrefix(ui);
                 if (ui.item.category === catModules) {
-                    if (useModuleDirectories) {
+                    if (false) {
                         url += "module-summary.html";
                     } else {
                         url = ui.item.l + "-summary.html";
