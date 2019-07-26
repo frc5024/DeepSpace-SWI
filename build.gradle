@@ -70,17 +70,18 @@ javadoc {
     // destinationDir = reporting.file("../docs")
 }
 
-task buildUnsafeDocs(type: Javadoc) {
+task buildDocs(type: Javadoc) {
   source = sourceSets.main.allJava
   classpath = configurations.compile
   destinationDir = file("docs")
 
+    println "Don't forget to run cleanDocs after"
   
 }
 
 task cleanDocs {
-    println "cleanDocs waiting 10 seconds before starting"
-    sleep(10*1000)
+    // println "cleanDocs waiting 10 seconds before starting"
+    // sleep(10*1000)
 
     // Fix search bug
     // This will force skip any useModuleDirectories-based code, by hardcoding the value "false"
@@ -91,7 +92,7 @@ task cleanDocs {
     println "Cleaned docs"
 }
 
-task buildDocs(type: GradleBuild) {
-    // Build the docs, then fix JS issues
-    tasks = ['buildUnsafeDocs', 'cleanDocs']
-}
+// task buildDocs(type: GradleBuild) {
+//     // Build the docs, then fix JS issues
+//     tasks = ['buildUnsafeDocs', 'cleanDocs']
+// }

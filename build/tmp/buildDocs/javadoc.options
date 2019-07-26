@@ -37,6 +37,7 @@
 '/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/autonomous/actions/SetClimberLock.java'
 '/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/autonomous/actions/SetLedring.java'
 '/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/autonomous/Chooser.java'
+'/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/commands/ManualArmController.java'
 '/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/commands/IntakeControl.java'
 '/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/commands/CompressorControl.java'
 '/home/ewpratten/frc/DeepSpace-SWI/src/main/java/frc/robot/commands/ClimbControl.java'

@@ -118,24 +118,13 @@ public class OI {
 		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 0;
 	}
 
-	// /* 2FA Buttons */
+	public boolean getManualArmToggle(){
+		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 180;
+	}
 
-	// public class ClimbButton extends Button {
-
-	// 	@Override
-	// 	public boolean get() {
-	// 		return operatorController.getBumper(GenericHID.Hand.kRight) && operatorController.getPOV() == 0;
-	// 	}
-
-	// }
-	
-	// Button m_climbButton = new ClimbButton();
-
-	// public OI() {
-
-	// 	// Climb
-	// 	m_climbButton.toggleWhenPressed(new Climb());
-	// }
+	public double getArmMovementOverrideSpeed() {
+		return operatorController.getY(GenericHID.Hand.kRight) * -1;
+	}
 
 
 }

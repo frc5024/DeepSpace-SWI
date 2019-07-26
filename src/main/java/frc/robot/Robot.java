@@ -14,6 +14,7 @@ import frc.robot.commands.ClimbControl;
 import frc.robot.commands.CompressorControl;
 import frc.robot.commands.DriveControl;
 import frc.robot.commands.IntakeControl;
+import frc.robot.commands.ManualArmController;
 import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
@@ -51,10 +52,12 @@ public class Robot extends TimedRobot {
 	IntakeControl m_intakeControl;
 	CompressorControl m_compressorControl;
 	ClimbControl m_climbControl;
+	
 
 	/* COMMAND GROUPS */
 	public static Outtake m_outtakeGroup;
 	public static Climb m_climbGroup;
+	public static ManualArmController m_ManualArmController;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -91,6 +94,8 @@ public class Robot extends TimedRobot {
 		m_intakeControl = new IntakeControl();
 		m_compressorControl = new CompressorControl();
 		m_climbControl = new ClimbControl();
+		m_ManualArmController = new ManualArmController();
+
 
 		/* Create CommandGroups */
 		m_outtakeGroup = new Outtake();
