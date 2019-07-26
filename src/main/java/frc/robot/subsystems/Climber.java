@@ -102,6 +102,9 @@ public class Climber extends LoopableSubsystem {
         logger.log("[Climber] Configuring Optics sensor", Level.kRobot);
         m_opticSensor = new DigitalInput(Constants.DIO.optics_sensor);
 
+        // Set the subsystem name for logging
+        name = "Climber";
+
     }
 
     @Override

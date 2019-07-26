@@ -18,6 +18,7 @@ public class Gyroscope {
         m_gyro = new AHRS(Port.kMXP);
 
         Shuffleboard.getTab("DriverStation").add(m_gyro);
+
     }
 
     public static Gyroscope getInstance() {

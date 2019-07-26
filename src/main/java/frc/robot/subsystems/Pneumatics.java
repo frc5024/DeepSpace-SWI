@@ -21,6 +21,9 @@ public class Pneumatics extends LoopableSubsystem {
     public Pneumatics() {
         logger.log("[Pneumatics] Creating Compressor object", Level.kRobot);
         m_primaryCompressor = new Compressor(Constants.PCM.can_id);
+
+        // Set the subsystem name for logging
+        name = "Pneumatics";
     }
 
     public static Pneumatics getInstance() {

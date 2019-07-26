@@ -56,6 +56,8 @@ public class DriveTrain extends LoopableSubsystem {
         /* Configure SlewLimiter */
         m_SlewLimiter = new SlewLimiter(Constants.accelerationStep);
 
+        // Set the subsystem name for logging
+        name = "DriveTrain";
     }
 
     /**

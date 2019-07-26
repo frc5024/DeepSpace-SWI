@@ -18,6 +18,9 @@ public class LEDring extends LoopableSubsystem {
     public LEDring() {
         logger.log("[LEDring] Constructing Solenoid", Level.kRobot);
         m_ledRing = new Solenoid(Constants.PCM.can_id, Constants.PCM.ledring);
+
+        // Set the subsystem name for logging
+        name = "LEDring";
     }
 
     @Override
@@ -30,6 +33,7 @@ public class LEDring extends LoopableSubsystem {
             // No more data to work with
             m_newData = false;
         }
+
     }
 
     public void setEnabled(boolean enabled) {

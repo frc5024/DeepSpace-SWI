@@ -51,6 +51,9 @@ public class Intake extends LoopableSubsystem {
         m_leftHall = new DigitalInput(Constants.DIO.slider_left_limit);
         m_centreHall = new DigitalInput(Constants.DIO.slider_centre_limit);
         m_rightHall = new DigitalInput(Constants.DIO.slider_right_limit);
+
+        // Set the subsystem name for logging
+        name = "Intake";
     }
 
     /**
