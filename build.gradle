@@ -64,33 +64,33 @@ jar {
     manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
 }
 
-javadoc {
-    source = sourceSets.main.allJava
-    classpath = configurations.compile
-    // destinationDir = reporting.file("../docs")
-}
+// javadoc {
+//     source = sourceSets.main.allJava
+//     classpath = configurations.compile
+//     // destinationDir = reporting.file("../docs")
+// }
 
-task buildDocs(type: Javadoc) {
-  source = sourceSets.main.allJava
-  classpath = configurations.compile
-  destinationDir = file("docs")
+// task buildDocs(type: Javadoc) {
+//   source = sourceSets.main.allJava
+//   classpath = configurations.compile
+//   destinationDir = file("docs")
 
-    println "Don't forget to run cleanDocs after"
+//     println "Don't forget to run cleanDocs after"
   
-}
+// }
 
-task cleanDocs {
-    // println "cleanDocs waiting 10 seconds before starting"
-    // sleep(10*1000)
+// task cleanDocs {
+//     // println "cleanDocs waiting 10 seconds before starting"
+//     // sleep(10*1000)
 
-    // Fix search bug
-    // This will force skip any useModuleDirectories-based code, by hardcoding the value "false"
-    ant.replaceregexp(match:'useModuleDirectories', replace:'false', flags:'g', byline:true) {
-            fileset(dir: 'docs', includes: 'search.js')
-    }
+//     // Fix search bug
+//     // This will force skip any useModuleDirectories-based code, by hardcoding the value "false"
+//     ant.replaceregexp(match:'useModuleDirectories', replace:'false', flags:'g', byline:true) {
+//             fileset(dir: 'docs', includes: 'search.js')
+//     }
 
-    println "Cleaned docs"
-}
+//     println "Cleaned docs"
+// }
 
 // task buildDocs(type: GradleBuild) {
 //     // Build the docs, then fix JS issues

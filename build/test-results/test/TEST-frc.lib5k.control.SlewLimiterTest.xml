@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="frc.lib5k.control.SlewLimiterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-16T15:26:34" hostname="laptop" time="0.002">
+  <properties/>
+  <testcase name="testSlewRate" classname="frc.lib5k.control.SlewLimiterTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
