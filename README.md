@@ -9,5 +9,10 @@ Our offseason codebase for DeepSpace was designed from the ground up over the co
  - Use autonomous field navigation to perfectly score at least one hatch during sandstorm.
  - Use a vision system to align with targets.
  - Climb with the press of a button, autonomously.
- - Execute commands, and interact with CAN devices in an efficent manner to reduce out loop times (currently sitting around 0.000015 seconds per loop)
+ - Execute commands, and interact with CAN devices in an efficient manner to reduce out loop times (currently sitting around 0.000015 seconds per loop)
 
+## Running tests
+To run the unit tests, use the following:
+```
+./gradlew :test
+```
