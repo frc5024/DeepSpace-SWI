@@ -12,7 +12,7 @@ jobs:
     - name: Set up JDK 11
       uses: actions/setup-java@v1
       with:
-        java-version: "11.0.2"
+        java-version: 1.8
     - name: Configure toolset
       run: ./gradlew assemble
       
