@@ -14,7 +14,7 @@ jobs:
       with:
         java-version: 1.11
     - name: Configure toolset
-      run: ./gradlew wrapper
+      run: ./gradlew assemble
       
     - name: Build with Gradle
       run: ./gradlew build
