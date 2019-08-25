@@ -160,6 +160,8 @@ public class DriveTrain extends LoopableSubsystem {
         m_rightGearBox.set(r);
     }
 
+    // public void autoSteer(double throttle, )
+
     /**
      * Enables or disables brake mode on all drivebase talons
      * 
