@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run FRC tests
-      uses: ewpratten/FRC-actions@v0.3
+      uses: ewpratten/FRC-actions@v0.4
       with:
         build_mode: 'all'
 #     - name: Set up JDK 11
