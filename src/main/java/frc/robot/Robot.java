@@ -139,6 +139,7 @@ public class Robot extends TimedRobot {
 		m_driveControl.start();
 		m_intakeControl.start();
 		m_climbControl.start();
+		m_compressorControl.start();
 	}
 
 	/**
