@@ -9,6 +9,8 @@ var searchData=
   ['failedautonomous',['FailedAutonomous',['../classfrc_1_1robot_1_1autonomous_1_1commandgroups_1_1FailedAutonomous.html',1,'frc.robot.autonomous.commandgroups.FailedAutonomous'],['../classfrc_1_1robot_1_1autonomous_1_1commandgroups_1_1FailedAutonomous.html#adf7526e3f9b77176104656fb73cfdbaa',1,'frc.robot.autonomous.commandgroups.FailedAutonomous.FailedAutonomous()']]],
   ['failedautonomous_2ejava',['FailedAutonomous.java',['../FailedAutonomous_8java.html',1,'']]],
   ['feed',['feed',['../classfrc_1_1lib5k_1_1control_1_1CubicDeadband.html#a9c306631eab21508ce08d741fcf3901b',1,'frc.lib5k.control.CubicDeadband.feed()'],['../classfrc_1_1lib5k_1_1control_1_1SlewLimiter.html#ab4415b52bd53053a80b2b8b8720f2a5e',1,'frc.lib5k.control.SlewLimiter.feed()'],['../classfrc_1_1lib5k_1_1control_1_1Toggle.html#a3db80b10f83b471d005d2a933442078f',1,'frc.lib5k.control.Toggle.feed()']]],
+  ['fileutils',['FileUtils',['../classfrc_1_1lib5k_1_1utils_1_1FileUtils.html',1,'frc::lib5k::utils']]],
+  ['fileutils_2ejava',['FileUtils.java',['../FileUtils_8java.html',1,'']]],
   ['findball',['findBall',['../namespacevision.html#a2c6157e5991661830c44007f7bf0a4ea',1,'vision']]],
   ['findcargo',['findCargo',['../namespacevision.html#aed284bb12920c0ef955ba19f74505dc6',1,'vision']]],
   ['findtape',['findTape',['../namespacevision.html#a5525b91f040693e8a686f05a5a9094b0',1,'vision']]],

@@ -13,6 +13,7 @@ var hierarchy =
     [ "frc.robot.Constants.DIO", "classfrc_1_1robot_1_1Constants_1_1DIO.html", null ],
     [ "frc.robot.Constants.DriveTrain", "classfrc_1_1robot_1_1Constants_1_1DriveTrain.html", null ],
     [ "frc.robot.Constants.EncoderInfo", "classfrc_1_1robot_1_1Constants_1_1EncoderInfo.html", null ],
+    [ "frc.lib5k.utils.FileUtils", "classfrc_1_1lib5k_1_1utils_1_1FileUtils.html", null ],
     [ "vision.FPS", "classvision_1_1FPS.html", null ],
     [ "frc.lib5k.components.GearBox", "classfrc_1_1lib5k_1_1components_1_1GearBox.html", null ],
     [ "frc.robot.subsystems.Gyroscope", "classfrc_1_1robot_1_1subsystems_1_1Gyroscope.html", null ],

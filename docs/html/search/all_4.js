@@ -14,7 +14,7 @@ var searchData=
   ['drivecontrol',['DriveControl',['../classfrc_1_1robot_1_1commands_1_1DriveControl.html',1,'frc.robot.commands.DriveControl'],['../classfrc_1_1robot_1_1commands_1_1DriveControl.html#a9b98a9fe0cb24b4d789566f9bbacb02f',1,'frc.robot.commands.DriveControl.DriveControl()']]],
   ['drivecontrol_2ejava',['DriveControl.java',['../DriveControl_8java.html',1,'']]],
   ['drivercontroller',['driverController',['../classfrc_1_1robot_1_1OI.html#af59e575b40a8d43f4bb5eecbe3b5641f',1,'frc::robot::OI']]],
-  ['drivetrain',['DriveTrain',['../classfrc_1_1robot_1_1Constants_1_1DriveTrain.html',1,'frc.robot.Constants.DriveTrain'],['../classfrc_1_1robot_1_1subsystems_1_1DriveTrain.html',1,'frc.robot.subsystems.DriveTrain'],['../classfrc_1_1robot_1_1subsystems_1_1DriveTrain.html#a39f30717e8df92af73d57c01ac0525df',1,'frc.robot.subsystems.DriveTrain.DriveTrain()']]],
+  ['drivetrain',['DriveTrain',['../classfrc_1_1robot_1_1subsystems_1_1DriveTrain.html',1,'frc.robot.subsystems.DriveTrain'],['../classfrc_1_1robot_1_1Constants_1_1DriveTrain.html',1,'frc.robot.Constants.DriveTrain'],['../classfrc_1_1robot_1_1subsystems_1_1DriveTrain.html#a39f30717e8df92af73d57c01ac0525df',1,'frc.robot.subsystems.DriveTrain.DriveTrain()']]],
   ['drivetrain_2ejava',['DriveTrain.java',['../DriveTrain_8java.html',1,'']]],
   ['deepspace_2dswi',['DeepSpace-SWI',['../index.html',1,'']]]
 ];

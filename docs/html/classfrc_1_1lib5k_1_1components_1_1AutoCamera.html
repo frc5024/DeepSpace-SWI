@@ -99,6 +99,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a08e4df71ba7cf4513123a7bbb169d3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61778a61f21c23379033a788717405b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrc_1_1lib5k_1_1components_1_1AutoCamera.html#a61778a61f21c23379033a788717405b5">AutoCamera</a> (String name, int usb_slot)</td></tr>
 <tr class="separator:a61778a61f21c23379033a788717405b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac687675ca3d28ff0c0470d3a0a71fcb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrc_1_1lib5k_1_1components_1_1AutoCamera.html#ac687675ca3d28ff0c0470d3a0a71fcb0">setResolution</a> (int height, int width, int fps)</td></tr>
+<tr class="memdesc:ac687675ca3d28ff0c0470d3a0a71fcb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the camera resolution and framerate.  <a href="#ac687675ca3d28ff0c0470d3a0a71fcb0">More...</a><br /></td></tr>
+<tr class="separator:ac687675ca3d28ff0c0470d3a0a71fcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a945a7ddd3751d7ae2d40b57a42d91b4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrc_1_1lib5k_1_1components_1_1AutoCamera.html#a945a7ddd3751d7ae2d40b57a42d91b4f">loadJsonConfig</a> (String filepath)</td></tr>
+<tr class="memdesc:a945a7ddd3751d7ae2d40b57a42d91b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a json file as a config.  <a href="#a945a7ddd3751d7ae2d40b57a42d91b4f">More...</a><br /></td></tr>
+<tr class="separator:a945a7ddd3751d7ae2d40b57a42d91b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa607f2ad7b82023f217cb2aedacd5301"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrc_1_1lib5k_1_1components_1_1AutoCamera.html#aa607f2ad7b82023f217cb2aedacd5301">keepCameraAwake</a> (boolean enabled)</td></tr>
+<tr class="memdesc:aa607f2ad7b82023f217cb2aedacd5301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the camera connection mode.  <a href="#aa607f2ad7b82023f217cb2aedacd5301">More...</a><br /></td></tr>
+<tr class="separator:aa607f2ad7b82023f217cb2aedacd5301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Automatic camera streaming. </p>
@@ -108,7 +117,7 @@ Public Member Functions</h2></td></tr>
 <p>If you actually took the time to read this, I think you either need a break, or you should go find yourself a task to work on. </p>
 <p>Here is a blog post talking about H.264: <a href="https://rianadon.github.io/blog/2019/04/04/guide-to-h264-streaming-frc.html">https://rianadon.github.io/blog/2019/04/04/guide-to-h264-streaming-frc.html</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00032">32</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00037">37</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a910d515b136adbebee46112464c0b950"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a910d515b136adbebee46112464c0b950">&#9670;&nbsp;</a></span>AutoCamera() <span class="overload">[1/3]</span></h2>
@@ -125,7 +134,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00036">36</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00043">43</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
 
 </div>
 </div>
@@ -145,7 +154,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00040">40</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00047">47</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
 
 </div>
 </div>
@@ -175,7 +184,110 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00044">44</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00051">51</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa607f2ad7b82023f217cb2aedacd5301"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa607f2ad7b82023f217cb2aedacd5301">&#9670;&nbsp;</a></span>keepCameraAwake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void frc.lib5k.components.AutoCamera.keepCameraAwake </td>
+          <td>(</td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the camera connection mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>Should the camera always be streaming video? </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00102">102</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+
+</div>
+</div>
+<a id="a945a7ddd3751d7ae2d40b57a42d91b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a945a7ddd3751d7ae2d40b57a42d91b4f">&#9670;&nbsp;</a></span>loadJsonConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void frc.lib5k.components.AutoCamera.loadJsonConfig </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>filepath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a json file as a config. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>Path to json file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00080">80</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
+
+</div>
+</div>
+<a id="ac687675ca3d28ff0c0470d3a0a71fcb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac687675ca3d28ff0c0470d3a0a71fcb0">&#9670;&nbsp;</a></span>setResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void frc.lib5k.components.AutoCamera.setResolution </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the camera resolution and framerate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>Height in pixels </td></tr>
+    <tr><td class="paramname">width</td><td>Width in pixels </td></tr>
+    <tr><td class="paramname">fps</td><td>Frames per second </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="AutoCamera_8java_source.html#l00070">70</a> of file <a class="el" href="AutoCamera_8java_source.html">AutoCamera.java</a>.</p>
 
 </div>
 </div>

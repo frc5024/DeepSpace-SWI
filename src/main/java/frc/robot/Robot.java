@@ -3,6 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.lib5k.components.AutoCamera;
 import frc.lib5k.loops.loopers.SubsystemLooper;
 import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
@@ -30,6 +32,9 @@ import frc.robot.subsystems.Pneumatics;
  */
 public class Robot extends TimedRobot {
 	private RobotLogger logger = RobotLogger.getInstance();
+
+	/* CAMERAS */
+	AutoCamera m_mainCamera;
 
 	/* AUTONOMOUS */
 	private Command m_autonomousCommand;
@@ -97,6 +102,11 @@ public class Robot extends TimedRobot {
 		/* Create CommandGroups */
 		m_outtakeGroup = new Outtake();
 		m_climbGroup = new Climb();
+
+		/* Create cameras */
+		logger.log("Configuring cameras", Level.kRobot);
+		m_mainCamera = new AutoCamera("Main camera", 0);
+		m_mainCamera.keepCameraAwake(true);
 
 		/* Start Threads */
 		logger.log("Starting threads", Level.kRobot);

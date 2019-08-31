@@ -2,6 +2,7 @@ var searchData=
 [
   ['ka',['kA',['../classfrc_1_1robot_1_1Constants_1_1PathingPIDA.html#ae9a1089e741cfda289708273050a56e2',1,'frc::robot::Constants::PathingPIDA']]],
   ['kd',['kD',['../classfrc_1_1robot_1_1Constants_1_1SliderPID.html#a5725d7140165a19a2113f51a55aa2854',1,'frc.robot.Constants.SliderPID.kD()'],['../classfrc_1_1robot_1_1Constants_1_1PathingPIDA.html#a33bec0e04564e36e7056a43fe3236bd9',1,'frc.robot.Constants.PathingPIDA.kD()']]],
+  ['keepcameraawake',['keepCameraAwake',['../classfrc_1_1lib5k_1_1components_1_1AutoCamera.html#aa607f2ad7b82023f217cb2aedacd5301',1,'frc::lib5k::components::AutoCamera']]],
   ['kepsilon',['kEpsilon',['../classfrc_1_1lib5k_1_1utils_1_1Consts.html#a97494e3e726726b01365be4c7b8c05be',1,'frc::lib5k::utils::Consts']]],
   ['ki',['kI',['../classfrc_1_1robot_1_1Constants_1_1SliderPID.html#a3b35cb304fd85614e2662f22f64b2b2d',1,'frc.robot.Constants.SliderPID.kI()'],['../classfrc_1_1robot_1_1Constants_1_1PathingPIDA.html#a0a6c0d2ecf9c4f0c9acaf925350849a7',1,'frc.robot.Constants.PathingPIDA.kI()']]],
   ['kidentity',['kIdentity',['../classfrc_1_1lib5k_1_1spatial_1_1Rotation2D.html#a0b07d37db19ccce2483be2e18636b689',1,'frc.lib5k.spatial.Rotation2D.kIdentity()'],['../classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a4dc4a483521901a855414a31de08dce3',1,'frc.lib5k.spatial.Translation2D.kIdentity()']]],

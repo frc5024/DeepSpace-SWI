@@ -19,7 +19,7 @@ var searchData=
   ['m_5fouttakegroup',['m_outtakeGroup',['../classfrc_1_1robot_1_1Robot.html#aa585b65a4e85fc3abafaa34165faf157',1,'frc::robot::Robot']]],
   ['m_5fpneumatics',['m_pneumatics',['../classfrc_1_1robot_1_1Robot.html#a306ba64c4dc6d9e8a265e5b88edca397',1,'frc::robot::Robot']]],
   ['m_5fteleopassistlock',['m_teleopAssistLock',['../classfrc_1_1robot_1_1Robot.html#afb8d32803696ae65cf3cebb47ba1d168',1,'frc::robot::Robot']]],
-  ['main',['Main',['../classfrc_1_1robot_1_1Main.html',1,'frc.robot.Main'],['../classfrc_1_1robot_1_1Main.html#ae60066a646cefc16d3e7d57b8fa22097',1,'frc.robot.Main.main(String... args)'],['../classfrc_1_1robot_1_1Main.html#aaaa025997d101f996ad17575cbb72f5e',1,'frc.robot.Main.Main()']]],
+  ['main',['Main',['../classfrc_1_1robot_1_1Main.html',1,'frc.robot.Main'],['../classfrc_1_1robot_1_1Main.html#aaaa025997d101f996ad17575cbb72f5e',1,'frc.robot.Main.Main()'],['../classfrc_1_1robot_1_1Main.html#ae60066a646cefc16d3e7d57b8fa22097',1,'frc.robot.Main.main(String... args)']]],
   ['main_2ejava',['Main.java',['../Main_8java.html',1,'']]],
   ['maincamera',['MainCamera',['../classfrc_1_1robot_1_1Constants_1_1MainCamera.html',1,'frc::robot::Constants']]],
   ['manualarmcontroller',['ManualArmController',['../classfrc_1_1robot_1_1commands_1_1ManualArmController.html',1,'frc::robot::commands']]],

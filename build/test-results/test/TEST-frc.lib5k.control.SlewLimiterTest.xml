@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="frc.lib5k.control.SlewLimiterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-08-31T16:15:18" hostname="laptop" time="0.001">
+<testsuite name="frc.lib5k.control.SlewLimiterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-08-31T16:40:30" hostname="laptop" time="0.003">
   <properties/>
-  <testcase name="testNegativeSlewRate" classname="frc.lib5k.control.SlewLimiterTest" time="0.0"/>
+  <testcase name="testNegativeSlewRate" classname="frc.lib5k.control.SlewLimiterTest" time="0.001"/>
   <testcase name="testPositiveSlewRate" classname="frc.lib5k.control.SlewLimiterTest" time="0.0"/>
-  <testcase name="testSlewReset" classname="frc.lib5k.control.SlewLimiterTest" time="0.0"/>
+  <testcase name="testSlewReset" classname="frc.lib5k.control.SlewLimiterTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

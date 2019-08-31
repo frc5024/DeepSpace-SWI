@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['norm',['norm',['../classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a7988215a23c2850532fc019290ba283d',1,'frc::lib5k::spatial::Translation2D']]],
-  ['norm2',['norm2',['../classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a8bda5d7fb4f9d010771561fbd7dbb8c1',1,'frc::lib5k::spatial::Translation2D']]],
-  ['normal',['normal',['../classfrc_1_1lib5k_1_1spatial_1_1Rotation2D.html#aafb27298d531101f6e9e145418fce805',1,'frc::lib5k::spatial::Rotation2D']]],
-  ['notifyerror',['notifyError',['../classvision_1_1VideoShow.html#a285370d66ae186c744151b5996bd2128',1,'vision::VideoShow']]]
+  ['main',['Main',['../classfrc_1_1robot_1_1Main.html#aaaa025997d101f996ad17575cbb72f5e',1,'frc.robot.Main.Main()'],['../classfrc_1_1robot_1_1Main.html#ae60066a646cefc16d3e7d57b8fa22097',1,'frc.robot.Main.main(String... args)']]],
+  ['movearms',['MoveArms',['../classfrc_1_1robot_1_1autonomous_1_1actions_1_1MoveArms.html#ae69f163c7f86f0ec05b79035eb07cb04',1,'frc::robot::autonomous::actions::MoveArms']]],
+  ['movearmswithgradualforce',['MoveArmsWithGradualForce',['../classfrc_1_1robot_1_1autonomous_1_1actions_1_1MoveArmsWithGradualForce.html#a85c90f812ace30095ca264e2ca2db714',1,'frc::robot::autonomous::actions::MoveArmsWithGradualForce']]],
+  ['movelegs',['MoveLegs',['../classfrc_1_1robot_1_1autonomous_1_1actions_1_1MoveLegs.html#afa5e69f682df5568469a44e4748c326d',1,'frc::robot::autonomous::actions::MoveLegs']]]
 ];

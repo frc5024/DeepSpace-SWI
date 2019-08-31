@@ -25,6 +25,7 @@ var searchData=
   ['setpitchsetpoint',['SetPitchSetpoint',['../classfrc_1_1robot_1_1autonomous_1_1actions_1_1SetPitchSetpoint.html',1,'frc::robot::autonomous::actions']]],
   ['setpitchsetpoint_2ejava',['SetPitchSetpoint.java',['../SetPitchSetpoint_8java.html',1,'']]],
   ['setprimarycompressorenabled',['setPrimaryCompressorEnabled',['../classfrc_1_1robot_1_1subsystems_1_1Pneumatics.html#a6cb50a9bd1678c81b0671c0781ab8fc4',1,'frc::robot::subsystems::Pneumatics']]],
+  ['setresolution',['setResolution',['../classfrc_1_1lib5k_1_1components_1_1AutoCamera.html#ac687675ca3d28ff0c0470d3a0a71fcb0',1,'frc::lib5k::components::AutoCamera']]],
   ['setsliderspeed',['setSliderSpeed',['../classfrc_1_1robot_1_1subsystems_1_1Intake.html#ae389cbecc0d3aab561aa505981eb84e7',1,'frc::robot::subsystems::Intake']]],
   ['show',['show',['../classvision_1_1VideoShow.html#a96d15bc0dad3acc77e8357b7d82eb6ea',1,'vision::VideoShow']]],
   ['sin',['sin',['../classfrc_1_1lib5k_1_1spatial_1_1Rotation2D.html#a7bc5db8d723f87df678aa559952d8c39',1,'frc::lib5k::spatial::Rotation2D']]],
