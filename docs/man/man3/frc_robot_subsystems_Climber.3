@@ -1,0 +1,266 @@
+.TH "frc.robot.subsystems.Climber" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.robot.subsystems.Climber \- Subsystem in charge of climb\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBfrc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClimber\fP ()"
+.br
+.ti -1c
+.RI "void \fBperiodicOutput\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetArmSensor\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetOpticSensor\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetGyroOffset\fP ()"
+.br
+.RI "Set the offset for the gyro pitch\&. "
+.ti -1c
+.RI "boolean \fBisGyroInRange\fP (double range)"
+.br
+.RI "Check if the gyro pitch reading is in range +/- of the offset\&. "
+.ti -1c
+.RI "double \fBgetGyroPitch\fP ()"
+.br
+.RI "Get the robot's pitch\&. "
+.ti -1c
+.RI "void \fBunlock\fP ()"
+.br
+.RI "Unlock the climber to allow new data\&. "
+.ti -1c
+.RI "boolean \fBisLocked\fP ()"
+.br
+.RI "Check if the climber is locked\&. "
+.ti -1c
+.RI "void \fBlock\fP ()"
+.br
+.RI "Safety lock the climber\&. "
+.ti -1c
+.RI "void \fBsetArmMovementRate\fP (double rate)"
+.br
+.RI "Set the desired arm movement rate\&. "
+.ti -1c
+.RI "void \fBsetCrawlRate\fP (double rate)"
+.br
+.RI "Sets the desired speed for the crawlers\&. "
+.ti -1c
+.RI "void \fBsetLegMovementRate\fP (double rate)"
+.br
+.RI "Sets the desired speed for the legs\&. "
+.ti -1c
+.RI "void \fBoutputTelemetry\fP ()"
+.br
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "boolean \fBgetLowLegSensor\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetMidLegSensor\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetHighLegSensor\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBcheckLock\fP ()"
+.br
+.RI "Used to check if the subsystem should be allowing new data\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Subsystem in charge of climb\&. 
+
+NOTE: Inputs are not buffered due to safety concerns\&. 
+.PP
+Definition at line 22 of file Climber\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.robot\&.subsystems\&.Climber\&.Climber ()"
+
+.PP
+Definition at line 64 of file Climber\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.checkLock ()\fC [private]\fP"
+
+.PP
+Used to check if the subsystem should be allowing new data\&. This is a safety feature
+.PP
+\fBReturns:\fP
+.RS 4
+Is it safe to control the climber? 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.getArmSensor ()"
+
+.PP
+Definition at line 126 of file Climber\&.java\&.
+.SS "double frc\&.robot\&.subsystems\&.Climber\&.getGyroPitch ()"
+
+.PP
+Get the robot's pitch\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Gyro pitch reading 
+.RE
+.PP
+
+.PP
+Definition at line 168 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.getHighLegSensor ()\fC [private]\fP"
+
+.PP
+Definition at line 142 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.getLowLegSensor ()\fC [private]\fP"
+
+.PP
+Definition at line 134 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.getMidLegSensor ()\fC [private]\fP"
+
+.PP
+Definition at line 138 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.getOpticSensor ()"
+
+.PP
+Definition at line 130 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.isGyroInRange (double range)"
+
+.PP
+Check if the gyro pitch reading is in range +/- of the offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrange\fP Range of error around offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Is the pitch in range 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file Climber\&.java\&.
+.SS "boolean frc\&.robot\&.subsystems\&.Climber\&.isLocked ()"
+
+.PP
+Check if the climber is locked\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Is the climber locked 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.lock ()"
+
+.PP
+Safety lock the climber\&. No inputs will be passed to the motors while locked\&.
+.PP
+When lock is called, all desired outputs will be reset to prevent the 'HAL
+lag' effect 
+.PP
+Definition at line 194 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.outputTelemetry ()"
+
+.PP
+Definition at line 264 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.periodicOutput ()"
+
+.PP
+Definition at line 111 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.reset ()"
+
+.PP
+Definition at line 288 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.setArmMovementRate (double rate)"
+
+.PP
+Set the desired arm movement rate\&. Positive values will move the arms downward\&.
+.PP
+Keep in mind that this will not obey the arm holders' limits because we do not have sensors on the arms
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrate\fP Movement rate to send to arms\&. 
+.RE
+.PP
+
+.PP
+Definition at line 225 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.setCrawlRate (double rate)"
+
+.PP
+Sets the desired speed for the crawlers\&. NOTE: Positive values move the robot forwards
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrate\fP Movement speed for crawlers 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.setGyroOffset ()"
+
+.PP
+Set the offset for the gyro pitch\&. 
+.PP
+Definition at line 149 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.setLegMovementRate (double rate)"
+
+.PP
+Sets the desired speed for the legs\&. Will not push past low sensor\&.
+.PP
+NOTE: Positive values push the legs down
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrate\fP Speed to move the legs at 
+.RE
+.PP
+
+.PP
+Definition at line 255 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.stop ()"
+
+.PP
+Definition at line 279 of file Climber\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Climber\&.unlock ()"
+
+.PP
+Unlock the climber to allow new data\&. 
+.PP
+Definition at line 175 of file Climber\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

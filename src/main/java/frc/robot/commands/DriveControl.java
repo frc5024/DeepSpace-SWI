@@ -8,7 +8,7 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 /**
- * Control the Robot's drivebase with OI feedback
+ * Control the Robot's drivebase with OI feedback.
  */
 public class DriveControl extends Command {
 	RobotLogger logger = RobotLogger.getInstance();
@@ -20,10 +20,12 @@ public class DriveControl extends Command {
 	CubicDeadband m_speedDeadband;
 	CubicDeadband m_rotationDeadband;
 
+	@SuppressWarnings("checkstyle:JavadocMethod")
 	public DriveControl() {
 		logger.log("[DriveControl] Configuring Deadband", Level.kRobot);
 		m_speedDeadband = new CubicDeadband(0.0, Constants.Deadbands.speed_percision);
-		m_rotationDeadband = new CubicDeadband(Constants.Deadbands.rotation_deadband, Constants.Deadbands.roataion_percision);
+		m_rotationDeadband = new CubicDeadband(Constants.Deadbands.rotation_deadband,
+				Constants.Deadbands.roataion_percision);
 	}
 
 	@Override

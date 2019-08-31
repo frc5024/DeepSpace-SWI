@@ -1,0 +1,161 @@
+.TH "frc.robot.subsystems.Intake" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.robot.subsystems.Intake \- The intake includes the slider, piston, finger, and all related sensors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBfrc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIntake\fP ()"
+.br
+.ti -1c
+.RI "void \fBperiodicOutput\fP ()"
+.br
+.ti -1c
+.RI "void \fBperiodicInput\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetFingerLowered\fP (boolean isFingerLowered)"
+.br
+.ti -1c
+.RI "void \fBsetPistonExtended\fP (boolean isPistonExtended)"
+.br
+.ti -1c
+.RI "void \fBsetSliderSpeed\fP (double sliderSpeed)"
+.br
+.ti -1c
+.RI "void \fBoutputTelemetry\fP ()"
+.br
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIntake\fP \fBgetInstance\fP ()"
+.br
+.RI "Get the current \fBIntake\fP instance\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBIntake\fP \fBm_instance\fP = null"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBlimitSliderMovement\fP (double speed)"
+.br
+.RI "Restricts the slider from moving past it's limits\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The intake includes the slider, piston, finger, and all related sensors\&. 
+.PP
+Definition at line 18 of file Intake\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.robot\&.subsystems\&.Intake\&.Intake ()"
+
+.PP
+Definition at line 38 of file Intake\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBIntake\fP frc\&.robot\&.subsystems\&.Intake\&.getInstance ()\fC [static]\fP"
+
+.PP
+Get the current \fBIntake\fP instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBIntake\fP instance 
+.RE
+.PP
+
+.PP
+Definition at line 64 of file Intake\&.java\&.
+.SS "double frc\&.robot\&.subsystems\&.Intake\&.limitSliderMovement (double speed)\fC [private]\fP"
+
+.PP
+Restricts the slider from moving past it's limits\&. Note: sensors are wired backwards on both bots 
+.PP
+Definition at line 77 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.outputTelemetry ()"
+
+.PP
+Definition at line 168 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.periodicInput ()"
+
+.PP
+Definition at line 111 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.periodicOutput ()"
+
+.PP
+Definition at line 94 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.reset ()"
+
+.PP
+Definition at line 189 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.setFingerLowered (boolean isFingerLowered)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisFingerLowered\fP Should the finger be lowered 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.setPistonExtended (boolean isPistonExtended)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisPistonExtended\fP Should the finger be extended 
+.RE
+.PP
+
+.PP
+Definition at line 156 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.setSliderSpeed (double sliderSpeed)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsliderSpeed\fP Wanted speed for the slider 
+.RE
+.PP
+
+.PP
+Definition at line 163 of file Intake\&.java\&.
+.SS "void frc\&.robot\&.subsystems\&.Intake\&.stop ()"
+
+.PP
+Definition at line 180 of file Intake\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBIntake\fP frc\&.robot\&.subsystems\&.Intake\&.m_instance = null\fC [static]\fP"
+
+.PP
+Definition at line 20 of file Intake\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

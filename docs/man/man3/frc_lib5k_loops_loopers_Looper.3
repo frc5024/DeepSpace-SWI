@@ -1,0 +1,80 @@
+.TH "frc.lib5k.loops.loopers.Looper" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.loops.loopers.Looper \- An abstract for anything that can be looped\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBfrc\&.lib5k\&.loops\&.loopers\&.SubsystemLooper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLooper\fP ()"
+.br
+.ti -1c
+.RI "void \fBstart\fP (double \fBperiod\fP)"
+.br
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBupdate\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Notifier \fBthread\fP"
+.br
+.ti -1c
+.RI "double \fBperiod\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An abstract for anything that can be looped\&. 
+
+Basically a wrapper for a Notifier 
+.PP
+Definition at line 8 of file Looper\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.lib5k\&.loops\&.loopers\&.Looper\&.Looper ()"
+
+.PP
+Definition at line 12 of file Looper\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void frc\&.lib5k\&.loops\&.loopers\&.Looper\&.start (double period)"
+
+.PP
+Definition at line 18 of file Looper\&.java\&.
+.SS "void frc\&.lib5k\&.loops\&.loopers\&.Looper\&.stop ()"
+
+.PP
+Definition at line 23 of file Looper\&.java\&.
+.SS "abstract void frc\&.lib5k\&.loops\&.loopers\&.Looper\&.update ()\fC [abstract]\fP, \fC [protected]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "double frc\&.lib5k\&.loops\&.loopers\&.Looper\&.period\fC [protected]\fP"
+
+.PP
+Definition at line 10 of file Looper\&.java\&.
+.SS "Notifier frc\&.lib5k\&.loops\&.loopers\&.Looper\&.thread\fC [protected]\fP"
+
+.PP
+Definition at line 9 of file Looper\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

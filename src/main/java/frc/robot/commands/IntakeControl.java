@@ -6,6 +6,9 @@ import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
 import frc.robot.Robot;
 
+/**
+ * Command for controlling intake commands from drivers.
+ */
 public class IntakeControl extends Command {
     RobotLogger logger = RobotLogger.getInstance();
 
@@ -21,6 +24,8 @@ public class IntakeControl extends Command {
     // immediately go from intake to outtake. This will fix data conflicts.
     boolean m_lastIntakeState = false;
 
+
+    @SuppressWarnings("checkstyle:JavadocMethod")
     public IntakeControl() {
         logger.log("[IntakeControl] Creating Toggle objects", Level.kRobot);
         m_intakeToggle = new Toggle();

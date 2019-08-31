@@ -1,0 +1,86 @@
+.TH "frc.lib5k.loops.loopers.SubsystemLooper" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.loops.loopers.SubsystemLooper \- A looper for LoopableSubsystems\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBfrc\&.lib5k\&.loops\&.loopers\&.Looper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSubsystemLooper\fP ()"
+.br
+.ti -1c
+.RI "void \fBregister\fP (\fBLoopableSubsystem\fP subsystem)"
+.br
+.RI "Register a LoopableSubsystem with the looper\&. "
+.ti -1c
+.RI "void \fBupdate\fP ()"
+.br
+.RI "Execute the periodic functions for each subsystem\&. "
+.ti -1c
+.RI "void \fBoutputTelemetry\fP ()"
+.br
+.RI "Outputs telemetry data from the \fBLooper\fP and all subsystems to SmartDashboard\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRobotLogger\fP \fBlogger\fP = \fBRobotLogger\&.getInstance\fP()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A looper for LoopableSubsystems\&. 
+.PP
+Definition at line 14 of file SubsystemLooper\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.lib5k\&.loops\&.loopers\&.SubsystemLooper\&.SubsystemLooper ()"
+
+.PP
+Definition at line 21 of file SubsystemLooper\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void frc\&.lib5k\&.loops\&.loopers\&.SubsystemLooper\&.outputTelemetry ()"
+
+.PP
+Outputs telemetry data from the \fBLooper\fP and all subsystems to SmartDashboard\&. 
+.PP
+Definition at line 100 of file SubsystemLooper\&.java\&.
+.SS "void frc\&.lib5k\&.loops\&.loopers\&.SubsystemLooper\&.register (\fBLoopableSubsystem\fP subsystem)"
+
+.PP
+Register a LoopableSubsystem with the looper\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsubsystem\fP LoopableSubsystem to register with the looper 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file SubsystemLooper\&.java\&.
+.SS "void frc\&.lib5k\&.loops\&.loopers\&.SubsystemLooper\&.update ()"
+
+.PP
+Execute the periodic functions for each subsystem\&. 
+.PP
+Definition at line 40 of file SubsystemLooper\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRobotLogger\fP frc\&.lib5k\&.loops\&.loopers\&.SubsystemLooper\&.logger = \fBRobotLogger\&.getInstance\fP()\fC [private]\fP"
+
+.PP
+Definition at line 15 of file SubsystemLooper\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

@@ -1,0 +1,175 @@
+.TH "frc.lib5k.components.GearBox" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.components.GearBox \- A \fBGearBox\fP is a wrapper for any pair of WPI_TalonSRX motor controllers where the first controller has an encoder attached\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGearBox\fP (WPI_TalonSRX \fBfront\fP, WPI_TalonSRX rear)"
+.br
+.RI "\fBGearBox\fP Constructor\&. "
+.ti -1c
+.RI "void \fBlimitCurrent\fP (int peakCurrent, int holdCurrent, int peakDuration)"
+.br
+.RI "Wrapper method around the WPI_TalonSRX current limiting functionality\&. "
+.ti -1c
+.RI "int \fBgetTicks\fP ()"
+.br
+.RI "Wrapper around the encoder for the front or master talon\&. "
+.ti -1c
+.RI "void \fBsetInverseMotion\fP (boolean is_inverted)"
+.br
+.RI "Flips the sensor phase of the \fBGearBox\fP's encoder\&. "
+.ti -1c
+.RI "boolean \fBgetInverseMotion\fP ()"
+.br
+.RI "Is the gearbox currently in inverse motion mode? "
+.ti -1c
+.RI "WPI_TalonSRX \fBgetMaster\fP ()"
+.br
+.RI "Get the master controller\&. "
+.ti -1c
+.RI "void \fBset\fP (double speed)"
+.br
+.RI "Set the \fBGearBox\fP speed\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "WPI_TalonSRX \fBfront\fP"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "boolean \fBis_inverse_motion\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBGearBox\fP is a wrapper for any pair of WPI_TalonSRX motor controllers where the first controller has an encoder attached\&. 
+.PP
+Definition at line 8 of file GearBox\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.lib5k\&.components\&.GearBox\&.GearBox (WPI_TalonSRX front, WPI_TalonSRX rear)"
+
+.PP
+\fBGearBox\fP Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfront\fP The front or master talon in the gearbox 
+.br
+\fIrear\fP The rear or slave talon in the gearbox 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file GearBox\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "boolean frc\&.lib5k\&.components\&.GearBox\&.getInverseMotion ()"
+
+.PP
+Is the gearbox currently in inverse motion mode? 
+.PP
+\fBReturns:\fP
+.RS 4
+Is inverse motion? 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file GearBox\&.java\&.
+.SS "WPI_TalonSRX frc\&.lib5k\&.components\&.GearBox\&.getMaster ()"
+
+.PP
+Get the master controller\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the front talon 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file GearBox\&.java\&.
+.SS "int frc\&.lib5k\&.components\&.GearBox\&.getTicks ()"
+
+.PP
+Wrapper around the encoder for the front or master talon\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Number of ticks reported by the front or master talon 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file GearBox\&.java\&.
+.SS "void frc\&.lib5k\&.components\&.GearBox\&.limitCurrent (int peakCurrent, int holdCurrent, int peakDuration)"
+
+.PP
+Wrapper method around the WPI_TalonSRX current limiting functionality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeakCurrent\fP The current threshold that must be passed before the limiter kicks in 
+.br
+\fIholdCurrent\fP The current to hold the motors at once the threshold has been passed 
+.br
+\fIpeakDuration\fP The duration of the current limit 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file GearBox\&.java\&.
+.SS "void frc\&.lib5k\&.components\&.GearBox\&.set (double speed)"
+
+.PP
+Set the \fBGearBox\fP speed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspeed\fP Percent output 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file GearBox\&.java\&.
+.SS "void frc\&.lib5k\&.components\&.GearBox\&.setInverseMotion (boolean is_inverted)"
+
+.PP
+Flips the sensor phase of the \fBGearBox\fP's encoder\&. This is mainly used for inverse motion profiling
+.PP
+\fBParameters:\fP
+.RS 4
+\fIis_inverted\fP Should the phase be inverted? 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file GearBox\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "WPI_TalonSRX frc\&.lib5k\&.components\&.GearBox\&.front"
+
+.PP
+Definition at line 9 of file GearBox\&.java\&.
+.SS "boolean frc\&.lib5k\&.components\&.GearBox\&.is_inverse_motion = false\fC [private]\fP"
+
+.PP
+Definition at line 11 of file GearBox\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

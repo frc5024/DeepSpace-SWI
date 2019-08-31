@@ -1,0 +1,183 @@
+.TH "frc.robot.OI" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.robot.OI \- This class is the glue that binds the controls on the physical operator interface to the commands and command groups that allow control of the robot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBgetThrottle\fP ()"
+.br
+.RI "Get the DriveTrain throttle value from driverstation\&. "
+.ti -1c
+.RI "double \fBgetTurn\fP ()"
+.br
+.RI "Get the DriveTrain turn rate value from driverstation\&. "
+.ti -1c
+.RI "boolean \fBgetIntake\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetOuttake\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetCargo\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetSliderOverride\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetCompressorEnable\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetCompressorDisable\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetClimb2FA\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBgetManualArmToggle\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetArmMovementOverrideSpeed\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "XboxController \fBdriverController\fP = new XboxController(0)"
+.br
+.ti -1c
+.RI "XboxController \fBoperatorController\fP = new XboxController(1)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBlimitTrigger\fP (double value)"
+.br
+.RI "Limits a trigger to positive values only\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is the glue that binds the controls on the physical operator interface to the commands and command groups that allow control of the robot\&. 
+.PP
+Definition at line 13 of file OI\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double frc\&.robot\&.OI\&.getArmMovementOverrideSpeed ()"
+
+.PP
+Definition at line 125 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getCargo ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Has the operator requested an outtake action for cargo? 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getClimb2FA ()"
+
+.PP
+Definition at line 117 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getCompressorDisable ()"
+
+.PP
+Definition at line 113 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getCompressorEnable ()"
+
+.PP
+Definition at line 109 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getIntake ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Has the operator requested an intake action? 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getManualArmToggle ()"
+
+.PP
+Definition at line 121 of file OI\&.java\&.
+.SS "boolean frc\&.robot\&.OI\&.getOuttake ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Has the operator requested an outtake action? 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file OI\&.java\&.
+.SS "double frc\&.robot\&.OI\&.getSliderOverride ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Overriden slider input from operator 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file OI\&.java\&.
+.SS "double frc\&.robot\&.OI\&.getThrottle ()"
+
+.PP
+Get the DriveTrain throttle value from driverstation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Throttle (from -1\&.0 to 1\&.0) 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file OI\&.java\&.
+.SS "double frc\&.robot\&.OI\&.getTurn ()"
+
+.PP
+Get the DriveTrain turn rate value from driverstation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Turn rate (from -1\&.0 to 1\&.0) 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file OI\&.java\&.
+.SS "double frc\&.robot\&.OI\&.limitTrigger (double value)\fC [private]\fP"
+
+.PP
+Limits a trigger to positive values only\&. This allows the use of a steam controller for driving 
+.PP
+Definition at line 50 of file OI\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "XboxController frc\&.robot\&.OI\&.driverController = new XboxController(0)"
+
+.PP
+Definition at line 43 of file OI\&.java\&.
+.SS "XboxController frc\&.robot\&.OI\&.operatorController = new XboxController(1)"
+
+.PP
+Definition at line 44 of file OI\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

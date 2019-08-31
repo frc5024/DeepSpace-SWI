@@ -1,0 +1,447 @@
+.TH "vision" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+vision
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCameraConfig\fP"
+.br
+.ti -1c
+.RI "class \fBFPS\fP"
+.br
+.ti -1c
+.RI "class \fBVideoShow\fP"
+.br
+.ti -1c
+.RI "class \fBWebcamVideoStream\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBflipImage\fP (\fBframe\fP)"
+.br
+.ti -1c
+.RI "def \fBblurImg\fP (\fBframe\fP, blur_radius)"
+.br
+.ti -1c
+.RI "def \fBthreshold_video\fP (lower_color, upper_color, blur)"
+.br
+.ti -1c
+.RI "def \fBfindTargets\fP (\fBframe\fP, mask)"
+.br
+.ti -1c
+.RI "def \fBfindCargo\fP (\fBframe\fP, mask)"
+.br
+.ti -1c
+.RI "def \fBfindBall\fP (contours, image, centerX, centerY)"
+.br
+.ti -1c
+.RI "def \fBfindTape\fP (contours, image, centerX, centerY)"
+.br
+.ti -1c
+.RI "def \fBcheckContours\fP (cntSize, hullSize)"
+.br
+.ti -1c
+.RI "def \fBcheckBall\fP (cntSize, cntAspectRatio)"
+.br
+.ti -1c
+.RI "def \fBtranslateRotation\fP (rotation, width, height)"
+.br
+.ti -1c
+.RI "def \fBcalculateDistance\fP (heightOfCamera, heightOfTarget, pitch)"
+.br
+.ti -1c
+.RI "def \fBcalculateYaw\fP (pixelX, centerX, hFocalLength)"
+.br
+.ti -1c
+.RI "def \fBcalculatePitch\fP (pixelY, centerY, vFocalLength)"
+.br
+.ti -1c
+.RI "def \fBgetEllipseRotation\fP (image, cnt)"
+.br
+.ti -1c
+.RI "def \fBparseError\fP (str)"
+.br
+.ti -1c
+.RI "def \fBreadCameraConfig\fP (config)"
+.br
+.ti -1c
+.RI "def \fBreadConfig\fP ()"
+.br
+.ti -1c
+.RI "def \fBstartCamera\fP (config)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBimage_width\fP = 256"
+.br
+.ti -1c
+.RI "int \fBimage_height\fP = 144"
+.br
+.ti -1c
+.RI "\fBdiagonalView\fP = math\&.radians(68\&.5)"
+.br
+.ti -1c
+.RI "int \fBhorizontalAspect\fP = 16"
+.br
+.ti -1c
+.RI "int \fBverticalAspect\fP = 9"
+.br
+.ti -1c
+.RI "\fBdiagonalAspect\fP = math\&.hypot(\fBhorizontalAspect\fP, \fBverticalAspect\fP)"
+.br
+.ti -1c
+.RI "int \fBhorizontalView\fP = math\&.atan(math\&.tan(\fBdiagonalView\fP/2) * (\fBhorizontalAspect\fP / \fBdiagonalAspect\fP)) * 2"
+.br
+.ti -1c
+.RI "int \fBverticalView\fP = math\&.atan(math\&.tan(\fBdiagonalView\fP/2) * (\fBverticalAspect\fP / \fBdiagonalAspect\fP)) * 2"
+.br
+.ti -1c
+.RI "int \fBH_FOCAL_LENGTH\fP = \fBimage_width\fP / (2*math\&.tan((\fBhorizontalView\fP/2)))"
+.br
+.ti -1c
+.RI "int \fBV_FOCAL_LENGTH\fP = \fBimage_height\fP / (2*math\&.tan((\fBverticalView\fP/2)))"
+.br
+.ti -1c
+.RI "int \fBgreen_blur\fP = 7"
+.br
+.ti -1c
+.RI "int \fBorange_blur\fP = 27"
+.br
+.ti -1c
+.RI "\fBlower_green\fP = np\&.array([59,139,80])"
+.br
+.ti -1c
+.RI "\fBupper_green\fP = np\&.array([79, 255, 224])"
+.br
+.ti -1c
+.RI "\fBlower_orange\fP = np\&.array([0,193,92])"
+.br
+.ti -1c
+.RI "\fBupper_orange\fP = np\&.array([23, 255, 255])"
+.br
+.ti -1c
+.RI "string \fBconfigFile\fP = '/boot/frc\&.json'"
+.br
+.RI "FRC VISION PI Image Specific #############\&. "
+.ti -1c
+.RI "\fBteam\fP = None"
+.br
+.ti -1c
+.RI "bool \fBserver\fP = False"
+.br
+.ti -1c
+.RI "list \fBcameraConfigs\fP = []"
+.br
+.ti -1c
+.RI "\fBntinst\fP = NetworkTablesInstance\&.getDefault()"
+.br
+.ti -1c
+.RI "\fBnetworkTable\fP = NetworkTables\&.getTable('Vision')"
+.br
+.ti -1c
+.RI "list \fBcameras\fP = []"
+.br
+.ti -1c
+.RI "list \fBstreams\fP = []"
+.br
+.ti -1c
+.RI "\fBcs\fP"
+.br
+.ti -1c
+.RI "\fBcameraCapture\fP"
+.br
+.ti -1c
+.RI "list \fBwebcam\fP = \fBcameras\fP[0]"
+.br
+.ti -1c
+.RI "list \fBcameraServer\fP = \fBstreams\fP[0]"
+.br
+.ti -1c
+.RI "\fBcap\fP = \fBWebcamVideoStream\fP(\fBwebcam\fP, \fBcameraServer\fP, \fBimage_width\fP, \fBimage_height\fP)\&.start()"
+.br
+.ti -1c
+.RI "\fBimg\fP = np\&.zeros(shape=(\fBimage_height\fP, \fBimage_width\fP, 3), dtype=np\&.uint8)"
+.br
+.ti -1c
+.RI "\fBstreamViewer\fP = \fBVideoShow\fP(\fBimage_width\fP,\fBimage_height\fP, \fBcameraServer\fP, \fBframe\fP=\fBimg\fP, name='ChickenVision')\&.start()"
+.br
+.ti -1c
+.RI "bool \fBtape\fP = False"
+.br
+.ti -1c
+.RI "\fBfps\fP = \fBFPS\fP()\&.start()"
+.br
+.ti -1c
+.RI "\fBtimestamp\fP"
+.br
+.ti -1c
+.RI "def \fBframe\fP = \fBflipImage\fP(\fBimg\fP)"
+.br
+.ti -1c
+.RI "\fBautoExpose\fP"
+.br
+.ti -1c
+.RI "def \fBprocessed\fP = \fBframe\fP"
+.br
+.ti -1c
+.RI "def \fBboxBlur\fP = \fBblurImg\fP(\fBframe\fP, \fBgreen_blur\fP)"
+.br
+.ti -1c
+.RI "def \fBthreshold\fP = \fBthreshold_video\fP(\fBlower_green\fP, \fBupper_green\fP, \fBboxBlur\fP)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "def vision\&.blurImg ( frame,  blur_radius)"
+
+.PP
+Definition at line 180 of file vision\&.py\&.
+.SS "def vision\&.calculateDistance ( heightOfCamera,  heightOfTarget,  pitch)"
+
+.PP
+Definition at line 514 of file vision\&.py\&.
+.SS "def vision\&.calculatePitch ( pixelY,  centerY,  vFocalLength)"
+
+.PP
+Definition at line 548 of file vision\&.py\&.
+.SS "def vision\&.calculateYaw ( pixelX,  centerX,  hFocalLength)"
+
+.PP
+Definition at line 542 of file vision\&.py\&.
+.SS "def vision\&.checkBall ( cntSize,  cntAspectRatio)"
+
+.PP
+Definition at line 501 of file vision\&.py\&.
+.SS "def vision\&.checkContours ( cntSize,  hullSize)"
+
+.PP
+Definition at line 497 of file vision\&.py\&.
+.SS "def vision\&.findBall ( contours,  image,  centerX,  centerY)"
+
+.PP
+Definition at line 249 of file vision\&.py\&.
+.SS "def vision\&.findCargo ( frame,  mask)"
+
+.PP
+Definition at line 225 of file vision\&.py\&.
+.SS "def vision\&.findTape ( contours,  image,  centerX,  centerY)"
+
+.PP
+Definition at line 353 of file vision\&.py\&.
+.SS "def vision\&.findTargets ( frame,  mask)"
+
+.PP
+Definition at line 203 of file vision\&.py\&.
+.SS "def vision\&.flipImage ( frame)"
+
+.PP
+Definition at line 176 of file vision\&.py\&.
+.SS "def vision\&.getEllipseRotation ( image,  cnt)"
+
+.PP
+Definition at line 554 of file vision\&.py\&.
+.SS "def vision\&.parseError ( str)"
+
+.PP
+.nf
+Report parse error.
+.fi
+.PP
+ 
+.PP
+Definition at line 597 of file vision\&.py\&.
+.SS "def vision\&.readCameraConfig ( config)"
+
+.PP
+Definition at line 601 of file vision\&.py\&.
+.SS "def vision\&.readConfig ()"
+
+.PP
+Definition at line 624 of file vision\&.py\&.
+.SS "def vision\&.startCamera ( config)"
+
+.PP
+Definition at line 675 of file vision\&.py\&.
+.SS "def vision\&.threshold_video ( lower_color,  upper_color,  blur)"
+
+.PP
+Definition at line 187 of file vision\&.py\&.
+.SS "def vision\&.translateRotation ( rotation,  width,  height)"
+
+.PP
+Definition at line 505 of file vision\&.py\&.
+.SH "Variable Documentation"
+.PP 
+.SS "vision\&.autoExpose"
+
+.PP
+Definition at line 746 of file vision\&.py\&.
+.SS "def vision\&.boxBlur = \fBblurImg\fP(\fBframe\fP, \fBgreen_blur\fP)"
+
+.PP
+Definition at line 753 of file vision\&.py\&.
+.SS "vision\&.cameraCapture"
+
+.PP
+Definition at line 708 of file vision\&.py\&.
+.SS "list vision\&.cameraConfigs = []"
+
+.PP
+Definition at line 594 of file vision\&.py\&.
+.SS "list vision\&.cameras = []"
+
+.PP
+Definition at line 705 of file vision\&.py\&.
+.SS "list vision\&.cameraServer = \fBstreams\fP[0]"
+
+.PP
+Definition at line 714 of file vision\&.py\&.
+.SS "vision\&.cap = \fBWebcamVideoStream\fP(\fBwebcam\fP, \fBcameraServer\fP, \fBimage_width\fP, \fBimage_height\fP)\&.start()"
+
+.PP
+Definition at line 716 of file vision\&.py\&.
+.SS "vision\&.configFile = '/boot/frc\&.json'"
+
+.PP
+FRC VISION PI Image Specific #############\&. 
+.PP
+Definition at line 588 of file vision\&.py\&.
+.SS "vision\&.cs"
+
+.PP
+Definition at line 708 of file vision\&.py\&.
+.SS "vision\&.diagonalAspect = math\&.hypot(\fBhorizontalAspect\fP, \fBverticalAspect\fP)"
+
+.PP
+Definition at line 156 of file vision\&.py\&.
+.SS "vision\&.diagonalView = math\&.radians(68\&.5)"
+
+.PP
+Definition at line 149 of file vision\&.py\&.
+.SS "vision\&.fps = \fBFPS\fP()\&.start()"
+
+.PP
+Definition at line 725 of file vision\&.py\&.
+.SS "vision\&.frame = \fBflipImage\fP(\fBimg\fP)"
+
+.PP
+Definition at line 736 of file vision\&.py\&.
+.SS "int vision\&.green_blur = 7"
+
+.PP
+Definition at line 165 of file vision\&.py\&.
+.SS "int vision\&.H_FOCAL_LENGTH = \fBimage_width\fP / (2*math\&.tan((\fBhorizontalView\fP/2)))"
+
+.PP
+Definition at line 162 of file vision\&.py\&.
+.SS "int vision\&.horizontalAspect = 16"
+
+.PP
+Definition at line 152 of file vision\&.py\&.
+.SS "int vision\&.horizontalView = math\&.atan(math\&.tan(\fBdiagonalView\fP/2) * (\fBhorizontalAspect\fP / \fBdiagonalAspect\fP)) * 2"
+
+.PP
+Definition at line 158 of file vision\&.py\&.
+.SS "int vision\&.image_height = 144"
+
+.PP
+Definition at line 145 of file vision\&.py\&.
+.SS "int vision\&.image_width = 256"
+
+.PP
+Definition at line 144 of file vision\&.py\&.
+.SS "vision\&.img = np\&.zeros(shape=(\fBimage_height\fP, \fBimage_width\fP, 3), dtype=np\&.uint8)"
+
+.PP
+Definition at line 720 of file vision\&.py\&.
+.SS "vision\&.lower_green = np\&.array([59,139,80])"
+
+.PP
+Definition at line 169 of file vision\&.py\&.
+.SS "vision\&.lower_orange = np\&.array([0,193,92])"
+
+.PP
+Definition at line 172 of file vision\&.py\&.
+.SS "vision\&.networkTable = NetworkTables\&.getTable('Vision')"
+
+.PP
+Definition at line 694 of file vision\&.py\&.
+.SS "vision\&.ntinst = NetworkTablesInstance\&.getDefault()"
+
+.PP
+Definition at line 692 of file vision\&.py\&.
+.SS "int vision\&.orange_blur = 27"
+
+.PP
+Definition at line 166 of file vision\&.py\&.
+.SS "def vision\&.processed = \fBframe\fP"
+
+.PP
+Definition at line 747 of file vision\&.py\&.
+.SS "bool vision\&.server = False"
+
+.PP
+Definition at line 593 of file vision\&.py\&.
+.SS "list vision\&.streams = []"
+
+.PP
+Definition at line 706 of file vision\&.py\&.
+.SS "vision\&.streamViewer = \fBVideoShow\fP(\fBimage_width\fP,\fBimage_height\fP, \fBcameraServer\fP, \fBframe\fP=\fBimg\fP, name='ChickenVision')\&.start()"
+
+.PP
+Definition at line 722 of file vision\&.py\&.
+.SS "bool vision\&.tape = False"
+
+.PP
+Definition at line 724 of file vision\&.py\&.
+.SS "vision\&.team = None"
+
+.PP
+Definition at line 592 of file vision\&.py\&.
+.SS "def vision\&.threshold = \fBthreshold_video\fP(\fBlower_green\fP, \fBupper_green\fP, \fBboxBlur\fP)"
+
+.PP
+Definition at line 754 of file vision\&.py\&.
+.SS "vision\&.timestamp"
+
+.PP
+Definition at line 733 of file vision\&.py\&.
+.SS "vision\&.upper_green = np\&.array([79, 255, 224])"
+
+.PP
+Definition at line 170 of file vision\&.py\&.
+.SS "vision\&.upper_orange = np\&.array([23, 255, 255])"
+
+.PP
+Definition at line 173 of file vision\&.py\&.
+.SS "int vision\&.V_FOCAL_LENGTH = \fBimage_height\fP / (2*math\&.tan((\fBverticalView\fP/2)))"
+
+.PP
+Definition at line 163 of file vision\&.py\&.
+.SS "int vision\&.verticalAspect = 9"
+
+.PP
+Definition at line 153 of file vision\&.py\&.
+.SS "int vision\&.verticalView = math\&.atan(math\&.tan(\fBdiagonalView\fP/2) * (\fBverticalAspect\fP / \fBdiagonalAspect\fP)) * 2"
+
+.PP
+Definition at line 159 of file vision\&.py\&.
+.SS "list vision\&.webcam = \fBcameras\fP[0]"
+
+.PP
+Definition at line 713 of file vision\&.py\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

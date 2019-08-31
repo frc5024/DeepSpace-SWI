@@ -1,0 +1,88 @@
+.TH "frc.lib5k.loops.loopables.LoopableSubsystem" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.loops.loopables.LoopableSubsystem \- A replacement for WPIlib's Subsystem\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBfrc\&.robot\&.subsystems\&.CargoFlap\fP, \fBfrc\&.robot\&.subsystems\&.Climber\fP, \fBfrc\&.robot\&.subsystems\&.DriveTrain\fP, \fBfrc\&.robot\&.subsystems\&.Intake\fP, \fBfrc\&.robot\&.subsystems\&.LEDring\fP, and \fBfrc\&.robot\&.subsystems\&.Pneumatics\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBperiodicInput\fP ()"
+.br
+.ti -1c
+.RI "void \fBperiodicOutput\fP ()"
+.br
+.ti -1c
+.RI "abstract void \fBoutputTelemetry\fP ()"
+.br
+.ti -1c
+.RI "abstract void \fBstop\fP ()"
+.br
+.ti -1c
+.RI "abstract void \fBreset\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "String \fBname\fP = 'Unnamed Subsystem'"
+.br
+.ti -1c
+.RI "double \fBlast_timestamp\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRobotLogger\fP \fBlogger\fP = \fBRobotLogger\&.getInstance\fP()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A replacement for WPIlib's Subsystem\&. 
+
+Based off 254's io loops 
+.PP
+Definition at line 9 of file LoopableSubsystem\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract void frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.outputTelemetry ()\fC [abstract]\fP"
+
+.SS "void frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.periodicInput ()"
+
+.PP
+Definition at line 15 of file LoopableSubsystem\&.java\&.
+.SS "void frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.periodicOutput ()"
+
+.PP
+Definition at line 18 of file LoopableSubsystem\&.java\&.
+.SS "abstract void frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.reset ()\fC [abstract]\fP"
+
+.SS "abstract void frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.stop ()\fC [abstract]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "double frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.last_timestamp"
+
+.PP
+Definition at line 13 of file LoopableSubsystem\&.java\&.
+.SS "\fBRobotLogger\fP frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.logger = \fBRobotLogger\&.getInstance\fP()\fC [protected]\fP"
+
+.PP
+Definition at line 10 of file LoopableSubsystem\&.java\&.
+.SS "String frc\&.lib5k\&.loops\&.loopables\&.LoopableSubsystem\&.name = 'Unnamed Subsystem'"
+
+.PP
+Definition at line 12 of file LoopableSubsystem\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

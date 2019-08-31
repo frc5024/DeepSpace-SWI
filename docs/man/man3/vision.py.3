@@ -1,0 +1,214 @@
+.TH "src/main/python/vision.py" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/main/python/vision.py
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBvision\&.FPS\fP"
+.br
+.ti -1c
+.RI "class \fBvision\&.VideoShow\fP"
+.br
+.ti -1c
+.RI "class \fBvision\&.WebcamVideoStream\fP"
+.br
+.ti -1c
+.RI "class \fBvision\&.CameraConfig\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBvision\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBvision\&.flipImage\fP (frame)"
+.br
+.ti -1c
+.RI "def \fBvision\&.blurImg\fP (frame, blur_radius)"
+.br
+.ti -1c
+.RI "def \fBvision\&.threshold_video\fP (lower_color, upper_color, blur)"
+.br
+.ti -1c
+.RI "def \fBvision\&.findTargets\fP (frame, mask)"
+.br
+.ti -1c
+.RI "def \fBvision\&.findCargo\fP (frame, mask)"
+.br
+.ti -1c
+.RI "def \fBvision\&.findBall\fP (contours, image, centerX, centerY)"
+.br
+.ti -1c
+.RI "def \fBvision\&.findTape\fP (contours, image, centerX, centerY)"
+.br
+.ti -1c
+.RI "def \fBvision\&.checkContours\fP (cntSize, hullSize)"
+.br
+.ti -1c
+.RI "def \fBvision\&.checkBall\fP (cntSize, cntAspectRatio)"
+.br
+.ti -1c
+.RI "def \fBvision\&.translateRotation\fP (rotation, width, height)"
+.br
+.ti -1c
+.RI "def \fBvision\&.calculateDistance\fP (heightOfCamera, heightOfTarget, pitch)"
+.br
+.ti -1c
+.RI "def \fBvision\&.calculateYaw\fP (pixelX, centerX, hFocalLength)"
+.br
+.ti -1c
+.RI "def \fBvision\&.calculatePitch\fP (pixelY, centerY, vFocalLength)"
+.br
+.ti -1c
+.RI "def \fBvision\&.getEllipseRotation\fP (image, cnt)"
+.br
+.ti -1c
+.RI "def \fBvision\&.parseError\fP (str)"
+.br
+.ti -1c
+.RI "def \fBvision\&.readCameraConfig\fP (config)"
+.br
+.ti -1c
+.RI "def \fBvision\&.readConfig\fP ()"
+.br
+.ti -1c
+.RI "def \fBvision\&.startCamera\fP (config)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBvision\&.image_width\fP = 256"
+.br
+.ti -1c
+.RI "int \fBvision\&.image_height\fP = 144"
+.br
+.ti -1c
+.RI "\fBvision\&.diagonalView\fP = math\&.radians(68\&.5)"
+.br
+.ti -1c
+.RI "int \fBvision\&.horizontalAspect\fP = 16"
+.br
+.ti -1c
+.RI "int \fBvision\&.verticalAspect\fP = 9"
+.br
+.ti -1c
+.RI "\fBvision\&.diagonalAspect\fP = math\&.hypot(horizontalAspect, verticalAspect)"
+.br
+.ti -1c
+.RI "int \fBvision\&.horizontalView\fP = math\&.atan(math\&.tan(diagonalView/2) * (horizontalAspect / diagonalAspect)) * 2"
+.br
+.ti -1c
+.RI "int \fBvision\&.verticalView\fP = math\&.atan(math\&.tan(diagonalView/2) * (verticalAspect / diagonalAspect)) * 2"
+.br
+.ti -1c
+.RI "int \fBvision\&.H_FOCAL_LENGTH\fP = image_width / (2*math\&.tan((horizontalView/2)))"
+.br
+.ti -1c
+.RI "int \fBvision\&.V_FOCAL_LENGTH\fP = image_height / (2*math\&.tan((verticalView/2)))"
+.br
+.ti -1c
+.RI "int \fBvision\&.green_blur\fP = 7"
+.br
+.ti -1c
+.RI "int \fBvision\&.orange_blur\fP = 27"
+.br
+.ti -1c
+.RI "\fBvision\&.lower_green\fP = np\&.array([59,139,80])"
+.br
+.ti -1c
+.RI "\fBvision\&.upper_green\fP = np\&.array([79, 255, 224])"
+.br
+.ti -1c
+.RI "\fBvision\&.lower_orange\fP = np\&.array([0,193,92])"
+.br
+.ti -1c
+.RI "\fBvision\&.upper_orange\fP = np\&.array([23, 255, 255])"
+.br
+.ti -1c
+.RI "string \fBvision\&.configFile\fP = '/boot/frc\&.json'"
+.br
+.RI "FRC VISION PI Image Specific #############\&. "
+.ti -1c
+.RI "\fBvision\&.team\fP = None"
+.br
+.ti -1c
+.RI "bool \fBvision\&.server\fP = False"
+.br
+.ti -1c
+.RI "list \fBvision\&.cameraConfigs\fP = []"
+.br
+.ti -1c
+.RI "\fBvision\&.ntinst\fP = NetworkTablesInstance\&.getDefault()"
+.br
+.ti -1c
+.RI "\fBvision\&.networkTable\fP = NetworkTables\&.getTable('Vision')"
+.br
+.ti -1c
+.RI "list \fBvision\&.cameras\fP = []"
+.br
+.ti -1c
+.RI "list \fBvision\&.streams\fP = []"
+.br
+.ti -1c
+.RI "\fBvision\&.cs\fP"
+.br
+.ti -1c
+.RI "\fBvision\&.cameraCapture\fP"
+.br
+.ti -1c
+.RI "list \fBvision\&.webcam\fP = cameras[0]"
+.br
+.ti -1c
+.RI "list \fBvision\&.cameraServer\fP = streams[0]"
+.br
+.ti -1c
+.RI "\fBvision\&.cap\fP = WebcamVideoStream(webcam, cameraServer, image_width, image_height)\&.start()"
+.br
+.ti -1c
+.RI "\fBvision\&.img\fP = np\&.zeros(shape=(image_height, image_width, 3), dtype=np\&.uint8)"
+.br
+.ti -1c
+.RI "\fBvision\&.streamViewer\fP = VideoShow(image_width,image_height, cameraServer, frame=img, name='ChickenVision')\&.start()"
+.br
+.ti -1c
+.RI "bool \fBvision\&.tape\fP = False"
+.br
+.ti -1c
+.RI "\fBvision\&.fps\fP = FPS()\&.start()"
+.br
+.ti -1c
+.RI "\fBvision\&.timestamp\fP"
+.br
+.ti -1c
+.RI "def \fBvision\&.frame\fP = flipImage(img)"
+.br
+.ti -1c
+.RI "\fBvision\&.autoExpose\fP"
+.br
+.ti -1c
+.RI "def \fBvision\&.processed\fP = frame"
+.br
+.ti -1c
+.RI "def \fBvision\&.boxBlur\fP = blurImg(frame, green_blur)"
+.br
+.ti -1c
+.RI "def \fBvision\&.threshold\fP = threshold_video(lower_green, upper_green, boxBlur)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

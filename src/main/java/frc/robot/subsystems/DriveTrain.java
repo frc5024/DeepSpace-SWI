@@ -31,6 +31,7 @@ public class DriveTrain extends LoopableSubsystem {
     // Slew limiter
     SlewLimiter m_SlewLimiter;
 
+    @SuppressWarnings("checkstyle:JavadocMethod")
     public DriveTrain() {
         // Create GearBoxes
         logger.log("[DriveTrain] Constructing GearBoxes", Level.kRobot);
@@ -61,7 +62,7 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * Get the current DriveTrain instance
+     * Get the current DriveTrain instance.
      * 
      * @return DriveTrain instance
      */
@@ -74,7 +75,7 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * The standard wrapper around WPIlib's joystick-based drive function
+     * The standard wrapper around WPIlib's joystick-based drive function.
      * 
      * @param speed    Forward speed (from -1.0 to 1.0)
      * @param rotation Rotation of robot (from -1.0 to 1.0)
@@ -87,7 +88,7 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * Drive the robot with artificial acceleration and gear shifting
+     * Drive the robot with artificial acceleration and gear shifting.
      * 
      * @param speed    Forward speed (from -1.0 to 1.0)
      * @param rotation Rotation of robot (from -1.0 to 1.0)
@@ -105,7 +106,7 @@ public class DriveTrain extends LoopableSubsystem {
 
     /**
      * The standard wrapper around WPIlib's joystick-based drive function with
-     * optional input scaling
+     * optional input scaling.
      * 
      * @param speed             Forward speed (from -1.0 to 1.0)
      * @param rotation          Rotation of robot (from -1.0 to 1.0)
@@ -137,7 +138,7 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * A passthrough to WPILib's TankDrive method
+     * A passthrough to WPILib's TankDrive method.
      * 
      * @param l Left speed
      * @param r Right speed
@@ -150,6 +151,7 @@ public class DriveTrain extends LoopableSubsystem {
 
     /**
      * Directly drive the gearboxes. This should only be used wile motion profiling
+     * 
      * @param l Left speed
      * @param r Right speed
      */
@@ -163,7 +165,7 @@ public class DriveTrain extends LoopableSubsystem {
     // public void autoSteer(double throttle, )
 
     /**
-     * Enables or disables brake mode on all drivebase talons
+     * Enables or disables brake mode on all drivebase talons.
      * 
      * @param on Should the brakes be enabled?
      */
@@ -181,7 +183,7 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * Get the number of ticks recorded by the left GearBox's encoder
+     * Get the number of ticks recorded by the left GearBox's encoder.
      * 
      * @return Number of ticks
      */
@@ -190,14 +192,13 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * Get the number of ticks recorded by the right GearBox's encoder
+     * Get the number of ticks recorded by the right GearBox's encoder.
      * 
      * @return Number of ticks
      */
     public int getRightGearboxTicks() {
         return m_rightGearBox.getTicks();
     }
-
 
     @Override
     public void outputTelemetry() {
@@ -207,7 +208,7 @@ public class DriveTrain extends LoopableSubsystem {
 
     @Override
     public void stop() {
-        tankDrive(0,0);
+        tankDrive(0, 0);
     }
 
     @Override

@@ -4,18 +4,23 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.lib5k.utils.RobotLogger;
 import frc.robot.Robot;
 
+/**
+ * This command is run by ClimbControl.
+ * 
+ * ManualArmController allows the operator to control the robot arms with a joystick
+ */
 public class ManualArmController extends Command {
     RobotLogger logger = RobotLogger.getInstance();
-    
+
     double m_armSpeed = 0.0;
 
     @Override
     protected void initialize() {
         logger.log("[ManualArmController] Unlocking Climber");
         Robot.m_climber.unlock();
-        
+
     }
-    
+
     @Override
     protected void execute() {
         // Read arm speed from input
@@ -26,7 +31,7 @@ public class ManualArmController extends Command {
 
         // Set a constant crawl speed for Climber
         Robot.m_climber.setCrawlRate(1.0);
-        
+
     }
 
     @Override
@@ -47,6 +52,5 @@ public class ManualArmController extends Command {
     protected boolean isFinished() {
         return false;
     }
-
 
 }

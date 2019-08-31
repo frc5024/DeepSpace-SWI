@@ -1,0 +1,28 @@
+var classfrc_1_1lib5k_1_1spatial_1_1Translation2D =
+[
+    [ "Translation2D", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#ad396833f06b3055aa15d94d99519301e", null ],
+    [ "Translation2D", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a9809b865d22f41bb64e7badaee755b5d", null ],
+    [ "Translation2D", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a1f2756c9ffe3a9d1320bf1564b97a3ed", null ],
+    [ "Translation2D", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a1dd1a488185db2a176d229058607d4d9", null ],
+    [ "cross", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#aac8fb8ba39e30964c44f1c1d9e888a0e", null ],
+    [ "direction", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a5de8e8878dc292e407d812ecbbbd4fa1", null ],
+    [ "distance", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a9d4ca79895c31296e296609d6c46de35", null ],
+    [ "dot", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a87907716e926eff5338dc93efb2b3b60", null ],
+    [ "equals", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a7458bb48531020cc945c7c4ea313512a", null ],
+    [ "extrapolate", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a18fcbc34a36cf73f31ab3487a2367c1a", null ],
+    [ "getAngle", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a14c5f09b18afcd6bcbf6eed3868a3fe8", null ],
+    [ "getTranslation", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a3196bce44cc079b1470fca6cc61534cc", null ],
+    [ "identity", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a08e76d2c3a6101ef7de57996d181aa0f", null ],
+    [ "interpolate", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#afc51f6cacbcfbd22983e03ac04acf1b6", null ],
+    [ "inverse", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a700eebabd207b4e5b3f48080c6ad9302", null ],
+    [ "norm", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a7988215a23c2850532fc019290ba283d", null ],
+    [ "norm2", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a8bda5d7fb4f9d010771561fbd7dbb8c1", null ],
+    [ "rotateBy", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a973d59eebb865da0d4ba60a3e9a712ba", null ],
+    [ "scale", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a2a50bcebfaf3398509acc18c3323c60b", null ],
+    [ "translateBy", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a42e5b38bb23936b377b9c9af92a9a89d", null ],
+    [ "x", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a6a5372bee1e50bbe090da700325ed624", null ],
+    [ "y", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a78feb2f008f95794617397acbf43fbef", null ],
+    [ "kIdentity", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a4dc4a483521901a855414a31de08dce3", null ],
+    [ "x_", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#a1b00835e13fe850655a0a47b6806effc", null ],
+    [ "y_", "classfrc_1_1lib5k_1_1spatial_1_1Translation2D.html#aea60f15e9c6c42a41cd0a27152a3a72a", null ]
+];

@@ -1,0 +1,269 @@
+.TH "frc.lib5k.spatial.Translation2D" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.spatial.Translation2D \- A translation in a 2D coordinate frame\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTranslation2D\fP ()"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP (double \fBx\fP, double \fBy\fP)"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP (final \fBTranslation2D\fP other)"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP (final \fBTranslation2D\fP start, final \fBTranslation2D\fP end)"
+.br
+.ti -1c
+.RI "double \fBnorm\fP ()"
+.br
+.RI "The 'norm' of a transform is the Euclidean distance in x and y\&. "
+.ti -1c
+.RI "double \fBnorm2\fP ()"
+.br
+.ti -1c
+.RI "double \fBx\fP ()"
+.br
+.ti -1c
+.RI "double \fBy\fP ()"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP \fBtranslateBy\fP (final \fBTranslation2D\fP other)"
+.br
+.RI "We can compose \fBTranslation2D\fP's by adding together the x and y shifts\&. "
+.ti -1c
+.RI "\fBTranslation2D\fP \fBrotateBy\fP (final \fBRotation2D\fP rotation)"
+.br
+.RI "We can also rotate \fBTranslation2D\fP's\&. "
+.ti -1c
+.RI "\fBRotation2D\fP \fBdirection\fP ()"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP \fBinverse\fP ()"
+.br
+.RI "The inverse simply means a \fBTranslation2D\fP that 'undoes' this object\&. "
+.ti -1c
+.RI "\fBTranslation2D\fP \fBinterpolate\fP (final \fBTranslation2D\fP other, double \fBx\fP)"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP \fBextrapolate\fP (final \fBTranslation2D\fP other, double \fBx\fP)"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP \fBscale\fP (double s)"
+.br
+.ti -1c
+.RI "double \fBdistance\fP (final \fBTranslation2D\fP other)"
+.br
+.ti -1c
+.RI "boolean \fBequals\fP (final Object other)"
+.br
+.ti -1c
+.RI "\fBTranslation2D\fP \fBgetTranslation\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBTranslation2D\fP \fBidentity\fP ()"
+.br
+.ti -1c
+.RI "static double \fBdot\fP (final \fBTranslation2D\fP a, final \fBTranslation2D\fP b)"
+.br
+.ti -1c
+.RI "static \fBRotation2D\fP \fBgetAngle\fP (final \fBTranslation2D\fP a, final \fBTranslation2D\fP b)"
+.br
+.ti -1c
+.RI "static double \fBcross\fP (final \fBTranslation2D\fP a, final \fBTranslation2D\fP b)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "final double \fBx_\fP"
+.br
+.ti -1c
+.RI "final double \fBy_\fP"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static final \fBTranslation2D\fP \fBkIdentity\fP = new \fBTranslation2D\fP()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A translation in a 2D coordinate frame\&. 
+
+Translations are simply shifts in an (x, y) plane\&.
+.PP
+Adapted from 254: https://github.com/Team254/FRC-2019-Public/blob/f99f09a15a2c8e7b5df868ec3a4a81105dc88112/src/main/java/com/team254/lib/geometry/Translation2D.java 
+.PP
+Definition at line 13 of file Translation2D\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.lib5k\&.spatial\&.Translation2D\&.Translation2D ()"
+
+.PP
+Definition at line 23 of file Translation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Translation2D\&.Translation2D (double x, double y)"
+
+.PP
+Definition at line 28 of file Translation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Translation2D\&.Translation2D (final \fBTranslation2D\fP other)"
+
+.PP
+Definition at line 33 of file Translation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Translation2D\&.Translation2D (final \fBTranslation2D\fP start, final \fBTranslation2D\fP end)"
+
+.PP
+Definition at line 38 of file Translation2D\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static double frc\&.lib5k\&.spatial\&.Translation2D\&.cross (final \fBTranslation2D\fP a, final \fBTranslation2D\fP b)\fC [static]\fP"
+
+.PP
+Definition at line 131 of file Translation2D\&.java\&.
+.SS "\fBRotation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.direction ()"
+
+.PP
+Definition at line 85 of file Translation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Translation2D\&.distance (final \fBTranslation2D\fP other)"
+
+.PP
+Definition at line 135 of file Translation2D\&.java\&.
+.SS "static double frc\&.lib5k\&.spatial\&.Translation2D\&.dot (final \fBTranslation2D\fP a, final \fBTranslation2D\fP b)\fC [static]\fP"
+
+.PP
+Definition at line 119 of file Translation2D\&.java\&.
+.SS "boolean frc\&.lib5k\&.spatial\&.Translation2D\&.equals (final Object other)"
+
+.PP
+Definition at line 139 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.extrapolate (final \fBTranslation2D\fP other, double x)"
+
+.PP
+Definition at line 107 of file Translation2D\&.java\&.
+.SS "static \fBRotation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.getAngle (final \fBTranslation2D\fP a, final \fBTranslation2D\fP b)\fC [static]\fP"
+
+.PP
+Definition at line 123 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.getTranslation ()"
+
+.PP
+Definition at line 147 of file Translation2D\&.java\&.
+.SS "static \fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.identity ()\fC [static]\fP"
+
+.PP
+Definition at line 16 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.interpolate (final \fBTranslation2D\fP other, double x)"
+
+.PP
+Definition at line 98 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.inverse ()"
+
+.PP
+The inverse simply means a \fBTranslation2D\fP that 'undoes' this object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Translation by -x and -y\&. 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file Translation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Translation2D\&.norm ()"
+
+.PP
+The 'norm' of a transform is the Euclidean distance in x and y\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+sqrt(x ^ 2 + y ^ 2) 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file Translation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Translation2D\&.norm2 ()"
+
+.PP
+Definition at line 52 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.rotateBy (final \fBRotation2D\fP rotation)"
+
+.PP
+We can also rotate \fBTranslation2D\fP's\&. See: https://en.wikipedia.org/wiki/Rotation_matrix
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrotation\fP The rotation to apply\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This translation rotated by rotation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.scale (double s)"
+
+.PP
+Definition at line 111 of file Translation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.translateBy (final \fBTranslation2D\fP other)"
+
+.PP
+We can compose \fBTranslation2D\fP's by adding together the x and y shifts\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The other translation to add\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The combined effect of translating by this object and the other\&. 
+.RE
+.PP
+
+.PP
+Definition at line 70 of file Translation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Translation2D\&.x ()"
+
+.PP
+Definition at line 56 of file Translation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Translation2D\&.y ()"
+
+.PP
+Definition at line 60 of file Translation2D\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "final \fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Translation2D\&.kIdentity = new \fBTranslation2D\fP()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 14 of file Translation2D\&.java\&.
+.SS "final double frc\&.lib5k\&.spatial\&.Translation2D\&.x_\fC [protected]\fP"
+
+.PP
+Definition at line 20 of file Translation2D\&.java\&.
+.SS "final double frc\&.lib5k\&.spatial\&.Translation2D\&.y_\fC [protected]\fP"
+
+.PP
+Definition at line 21 of file Translation2D\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

@@ -1,0 +1,101 @@
+.TH "frc.lib5k.control.CubicDeadband" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.control.CubicDeadband \- This Scaling method was inspired by this blog post:  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCubicDeadband\fP (double deadband, double percision)"
+.br
+.RI "Cubic scaling deadband\&. "
+.ti -1c
+.RI "double \fBfeed\fP (double input)"
+.br
+.RI "Pass an input through a cubic scaling function\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBcubic\fP (double x, double weight)"
+.br
+.RI "Get the weighted cube of a vlaue\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This Scaling method was inspired by this blog post: 
+
+http://www.mimirgames.com/articles/games/joystick-input-and-using-deadbands/
+.PP
+Formula: y = ((w * (x ^ 3) + (1\&.0 - w) * x) - (abs(x) / x) * (w * (d ^ 3) + (1\&.0 - w) * d)) / (1\&.0 - (w * (d ^ 3) + (1\&.0 - w) * d))
+.PP
+This can be visualized on desmos: https://www.desmos.com/calculator/awcputalxe 
+.PP
+Definition at line 15 of file CubicDeadband\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.lib5k\&.control\&.CubicDeadband\&.CubicDeadband (double deadband, double percision)"
+
+.PP
+Cubic scaling deadband\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdeadband\fP Deadband size 
+.br
+\fIpercision\fP This number should be set to user preference\&. The higher it is, the more precice small movements will be and the less precice big movements will be 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file CubicDeadband\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double frc\&.lib5k\&.control\&.CubicDeadband\&.cubic (double x, double weight)\fC [private]\fP"
+
+.PP
+Get the weighted cube of a vlaue\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The input value 
+.br
+\fIweight\fP The weight of the function\&. A higher weight will give more sensitivity at lower speeds and less at higher speeds
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Output of the scaling function 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file CubicDeadband\&.java\&.
+.SS "double frc\&.lib5k\&.control\&.CubicDeadband\&.feed (double input)"
+
+.PP
+Pass an input through a cubic scaling function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Raw input
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Scaled output 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file CubicDeadband\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

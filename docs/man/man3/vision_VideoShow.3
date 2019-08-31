@@ -1,0 +1,94 @@
+.TH "vision.VideoShow" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+vision.VideoShow
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP (self, imgWidth, imgHeight, \fBcameraServer\fP, \fBframe\fP=None, name='stream')"
+.br
+.ti -1c
+.RI "def \fBstart\fP (self)"
+.br
+.ti -1c
+.RI "def \fBshow\fP (self)"
+.br
+.ti -1c
+.RI "def \fBstop\fP (self)"
+.br
+.ti -1c
+.RI "def \fBnotifyError\fP (self, error)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBoutputStream\fP"
+.br
+.ti -1c
+.RI "\fBframe\fP"
+.br
+.ti -1c
+.RI "\fBstopped\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Class that continuously shows a frame using a dedicated thread.
+
+.fi
+.PP
+ 
+.PP
+Definition at line 59 of file vision\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def vision\&.VideoShow\&.__init__ ( self,  imgWidth,  imgHeight,  cameraServer,  frame = \fCNone\fP,  name = \fC'stream'\fP)"
+
+.PP
+Definition at line 64 of file vision\&.py\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "def vision\&.VideoShow\&.notifyError ( self,  error)"
+
+.PP
+Definition at line 80 of file vision\&.py\&.
+.SS "def vision\&.VideoShow\&.show ( self)"
+
+.PP
+Definition at line 73 of file vision\&.py\&.
+.SS "def vision\&.VideoShow\&.start ( self)"
+
+.PP
+Definition at line 69 of file vision\&.py\&.
+.SS "def vision\&.VideoShow\&.stop ( self)"
+
+.PP
+Definition at line 77 of file vision\&.py\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "vision\&.VideoShow\&.frame"
+
+.PP
+Definition at line 66 of file vision\&.py\&.
+.SS "vision\&.VideoShow\&.outputStream"
+
+.PP
+Definition at line 65 of file vision\&.py\&.
+.SS "vision\&.VideoShow\&.stopped"
+
+.PP
+Definition at line 67 of file vision\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

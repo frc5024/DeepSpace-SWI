@@ -1,0 +1,292 @@
+.TH "frc.lib5k.spatial.Rotation2D" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.lib5k.spatial.Rotation2D \- A rotation in a 2d coordinate frame represented a point on the unit circle (cosine and sine)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRotation2D\fP ()"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP (double radians, boolean normalize)"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP (double x, double y, boolean normalize)"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP (final \fBRotation2D\fP other)"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP (final \fBTranslation2D\fP direction, boolean normalize)"
+.br
+.ti -1c
+.RI "double \fBcos\fP ()"
+.br
+.ti -1c
+.RI "double \fBsin\fP ()"
+.br
+.ti -1c
+.RI "double \fBtan\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetRadians\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetDegrees\fP ()"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP \fBrotateBy\fP (final \fBRotation2D\fP other)"
+.br
+.RI "We can rotate this \fBRotation2D\fP by adding together the effects of it and another rotation\&. "
+.ti -1c
+.RI "\fBRotation2D\fP \fBnormal\fP ()"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP \fBinverse\fP ()"
+.br
+.RI "The inverse of a \fBRotation2D\fP 'undoes' the effect of this rotation\&. "
+.ti -1c
+.RI "\fBTranslation2D\fP \fBtoTranslation\fP ()"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP \fBinterpolate\fP (final \fBRotation2D\fP other, double x)"
+.br
+.ti -1c
+.RI "double \fBdistance\fP (final \fBRotation2D\fP other)"
+.br
+.ti -1c
+.RI "boolean \fBequals\fP (final Object other)"
+.br
+.ti -1c
+.RI "\fBRotation2D\fP \fBgetRotation\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRotation2D\fP \fBidentity\fP ()"
+.br
+.ti -1c
+.RI "static \fBRotation2D\fP \fBfromRadians\fP (double angle_radians)"
+.br
+.ti -1c
+.RI "static \fBRotation2D\fP \fBfromDegrees\fP (double angle_degrees)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRotation2D\fP (double x, double y, double radians)"
+.br
+.ti -1c
+.RI "double \fBWrapRadians\fP (double radians)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBcos_angle_\fP = Double\&.NaN"
+.br
+.ti -1c
+.RI "double \fBsin_angle_\fP = Double\&.NaN"
+.br
+.ti -1c
+.RI "double \fBradians_\fP = Double\&.NaN"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static final \fBRotation2D\fP \fBkIdentity\fP = new \fBRotation2D\fP()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "boolean \fBhasTrig\fP ()"
+.br
+.ti -1c
+.RI "boolean \fBhasRadians\fP ()"
+.br
+.ti -1c
+.RI "void \fBensureTrigComputed\fP ()"
+.br
+.ti -1c
+.RI "void \fBensureRadiansComputed\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A rotation in a 2d coordinate frame represented a point on the unit circle (cosine and sine)\&. 
+
+Adapted from 254: https://github.com/Team254/FRC-2019-Public/blob/f99f09a15a2c8e7b5df868ec3a4a81105dc88112/src/main/java/com/team254/lib/geometry/Rotation2d.java 
+.PP
+Definition at line 14 of file Rotation2D\&.java\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "frc\&.lib5k\&.spatial\&.Rotation2D\&.Rotation2D (double x, double y, double radians)\fC [protected]\fP"
+
+.PP
+Definition at line 25 of file Rotation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Rotation2D\&.Rotation2D ()"
+
+.PP
+Definition at line 31 of file Rotation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Rotation2D\&.Rotation2D (double radians, boolean normalize)"
+
+.PP
+Definition at line 35 of file Rotation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Rotation2D\&.Rotation2D (double x, double y, boolean normalize)"
+
+.PP
+Definition at line 42 of file Rotation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Rotation2D\&.Rotation2D (final \fBRotation2D\fP other)"
+
+.PP
+Definition at line 61 of file Rotation2D\&.java\&.
+.SS "frc\&.lib5k\&.spatial\&.Rotation2D\&.Rotation2D (final \fBTranslation2D\fP direction, boolean normalize)"
+
+.PP
+Definition at line 67 of file Rotation2D\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.cos ()"
+
+.PP
+Definition at line 79 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.distance (final \fBRotation2D\fP other)"
+
+.PP
+Definition at line 214 of file Rotation2D\&.java\&.
+.SS "void frc\&.lib5k\&.spatial\&.Rotation2D\&.ensureRadiansComputed ()\fC [private]\fP"
+
+.PP
+Definition at line 193 of file Rotation2D\&.java\&.
+.SS "void frc\&.lib5k\&.spatial\&.Rotation2D\&.ensureTrigComputed ()\fC [private]\fP"
+
+.PP
+Definition at line 183 of file Rotation2D\&.java\&.
+.SS "boolean frc\&.lib5k\&.spatial\&.Rotation2D\&.equals (final Object other)"
+
+.PP
+Definition at line 219 of file Rotation2D\&.java\&.
+.SS "static \fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.fromDegrees (double angle_degrees)\fC [static]\fP"
+
+.PP
+Definition at line 75 of file Rotation2D\&.java\&.
+.SS "static \fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.fromRadians (double angle_radians)\fC [static]\fP"
+
+.PP
+Definition at line 71 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.getDegrees ()"
+
+.PP
+Definition at line 106 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.getRadians ()"
+
+.PP
+Definition at line 101 of file Rotation2D\&.java\&.
+.SS "\fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.getRotation ()"
+
+.PP
+Definition at line 228 of file Rotation2D\&.java\&.
+.SS "boolean frc\&.lib5k\&.spatial\&.Rotation2D\&.hasRadians ()\fC [private]\fP"
+
+.PP
+Definition at line 179 of file Rotation2D\&.java\&.
+.SS "boolean frc\&.lib5k\&.spatial\&.Rotation2D\&.hasTrig ()\fC [private]\fP"
+
+.PP
+Definition at line 175 of file Rotation2D\&.java\&.
+.SS "static \fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.identity ()\fC [static]\fP"
+
+.PP
+Definition at line 17 of file Rotation2D\&.java\&.
+.SS "\fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.interpolate (final \fBRotation2D\fP other, double x)"
+
+.PP
+Definition at line 203 of file Rotation2D\&.java\&.
+.SS "\fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.inverse ()"
+
+.PP
+The inverse of a \fBRotation2D\fP 'undoes' the effect of this rotation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The opposite of this rotation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file Rotation2D\&.java\&.
+.SS "\fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.normal ()"
+
+.PP
+Definition at line 127 of file Rotation2D\&.java\&.
+.SS "\fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.rotateBy (final \fBRotation2D\fP other)"
+
+.PP
+We can rotate this \fBRotation2D\fP by adding together the effects of it and another rotation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The other rotation\&. See: https://en.wikipedia.org/wiki/Rotation_matrix 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This rotation rotated by other\&. 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.sin ()"
+
+.PP
+Definition at line 84 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.tan ()"
+
+.PP
+Definition at line 89 of file Rotation2D\&.java\&.
+.SS "\fBTranslation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.toTranslation ()"
+
+.PP
+Definition at line 161 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.WrapRadians (double radians)\fC [protected]\fP"
+
+.PP
+Definition at line 166 of file Rotation2D\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.cos_angle_ = Double\&.NaN\fC [protected]\fP"
+
+.PP
+Definition at line 21 of file Rotation2D\&.java\&.
+.SS "final \fBRotation2D\fP frc\&.lib5k\&.spatial\&.Rotation2D\&.kIdentity = new \fBRotation2D\fP()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 15 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.radians_ = Double\&.NaN\fC [protected]\fP"
+
+.PP
+Definition at line 23 of file Rotation2D\&.java\&.
+.SS "double frc\&.lib5k\&.spatial\&.Rotation2D\&.sin_angle_ = Double\&.NaN\fC [protected]\fP"
+
+.PP
+Definition at line 22 of file Rotation2D\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

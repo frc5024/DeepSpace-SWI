@@ -3,6 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+/**
+ * This command reads driver input to enable and disable the robot's compressor.
+ */
 public class CompressorControl extends Command {
 
     boolean m_compressorCommand = false;
@@ -28,13 +31,12 @@ public class CompressorControl extends Command {
             // Request complete, no new data
             m_shouldUpdateCompressor = false;
         }
-        
-    }
 
+    }
 
     @Override
     protected boolean isFinished() {
         return false;
     }
-    
+
 }

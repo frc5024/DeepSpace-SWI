@@ -1,0 +1,272 @@
+.TH "frc.robot.Robot" 3 "Sat Aug 31 2019" "Version 2019" "DeepSpace-SWI" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+frc.robot.Robot \- The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as described in the TimedRobot documentation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits TimedRobot\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBrobotInit\fP ()"
+.br
+.RI "This function is run when the robot is first started up and should be used for any initialization code\&. "
+.ti -1c
+.RI "void \fBrobotPeriodic\fP ()"
+.br
+.RI "This function is called every robot packet, no matter the mode\&. "
+.ti -1c
+.RI "void \fBdisabledInit\fP ()"
+.br
+.RI "This function is called once each time the robot enters Disabled mode\&. "
+.ti -1c
+.RI "void \fBdisabledPeriodic\fP ()"
+.br
+.RI "Run in a loop while the robot is disabled\&. "
+.ti -1c
+.RI "void \fBautonomousInit\fP ()"
+.br
+.RI "This autonomous (along with the chooser code above) shows how to select between different autonomous modes using the dashboard\&. "
+.ti -1c
+.RI "void \fBautonomousPeriodic\fP ()"
+.br
+.RI "This function is called periodically during autonomous\&. "
+.ti -1c
+.RI "void \fBteleopInit\fP ()"
+.br
+.RI "This is run once when the robot switches to Teleop mode\&. "
+.ti -1c
+.RI "void \fBteleopPeriodic\fP ()"
+.br
+.RI "This function is called periodically during operator control\&. "
+.ti -1c
+.RI "void \fBtestPeriodic\fP ()"
+.br
+.RI "This function is called periodically during test mode\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBOI\fP \fBm_oi\fP"
+.br
+.ti -1c
+.RI "static \fBDriveTrain\fP \fBm_driveTrain\fP"
+.br
+.ti -1c
+.RI "static \fBIntake\fP \fBm_intake\fP"
+.br
+.ti -1c
+.RI "static \fBCargoFlap\fP \fBm_cargoflap\fP"
+.br
+.ti -1c
+.RI "static \fBPneumatics\fP \fBm_pneumatics\fP"
+.br
+.ti -1c
+.RI "static \fBLEDring\fP \fBm_ledRing\fP"
+.br
+.ti -1c
+.RI "static \fBClimber\fP \fBm_climber\fP"
+.br
+.ti -1c
+.RI "static \fBOuttake\fP \fBm_outtakeGroup\fP"
+.br
+.ti -1c
+.RI "static \fBClimb\fP \fBm_climbGroup\fP"
+.br
+.ti -1c
+.RI "static \fBManualArmController\fP \fBm_manualArmController\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBstartTeleopCommands\fP ()"
+.br
+.RI "This is only needed for DeepSpace\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRobotLogger\fP \fBlogger\fP = \fBRobotLogger\&.getInstance\fP()"
+.br
+.ti -1c
+.RI "Command \fBm_autonomousCommand\fP"
+.br
+.ti -1c
+.RI "\fBChooser\fP \fBm_chooser\fP = new \fBChooser\fP()"
+.br
+.ti -1c
+.RI "boolean \fBm_teleopAssistLock\fP = false"
+.br
+.ti -1c
+.RI "\fBDriveControl\fP \fBm_driveControl\fP"
+.br
+.ti -1c
+.RI "\fBIntakeControl\fP \fBm_intakeControl\fP"
+.br
+.ti -1c
+.RI "\fBCompressorControl\fP \fBm_compressorControl\fP"
+.br
+.ti -1c
+.RI "\fBClimbControl\fP \fBm_climbControl\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as described in the TimedRobot documentation\&. 
+
+If you change the name of this class or the package after creating this project, you must also update the build\&.gradle file in the project\&. 
+.PP
+Definition at line 31 of file Robot\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void frc\&.robot\&.Robot\&.autonomousInit ()"
+
+.PP
+This autonomous (along with the chooser code above) shows how to select between different autonomous modes using the dashboard\&. The sendable chooser code works with the Java SmartDashboard\&. If you prefer the LabVIEW Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box below the Gyro
+.PP
+You can add additional auto modes by adding additional commands to the chooser code above (like the commented example) or additional comparisons to the switch structure below with additional strings and commands\&. 
+.PP
+Definition at line 172 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.autonomousPeriodic ()"
+
+.PP
+This function is called periodically during autonomous\&. 
+.PP
+Definition at line 193 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.disabledInit ()"
+
+.PP
+This function is called once each time the robot enters Disabled mode\&. You can use it to reset any subsystem information you want to clear when the robot is disabled\&. 
+.PP
+Definition at line 140 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.disabledPeriodic ()"
+
+.PP
+Run in a loop while the robot is disabled\&. Networking, logging, and LED code usually goes here\&. 
+.PP
+Definition at line 155 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.robotInit ()"
+
+.PP
+This function is run when the robot is first started up and should be used for any initialization code\&. 
+.PP
+Definition at line 65 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.robotPeriodic ()"
+
+.PP
+This function is called every robot packet, no matter the mode\&. Use this for items like diagnostics that you want ran during disabled, autonomous, teleoperated and test\&.
+.PP
+This runs after the mode specific periodic functions, but before LiveWindow and SmartDashboard integrated updating\&. 
+.PP
+Definition at line 118 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.startTeleopCommands ()\fC [private]\fP"
+
+.PP
+This is only needed for DeepSpace\&. Calling this will start Teleop before Autonomous has finished 
+.PP
+Definition at line 128 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.teleopInit ()"
+
+.PP
+This is run once when the robot switches to Teleop mode\&. 
+.PP
+Definition at line 221 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.teleopPeriodic ()"
+
+.PP
+This function is called periodically during operator control\&. 
+.PP
+Definition at line 245 of file Robot\&.java\&.
+.SS "void frc\&.robot\&.Robot\&.testPeriodic ()"
+
+.PP
+This function is called periodically during test mode\&. 
+.PP
+Definition at line 253 of file Robot\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRobotLogger\fP frc\&.robot\&.Robot\&.logger = \fBRobotLogger\&.getInstance\fP()\fC [private]\fP"
+
+.PP
+Definition at line 32 of file Robot\&.java\&.
+.SS "Command frc\&.robot\&.Robot\&.m_autonomousCommand\fC [private]\fP"
+
+.PP
+Definition at line 35 of file Robot\&.java\&.
+.SS "\fBCargoFlap\fP frc\&.robot\&.Robot\&.m_cargoflap\fC [static]\fP"
+
+.PP
+Definition at line 44 of file Robot\&.java\&.
+.SS "\fBChooser\fP frc\&.robot\&.Robot\&.m_chooser = new \fBChooser\fP()\fC [private]\fP"
+
+.PP
+Definition at line 36 of file Robot\&.java\&.
+.SS "\fBClimbControl\fP frc\&.robot\&.Robot\&.m_climbControl\fC [private]\fP"
+
+.PP
+Definition at line 53 of file Robot\&.java\&.
+.SS "\fBClimber\fP frc\&.robot\&.Robot\&.m_climber\fC [static]\fP"
+
+.PP
+Definition at line 47 of file Robot\&.java\&.
+.SS "\fBClimb\fP frc\&.robot\&.Robot\&.m_climbGroup\fC [static]\fP"
+
+.PP
+Definition at line 57 of file Robot\&.java\&.
+.SS "\fBCompressorControl\fP frc\&.robot\&.Robot\&.m_compressorControl\fC [private]\fP"
+
+.PP
+Definition at line 52 of file Robot\&.java\&.
+.SS "\fBDriveControl\fP frc\&.robot\&.Robot\&.m_driveControl\fC [private]\fP"
+
+.PP
+Definition at line 50 of file Robot\&.java\&.
+.SS "\fBDriveTrain\fP frc\&.robot\&.Robot\&.m_driveTrain\fC [static]\fP"
+
+.PP
+Definition at line 42 of file Robot\&.java\&.
+.SS "\fBIntake\fP frc\&.robot\&.Robot\&.m_intake\fC [static]\fP"
+
+.PP
+Definition at line 43 of file Robot\&.java\&.
+.SS "\fBIntakeControl\fP frc\&.robot\&.Robot\&.m_intakeControl\fC [private]\fP"
+
+.PP
+Definition at line 51 of file Robot\&.java\&.
+.SS "\fBLEDring\fP frc\&.robot\&.Robot\&.m_ledRing\fC [static]\fP"
+
+.PP
+Definition at line 46 of file Robot\&.java\&.
+.SS "\fBManualArmController\fP frc\&.robot\&.Robot\&.m_manualArmController\fC [static]\fP"
+
+.PP
+Definition at line 58 of file Robot\&.java\&.
+.SS "\fBOI\fP frc\&.robot\&.Robot\&.m_oi\fC [static]\fP"
+
+.PP
+Definition at line 41 of file Robot\&.java\&.
+.SS "\fBOuttake\fP frc\&.robot\&.Robot\&.m_outtakeGroup\fC [static]\fP"
+
+.PP
+Definition at line 56 of file Robot\&.java\&.
+.SS "\fBPneumatics\fP frc\&.robot\&.Robot\&.m_pneumatics\fC [static]\fP"
+
+.PP
+Definition at line 45 of file Robot\&.java\&.
+.SS "boolean frc\&.robot\&.Robot\&.m_teleopAssistLock = false\fC [private]\fP"
+
+.PP
+Definition at line 37 of file Robot\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DeepSpace-SWI from the source code\&.

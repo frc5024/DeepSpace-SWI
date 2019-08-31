@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.lib5k.loops.loopers.SubsystemLooper;
 import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
-import frc.robot.Constants;
 import frc.robot.autonomous.Chooser;
 import frc.robot.autonomous.commandgroups.Climb;
 import frc.robot.autonomous.commandgroups.Outtake;
@@ -30,12 +29,12 @@ import frc.robot.subsystems.Pneumatics;
  * project.
  */
 public class Robot extends TimedRobot {
-	RobotLogger logger = RobotLogger.getInstance();
+	private RobotLogger logger = RobotLogger.getInstance();
 
 	/* AUTONOMOUS */
-	Command m_autonomousCommand;
-	Chooser m_chooser = new Chooser();
-	boolean m_teleopAssistLock = false;
+	private Command m_autonomousCommand;
+	private Chooser m_chooser = new Chooser();
+	private boolean m_teleopAssistLock = false;
 
 	/* SUBSYSTEMS */
 	SubsystemLooper m_subsystemLooper;
@@ -48,16 +47,15 @@ public class Robot extends TimedRobot {
 	public static Climber m_climber;
 
 	/* COMMANDS */
-	DriveControl m_driveControl;
-	IntakeControl m_intakeControl;
-	CompressorControl m_compressorControl;
-	ClimbControl m_climbControl;
-	
+	private DriveControl m_driveControl;
+	private IntakeControl m_intakeControl;
+	private CompressorControl m_compressorControl;
+	private ClimbControl m_climbControl;
 
 	/* COMMAND GROUPS */
 	public static Outtake m_outtakeGroup;
 	public static Climb m_climbGroup;
-	public static ManualArmController m_ManualArmController;
+	public static ManualArmController m_manualArmController;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -94,8 +92,7 @@ public class Robot extends TimedRobot {
 		m_intakeControl = new IntakeControl();
 		m_compressorControl = new CompressorControl();
 		m_climbControl = new ClimbControl();
-		m_ManualArmController = new ManualArmController();
-
+		m_manualArmController = new ManualArmController();
 
 		/* Create CommandGroups */
 		m_outtakeGroup = new Outtake();
@@ -125,7 +122,8 @@ public class Robot extends TimedRobot {
 	}
 
 	/**
-	 * This is only needed for DeepSpace. Calling this will start Teleop before Autonomous has finished
+	 * This is only needed for DeepSpace. Calling this will start Teleop before
+	 * Autonomous has finished
 	 */
 	private void startTeleopCommands() {
 		m_driveControl.start();
@@ -150,6 +148,10 @@ public class Robot extends TimedRobot {
 	}
 
 	@Override
+	/**
+	 * Run in a loop while the robot is disabled. Networking, logging, and LED code
+	 * usually goes here.
+	 */
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
@@ -179,7 +181,8 @@ public class Robot extends TimedRobot {
 		// Disable the brakes on the DriveTrain
 		m_driveTrain.setBrakes(false);
 
-		// Start the compressor control. Drivers may want to turn the compressor on during auto
+		// Start the compressor control. Drivers may want to turn the compressor on
+		// during auto
 		m_compressorControl.start();
 	}
 
@@ -212,6 +215,9 @@ public class Robot extends TimedRobot {
 	}
 
 	@Override
+	/**
+	 * This is run once when the robot switches to Teleop mode.
+	 */
 	public void teleopInit() {
 		logger.log("Teleop Starting");
 		// This makes sure that the autonomous stops running when
@@ -225,7 +231,8 @@ public class Robot extends TimedRobot {
 		// Enable the brakes on the DriveTrain
 		m_driveTrain.setBrakes(true);
 
-		// Re-start the teleop commands. (This is only needed in the shop, but leave it in)
+		// Re-start the teleop commands. (This is only needed in the shop, but leave it
+		// in)
 		// During a game, this is not needed.
 		m_compressorControl.start();
 		startTeleopCommands();
