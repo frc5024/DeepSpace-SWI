@@ -28,9 +28,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AutoCamera_8java.html",
-"classfrc_1_1robot_1_1Constants.html#a9c007842243bf2dd7fa903e75ce22ecf",
-"classfrc_1_1robot_1_1subsystems_1_1Climber.html#abfff06f3fb2bd00c8dcb49f43beb5381",
-"vision_8py.html#abb4414acc82489e2aa8344ef84d3e479"
+"classfrc_1_1lib5k_1_1utils_1_1RobotLogger.html#abea3d5638a8ac6742b6f88fafb045f0d",
+"classfrc_1_1robot_1_1subsystems_1_1Climber.html#a8953592f448b90e42cfbe64b0605ca0a",
+"vision_8py.html#a9c98e7f156ec1882fe1819fce34fefe5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

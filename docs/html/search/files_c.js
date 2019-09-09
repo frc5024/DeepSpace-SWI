@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['setbrakes_2ejava',['SetBrakes.java',['../SetBrakes_8java.html',1,'']]],
-  ['setclimberlock_2ejava',['SetClimberLock.java',['../SetClimberLock_8java.html',1,'']]],
-  ['setfinger_2ejava',['SetFinger.java',['../SetFinger_8java.html',1,'']]],
-  ['setledring_2ejava',['SetLedring.java',['../SetLedring_8java.html',1,'']]],
-  ['setpiston_2ejava',['SetPiston.java',['../SetPiston_8java.html',1,'']]],
-  ['setpitchsetpoint_2ejava',['SetPitchSetpoint.java',['../SetPitchSetpoint_8java.html',1,'']]],
-  ['slewlimiter_2ejava',['SlewLimiter.java',['../SlewLimiter_8java.html',1,'']]],
-  ['slewlimitertest_2ejava',['SlewLimiterTest.java',['../SlewLimiterTest_8java.html',1,'']]],
-  ['subsystemlooper_2ejava',['SubsystemLooper.java',['../SubsystemLooper_8java.html',1,'']]]
+  ['raisebottosetpoint_2ejava',['RaiseBotToSetpoint.java',['../RaiseBotToSetpoint_8java.html',1,'']]],
+  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
+  ['robot_2ejava',['Robot.java',['../Robot_8java.html',1,'']]],
+  ['robotlogger_2ejava',['RobotLogger.java',['../RobotLogger_8java.html',1,'']]],
+  ['rotation2d_2ejava',['Rotation2D.java',['../Rotation2D_8java.html',1,'']]]
 ];

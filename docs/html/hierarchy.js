@@ -33,6 +33,7 @@ var hierarchy =
     ] ],
     [ "frc.robot.Main", "classfrc_1_1robot_1_1Main.html", null ],
     [ "frc.robot.Constants.MainCamera", "classfrc_1_1robot_1_1Constants_1_1MainCamera.html", null ],
+    [ "frc.lib5k.utils.Networking", "classfrc_1_1lib5k_1_1utils_1_1Networking.html", null ],
     [ "frc.robot.OI", "classfrc_1_1robot_1_1OI.html", null ],
     [ "frc.robot.Constants.PathingPIDA", "classfrc_1_1robot_1_1Constants_1_1PathingPIDA.html", null ],
     [ "frc.robot.Constants.PCM", "classfrc_1_1robot_1_1Constants_1_1PCM.html", null ],

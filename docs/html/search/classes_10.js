@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['webcamvideostream',['WebcamVideoStream',['../classvision_1_1WebcamVideoStream.html',1,'vision']]]
+  ['videoshow',['VideoShow',['../classvision_1_1VideoShow.html',1,'vision']]]
 ];

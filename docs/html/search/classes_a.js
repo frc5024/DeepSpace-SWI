@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['oi',['OI',['../classfrc_1_1robot_1_1OI.html',1,'frc::robot']]],
-  ['outtake',['Outtake',['../classfrc_1_1robot_1_1autonomous_1_1commandgroups_1_1Outtake.html',1,'frc::robot::autonomous::commandgroups']]]
+  ['networking',['Networking',['../classfrc_1_1lib5k_1_1utils_1_1Networking.html',1,'frc::lib5k::utils']]]
 ];
