@@ -48,9 +48,9 @@ public class OI {
 	 * controller for driving
 	 */
 	private double limitTrigger(double value) {
-		if (value <= 0.0) {
-			return 0.0;
-		}
+		// if (value <= 0.0) {
+		// 	return 0.0;
+		// }	
 		return value;
 	}
 

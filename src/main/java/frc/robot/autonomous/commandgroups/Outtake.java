@@ -12,10 +12,10 @@ public class Outtake extends CommandGroup {
     
     public Outtake() {
         addSequential(new SetLedring(true));
-        addSequential(new SetFinger(true, 1));
+        addSequential(new SetFinger(true, 0.5));
         addSequential(new SetPiston(true, 0.5));
         addSequential(new SetLedring(false));
-        addSequential(new SetPiston(false, 0.2));
+        addSequential(new SetPiston(false, 0.1));
         addSequential(new SetFinger(false, 0.1));
     }
 }
