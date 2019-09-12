@@ -36,7 +36,7 @@ public class DriveControl extends Command {
 		rotation = Robot.m_oi.getTurn();
 
 		// Pass data through deadbands
-		speed = m_speedDeadband.feed(speed);
+		// speed = m_speedDeadband.feed(speed);
 		rotation = m_rotationDeadband.feed(rotation);
 
 		// Send movement speeds to DriveTrain

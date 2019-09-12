@@ -44,17 +44,6 @@ public class OI {
 	public XboxController operatorController = new XboxController(1);
 
 	/**
-	 * Limits a trigger to positive values only. This allows the use of a steam
-	 * controller for driving
-	 */
-	private double limitTrigger(double value) {
-		// if (value <= 0.0) {
-		// 	return 0.0;
-		// }	
-		return value;
-	}
-
-	/**
 	 * Get the DriveTrain throttle value from driverstation
 	 * 
 	 * @return Throttle (from -1.0 to 1.0)
@@ -62,8 +51,9 @@ public class OI {
 	public double getThrottle() {
 		double speed = 0.0;
 
-		speed += limitTrigger(driverController.getTriggerAxis(GenericHID.Hand.kRight));
-		speed -= limitTrigger(driverController.getTriggerAxis(GenericHID.Hand.kLeft));
+		speed += driverController.getTriggerAxis(GenericHID.Hand.kRight);
+		speed -= driverController.getTriggerAxis(GenericHID.Hand.kLeft);
+
 
 		return speed;
 	}
