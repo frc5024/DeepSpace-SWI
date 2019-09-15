@@ -27,6 +27,11 @@ public class DriveTrain extends LoopableSubsystem {
     // WPI wrapper
     private DifferentialDrive m_DifferentialDrive;
     public boolean is_moving, is_turning = false;
+    private boolean m_coastingUntilInput = false;
+
+    // Talon config
+    boolean m_isNewConfigData = false;
+    NeutralMode m_desiredBrakeMode = NeutralMode.Coast;
 
     // Slew limiter
     SlewLimiter m_SlewLimiter;
@@ -72,6 +77,34 @@ public class DriveTrain extends LoopableSubsystem {
         }
 
         return m_instance;
+    }
+
+    @Override
+    public void periodicOutput() {
+
+        // Handle talon config data
+        if (m_isNewConfigData) {
+
+            // Set brake mode for all talons
+            m_leftGearBox.front.setNeutralMode(m_desiredBrakeMode);
+            m_leftGearBox.rear.setNeutralMode(m_desiredBrakeMode);
+            m_rightGearBox.front.setNeutralMode(m_desiredBrakeMode);
+            m_rightGearBox.rear.setNeutralMode(m_desiredBrakeMode);
+
+            // Data had been sent, disable lock
+            m_isNewConfigData = false;
+        }
+
+        // Handle costUntilInput()
+        if (m_coastingUntilInput) {
+            // Check if robot is moving
+            if (is_moving || is_turning) {
+                // Enable brakes
+                setBrakes(true);
+                m_coastingUntilInput = false;
+            }
+        }
+
     }
 
     /**
@@ -170,16 +203,27 @@ public class DriveTrain extends LoopableSubsystem {
      * @param on Should the brakes be enabled?
      */
     public void setBrakes(boolean on) {
-        NeutralMode mode = on ? NeutralMode.Brake : NeutralMode.Coast;
+        m_desiredBrakeMode = on ? NeutralMode.Brake : NeutralMode.Coast;
         String mode_string = on ? "Brake" : "Coast";
 
         logger.log("[DriveTrain] NeutralMode has been set to: " + mode_string);
 
-        // TODO: this should be buffered
-        m_leftGearBox.front.setNeutralMode(mode);
-        m_leftGearBox.rear.setNeutralMode(mode);
-        m_rightGearBox.front.setNeutralMode(mode);
-        m_rightGearBox.rear.setNeutralMode(mode);
+        // Force an update
+        m_isNewConfigData = true;
+
+    }
+
+    /**
+     * Set the  robot into coast mode until user input is detected
+     * <br>
+     * This is useful for a "transition glide"
+     */
+    public void coastUntilInput() {
+        // Set mode to costing
+        setBrakes(false);
+
+        // Set state
+        m_coastingUntilInput = true;
     }
 
     /**

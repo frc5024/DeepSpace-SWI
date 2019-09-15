@@ -95,7 +95,7 @@ public class IntakeControl extends Command {
                         "[IntakeControl] Operator tried to outtake while the robot was already outtaking. Ignoring action");
             }
 
-            m_shouldOuttake = false;
+            m_shouldOuttake = false; 
         }
 
     }

@@ -75,6 +75,7 @@ public class Intake extends LoopableSubsystem {
      * Note: sensors are wired backwards on both bots
      */
     private double limitSliderMovement(double speed) {
+        //TODO: Debug this
         double output = speed;
 
         // Check left limit
