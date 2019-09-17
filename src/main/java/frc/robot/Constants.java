@@ -117,4 +117,7 @@ public class Constants {
 		public static final double kD = 0.0;
 		public static final double kA = 0.0;
 	}
+
+	public static final int edgelight_port = 2;
+	public static final double edgelight_time_gap = 2; // Seconds
 }
