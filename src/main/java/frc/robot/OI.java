@@ -68,6 +68,14 @@ public class OI {
 	}
 
 	/**
+	 * Should the bot flip it's orientation (toggle input)
+	 * @return Output
+	 */
+	public boolean getDriveTrainInvert() {
+		return driverController.getXButtonPressed();
+	}
+
+	/**
 	 * @return Has the operator requested an intake action?
 	 */
 	public boolean getIntake() {

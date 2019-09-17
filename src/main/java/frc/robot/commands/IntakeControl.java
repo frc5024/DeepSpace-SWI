@@ -61,13 +61,20 @@ public class IntakeControl extends Command {
 
         // Do not allow an intake and an outtake at the same time
         if (m_shouldOuttake) {
+            // Disable intake and reset it's toggle
             m_shouldIntake = false;
+            m_intakeToggle.reset();
         }
 
         /* Send outputs to the subsystems */
 
-        // Send slider speed
-        Robot.m_intake.setSliderSpeed(m_sliderSpeed);
+        // Only allow slider control if intaking
+        if (m_shouldIntake) {
+            // Send slider speed
+            Robot.m_intake.setSliderSpeed(m_sliderSpeed);
+        } else {
+            Robot.m_intake.setSliderSpeed(0.0);
+        }
 
         // Send intake data to finger only if the intakeState is new. This will ensure
         // that we are not overriding other commands

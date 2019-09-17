@@ -75,20 +75,21 @@ public class Intake extends LoopableSubsystem {
      * Note: sensors are wired backwards on both bots
      */
     private double limitSliderMovement(double speed) {
-        //TODO: Debug this
-        double output = speed;
+        //TODO: this is disabled due to faulty hardware on robot
+        // double output = speed;
 
-        // Check left limit
-        if (output < 0 && isLeft) {
-            output = 0.0;
-        }
+        // // Check left limit
+        // if (output > 0 && isLeft) {
+        //     output = 0.0;
+        // }
 
-        // Check right limit
-        if (output > 0 && isRight) {
-            output = 0.0;
-        }
+        // // Check right limit
+        // if (output < 0 && isRight) {
+        //     output = 0.0;
+        // }
 
-        return output;
+        // return output;
+        return speed;
     }
 
     @Override
@@ -111,7 +112,7 @@ public class Intake extends LoopableSubsystem {
 
     public void periodicInput() {
         // Read from sensors and determine slider location. note: sensor is backwards
-        if (!m_centreHall.get()) {
+        if (m_centreHall.get()) {
             if (sliderSpeed > 0) {
                 isRight = true;
                 isCentre = false;
@@ -129,19 +130,19 @@ public class Intake extends LoopableSubsystem {
 
         // Make sure direction is still updated even if slider starts from unknown
         // location
-        if (!m_leftHall.get()) {
+        if (m_leftHall.get()) {
             isRight = false;
             isCentre = false;
             isLeft = true;
-        } else if (!m_rightHall.get()) {
+        } else if (m_rightHall.get()) {
             isRight = true;
             isCentre = false;
             isLeft = false;
         }
 
         // Set bounding data
-        isLeftHall = !m_leftHall.get();
-        isRightHall = !m_rightHall.get();
+        isLeftHall = m_leftHall.get();
+        isRightHall = m_rightHall.get();
     }
 
     /**

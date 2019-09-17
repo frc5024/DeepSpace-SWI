@@ -126,9 +126,12 @@ public class DriveTrain extends LoopableSubsystem {
      * @param speed    Forward speed (from -1.0 to 1.0)
      * @param rotation Rotation of robot (from -1.0 to 1.0)
      */
-    public void raiderDrive(double speed, double rotation) {
+    public void raiderDrive(double speed, double rotation, boolean invert_control) {
         is_moving = (speed != 0.0);
         is_turning = (rotation != 0.0);
+
+        // Handle control inversion
+        speed = (invert_control) ? speed * -1 : speed;
 
         /* Feed the accelerator */
         speed = m_SlewLimiter.feed(speed);
@@ -214,8 +217,7 @@ public class DriveTrain extends LoopableSubsystem {
     }
 
     /**
-     * Set the  robot into coast mode until user input is detected
-     * <br>
+     * Set the robot into coast mode until user input is detected <br>
      * This is useful for a "transition glide"
      */
     public void coastUntilInput() {

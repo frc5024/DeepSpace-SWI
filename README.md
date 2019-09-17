@@ -1,4 +1,4 @@
-# DeepSpace-SWI
+# DeepSpace-SWI 
 
 Our offseason codebase for DeepSpace was designed from the ground up over the course of four weeks to meet some simple goals:
  - Use Java.
