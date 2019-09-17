@@ -93,15 +93,18 @@ public class EdgeLight extends LoopableSubsystem {
 
         } else {
             // Handle shutoff
-            if (m_isTimedFrame && Timer.getFPGATimestamp() >= m_shutoffTime) {
-                // Set the desired config to kDisabled
-                setDesiredLightingConfig(EdgeLightConfig.kDisabled);
+            // if (m_isTimedFrame && Timer.getFPGATimestamp() >= m_shutoffTime) {
+            //     // Set the desired config to kDisabled
+            //     setDesiredLightingConfig(EdgeLightConfig.kDisabled);
 
-                // Reset timer data
-                m_isTimedFrame = false;
-                m_shutoffTime = 0.0;
+            //     // Reset timer data
+            //     m_isTimedFrame = false;
+            //     m_shutoffTime = 0.0;
 
-            }
+            // }
+
+
+            System.out.println("TTTTTT");
         }
 
     }

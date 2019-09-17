@@ -19,9 +19,11 @@ import frc.robot.commands.ManualArmController;
 import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.EdgeLight;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDring;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.EdgeLight.EdgeLightConfig;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -50,6 +52,7 @@ public class Robot extends TimedRobot {
 	public static Pneumatics m_pneumatics;
 	public static LEDring m_ledRing;
 	public static Climber m_climber;
+	public static EdgeLight m_edgeLight;
 
 	/* COMMANDS */
 	private DriveControl m_driveControl;
@@ -79,6 +82,7 @@ public class Robot extends TimedRobot {
 		m_pneumatics = Pneumatics.getInstance();
 		m_ledRing = new LEDring();
 		m_climber = new Climber();
+		// m_edgeLight = new EdgeLight();
 
 		logger.log("Constructing SubsystemLooper", Level.kRobot);
 		m_subsystemLooper = new SubsystemLooper();
@@ -90,6 +94,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_pneumatics);
 		m_subsystemLooper.register(m_ledRing);
 		m_subsystemLooper.register(m_climber);
+		// m_subsystemLooper.register(m_edgeLight);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
@@ -247,6 +252,8 @@ public class Robot extends TimedRobot {
 		// During a game, this is not needed.
 		m_compressorControl.start();
 		startTeleopCommands();
+
+		// m_edgeLight.setDesiredLightingConfig(EdgeLightConfig.kSuccess);
 	}
 
 	/**
