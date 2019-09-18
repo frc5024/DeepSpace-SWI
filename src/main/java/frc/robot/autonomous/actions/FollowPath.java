@@ -36,23 +36,31 @@ public class FollowPath extends Command {
 
     public FollowPath(String filename) {
         // These are backwards due to an issue with PathWeaver v2019.2.1
+        
         try {
-            m_leftTrajectory = PathfinderFRC.getTrajectory(filename + ".right.pf1.csv");
-            m_rightTrajectory = PathfinderFRC.getTrajectory(filename + ".left.pf1.csv");
+            m_leftTrajectory = PathfinderFRC.getTrajectory(filename + ".right");
+            m_rightTrajectory = PathfinderFRC.getTrajectory(filename + ".left");
         } catch (IOException e) {
             logger.log("[FollowPath] IOException for path:" + filename, Level.kWarning);
+            System.out.println(e);
             m_ioFailure = true;
             return;
         }
 
         // Create the followers
-        m_leftFollower = new EncoderFollower(m_leftTrajectory);
-        m_rightFollower = new EncoderFollower(m_rightTrajectory);
+        this.m_leftFollower = new EncoderFollower(m_leftTrajectory);
+        this.m_rightFollower = new EncoderFollower(m_rightTrajectory);
 
     }
-
+ 
     @Override
     protected void initialize() {
+
+        if (m_ioFailure) {
+            System.out.println("ERROR: INVALID FILE");
+        } else {
+            System.out.println("FILE OK");
+        }
         // Reset the paths
         m_leftFollower.reset();
         m_rightFollower.reset();
