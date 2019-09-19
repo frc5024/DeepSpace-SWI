@@ -7,6 +7,12 @@ package frc.robot;
  * around.
  */
 public class Constants {
+
+	public class Settings {
+
+		// Set this to true to replace Auto with Teleop (for use during demos)
+		public static final boolean disable_auto = true;
+	}
 	/* DriveTrain */
 	public class DriveTrain {
 		public static final int leftFrontMotor = 1;

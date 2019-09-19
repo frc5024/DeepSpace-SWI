@@ -104,7 +104,7 @@ public class EdgeLight extends LoopableSubsystem {
             // }
 
 
-            System.out.println("TTTTTT");
+            // System.out.println("TTTTTT");
         }
 
     }

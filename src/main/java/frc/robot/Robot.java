@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
 
 	/* CAMERAS */
 	AutoCamera m_mainCamera;
+	AutoCamera m_rearCamera;
 
 	/* AUTONOMOUS */
 	private Command m_autonomousCommand;
@@ -82,7 +83,7 @@ public class Robot extends TimedRobot {
 		m_pneumatics = Pneumatics.getInstance();
 		m_ledRing = new LEDring();
 		m_climber = new Climber();
-		// m_edgeLight = new EdgeLight();
+		m_edgeLight = new EdgeLight();
 
 		logger.log("Constructing SubsystemLooper", Level.kRobot);
 		m_subsystemLooper = new SubsystemLooper();
@@ -94,7 +95,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_pneumatics);
 		m_subsystemLooper.register(m_ledRing);
 		m_subsystemLooper.register(m_climber);
-		// m_subsystemLooper.register(m_edgeLight);
+		m_subsystemLooper.register(m_edgeLight);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
@@ -110,8 +111,14 @@ public class Robot extends TimedRobot {
 
 		/* Create cameras */
 		logger.log("Configuring cameras", Level.kRobot);
+
+		// Main camera
 		m_mainCamera = new AutoCamera("Main camera", 0);
 		m_mainCamera.keepCameraAwake(true);
+
+		// Rear camera
+		m_rearCamera = new AutoCamera("Rear camera", 1);
+		m_rearCamera.keepCameraAwake(true);
 
 		/* Start Threads */
 		logger.log("Starting threads", Level.kRobot);
@@ -141,10 +148,15 @@ public class Robot extends TimedRobot {
 	 * Autonomous has finished
 	 */
 	private void startTeleopCommands() {
+		// TODO: add NPE guards here
 		m_driveControl.start();
 		m_intakeControl.start();
 		m_climbControl.start();
 		m_compressorControl.start();
+
+		// reset loghting
+		m_edgeLight.setDesiredLightingConfig(EdgeLightConfig.kDisabled);
+		
 	}
 
 	/**
@@ -190,7 +202,7 @@ public class Robot extends TimedRobot {
 		m_autonomousCommand = m_chooser.getAutonomousCommand();
 
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
+		if (m_autonomousCommand != null && !Constants.Settings.disable_auto) {
 			m_autonomousCommand.start();
 		}
 
@@ -212,7 +224,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 
 		// Check if the auto sequence has finished.
-		if (m_autonomousCommand != null) {
+		if (m_autonomousCommand != null && !Constants.Settings.disable_auto) {
 			if (m_autonomousCommand.isCompleted()) {
 				// If the autoAssistLock is not set
 				if (!m_teleopAssistLock) {
