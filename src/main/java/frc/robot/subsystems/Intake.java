@@ -35,6 +35,9 @@ public class Intake extends LoopableSubsystem {
     boolean isPistonExtended, isFingerLowered = false;
     double sliderSpeed = 0.0;
 
+    int sliderSide = 0; 
+    boolean sliderCanMove = true;
+
     public Intake() {
         logger.log("[Intake] Constructing required components", Level.kRobot);
         m_fingerSolenoid = new DoubleSolenoid(Constants.PCM.can_id, Constants.PCM.finger_forward,
@@ -75,21 +78,31 @@ public class Intake extends LoopableSubsystem {
      * Note: sensors are wired backwards on both bots
      */
     private double limitSliderMovement(double speed) {
-        //TODO: this is disabled due to faulty hardware on robot
-        // double output = speed;
+        double output = speed;
 
-        // // Check left limit
-        // if (output > 0 && isLeft) {
-        //     output = 0.0;
-        // }
+        if (sliderCanMove == false) {
+            output = 0;
+        }
 
-        // // Check right limit
-        // if (output < 0 && isRight) {
-        //     output = 0.0;
-        // }
+        return output;
+    }
 
-        // return output;
-        return speed;
+    /**
+     * Returns a speed the slider should move at to center itself
+     * 
+     * 
+     */
+    private double centerSlider() {
+        if (!isCentre) {
+            if(sliderSide==1) {
+                return -1;
+            }
+            if(sliderSide==-1) {
+                return 1;
+            }
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -112,32 +125,38 @@ public class Intake extends LoopableSubsystem {
 
     public void periodicInput() {
         // Read from sensors and determine slider location. note: sensor is backwards
+        if (m_leftHall.get()) {
+            isLeft = false;
+        } else {
+            isLeft = true;
+        }
+        if (m_rightHall.get()) {
+            isRight = false;
+        } else {
+            isRight = true;
+        }
         if (m_centreHall.get()) {
-            if (sliderSpeed > 0) {
-                isRight = true;
-                isCentre = false;
-                isLeft = false;
-            } else if (sliderSpeed < 0) {
-                isRight = false;
-                isCentre = false;
-                isLeft = true;
-            } else {
-                isRight = false;
-                isCentre = true;
-                isLeft = false;
-            }
+            isCentre = false;
+        } else {
+            isCentre = true;
         }
 
-        // Make sure direction is still updated even if slider starts from unknown
-        // location
-        if (m_leftHall.get()) {
-            isRight = false;
-            isCentre = false;
-            isLeft = true;
-        } else if (m_rightHall.get()) {
-            isRight = true;
-            isCentre = false;
-            isLeft = false;
+        // stop slider 
+        if (sliderSpeed < 0 && isLeft) {
+            sliderCanMove = false;
+        } else if (sliderSpeed > 0 && isRight) {
+            sliderCanMove = false;
+        } else {
+            sliderCanMove = true;
+        }
+
+        // what side the slider is on
+        if (m_centreHall.get()) {
+            if (sliderSpeed > 0) {
+                sliderSide = 1;
+            } else if (sliderSpeed < 0) {
+                sliderSide = -1;
+            }
         }
 
         // Set bounding data
