@@ -127,6 +127,14 @@ public class Robot extends TimedRobot {
 
 	}
 
+	public void handleCommandStart(Runnable run_fn, String name) {
+		if (m_intakeControl != null) {
+			run_fn.run();
+		} else {
+			logger.log("[Robot] "+ name +" could not be started due to a NullPointerException!", Level.kWarning);
+		}
+	}
+
 	/**
 	 * This function is called every robot packet, no matter the mode. Use this for
 	 * items like diagnostics that you want ran during disabled, autonomous,
@@ -149,14 +157,29 @@ public class Robot extends TimedRobot {
 	 */
 	private void startTeleopCommands() {
 		// TODO: add NPE guards here
-		m_driveControl.start();
-		m_intakeControl.start();
+		// Start all commands
+		if (m_driveControl != null) {
+			m_driveControl.start();
+		} else {
+			logger.log("[Robot] DriveControl could not be started due to a NullPointerException!", Level.kWarning);
+		}
+
+		if (m_intakeControl != null) {
+			m_intakeControl.start();
+		} else {
+			logger.log("[Robot] IntakeControl could not be started due to a NullPointerException!", Level.kWarning);
+		}
+
+
 		m_climbControl.start();
 		m_compressorControl.start();
 
-		// reset loghting
+		// reset lighting
 		m_edgeLight.setDesiredLightingConfig(EdgeLightConfig.kDisabled);
-		
+
+		// Enable brakes
+		m_driveTrain.setBrakes(true);
+
 	}
 
 	/**
@@ -226,7 +249,7 @@ public class Robot extends TimedRobot {
 		// Check if the auto sequence has finished.
 		if (m_autonomousCommand != null && !Constants.Settings.disable_auto) {
 			if (m_autonomousCommand.isCompleted()) {
-				// If the autoAssistLock is not set
+				// Only start teleop once in the loop
 				if (!m_teleopAssistLock) {
 					// Start teleop commands early
 					startTeleopCommands();
@@ -238,7 +261,16 @@ public class Robot extends TimedRobot {
 			}
 		} else {
 			// Something went horribly wrong. Just give the drivers control
-			startTeleopCommands();
+			// startTeleopCommands();
+
+			// Only start teleop once in the loop
+			if (!m_teleopAssistLock) {
+				// Start teleop commands early
+				startTeleopCommands();
+
+				// Lock the teleop startup boolean
+				m_teleopAssistLock = true;
+			}
 		}
 	}
 

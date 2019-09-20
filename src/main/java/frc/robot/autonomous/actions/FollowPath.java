@@ -57,10 +57,11 @@ public class FollowPath extends Command {
     protected void initialize() {
 
         if (m_ioFailure) {
-            System.out.println("ERROR: INVALID FILE");
-        } else {
-            System.out.println("FILE OK");
+            // Warn and fail
+            logger.log("[FollowPath] Invalid pathing file path!", Level.kWarning);
+            return;
         }
+        
         // Reset the paths
         m_leftFollower.reset();
         m_rightFollower.reset();

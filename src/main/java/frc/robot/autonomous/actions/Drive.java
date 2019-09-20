@@ -2,9 +2,11 @@ package frc.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.TimedCommand;
+import frc.lib5k.utils.RobotLogger;
 import frc.robot.Robot;
 
 public class Drive extends TimedCommand {
+    RobotLogger logger = RobotLogger.getInstance();
 
     double m_driveSpeedStart;
     double m_driveSpeedEnd;
@@ -23,14 +25,18 @@ public class Drive extends TimedCommand {
 
     @Override
     protected void initialize() {
+        logger.log("[Drive] Starting auto-drive");
+
         m_timer.reset();
         m_timer.start();
+
     }
 
     @Override
     protected void execute() {
 
-        m_driveSpeed = (m_driveSpeedStart + Math.min(m_timer.get(), 2.0) * 0.15) * m_driveSpeedEnd;
+        // m_driveSpeed = (m_driveSpeedStart + Math.min(m_timer.get(), 2.0) * 0.15) * m_driveSpeedEnd;
+        m_driveSpeed = m_driveSpeedStart;
 
         Robot.m_driveTrain.arcadeDrive(m_driveSpeed, 0.0);
     }

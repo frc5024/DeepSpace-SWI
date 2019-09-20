@@ -9,6 +9,9 @@ import frc.lib5k.utils.RobotLogger;
 import frc.lib5k.utils.RobotLogger.Level;
 import frc.robot.Constants;
 
+/**
+ * The subsystem that controls the EdgeLight
+ */
 public class EdgeLight extends LoopableSubsystem {
     RobotLogger logger = RobotLogger.getInstance();
 
@@ -91,28 +94,15 @@ public class EdgeLight extends LoopableSubsystem {
             // All new data has been handled
             m_isNewData = false;
 
-        } else {
-            // Handle shutoff
-            // if (m_isTimedFrame && Timer.getFPGATimestamp() >= m_shutoffTime) {
-            //     // Set the desired config to kDisabled
-            //     setDesiredLightingConfig(EdgeLightConfig.kDisabled);
-
-            //     // Reset timer data
-            //     m_isTimedFrame = false;
-            //     m_shutoffTime = 0.0;
-
-            // }
-
-
-            // System.out.println("TTTTTT");
         }
-
     }
 
     /**
      * Set the desired action for the edgelights
+     * <br>
+     * This will notify the loop of new data for handling
      * 
-     * @param cfg
+     * @param cfg Config to set
      */
     public void setDesiredLightingConfig(EdgeLightConfig cfg) {
         m_desiredConfig = cfg;
