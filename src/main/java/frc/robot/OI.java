@@ -1,16 +1,20 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.lib5k.loops.loopables.LoopableSubsystem;
 import frc.robot.autonomous.commandgroups.Climb;
 import edu.wpi.first.wpilibj.GenericHID;
-
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
+public class OI extends LoopableSubsystem {
+	String name = "oi";
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -43,6 +47,30 @@ public class OI {
 	public XboxController driverController = new XboxController(0);
 	public XboxController operatorController = new XboxController(1);
 
+	// notification
+	boolean m_shouldNotifyDriver = false;
+	boolean m_shouldNotifyOperator = false;
+	double m_driverNotifyTime = 0.0;
+	double m_operatorNofityTime = 0.0;
+
+	/**
+	 * Notify the driver via haptics <br>
+	 * This will tell the looper to handle the vibration
+	 */
+	public void notifyDriver() {
+		m_shouldNotifyDriver = true;
+		m_driverNotifyTime = Timer.getFPGATimestamp();
+	}
+
+	/**
+	 * Notify the operator via haptics <br>
+	 * This will tell the looper to handle the vibration
+	 */
+	public void notifyOperator() {
+		m_shouldNotifyOperator = true;
+		m_operatorNofityTime = Timer.getFPGATimestamp();
+	}
+
 	/**
 	 * Get the DriveTrain throttle value from driverstation
 	 * 
@@ -53,7 +81,6 @@ public class OI {
 
 		speed += driverController.getTriggerAxis(GenericHID.Hand.kRight);
 		speed -= driverController.getTriggerAxis(GenericHID.Hand.kLeft);
-
 
 		return speed;
 	}
@@ -69,6 +96,7 @@ public class OI {
 
 	/**
 	 * Should the bot flip it's orientation (toggle input)
+	 * 
 	 * @return Output
 	 */
 	public boolean getDriveTrainInvert() {
@@ -116,7 +144,7 @@ public class OI {
 		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 0;
 	}
 
-	public boolean getManualArmToggle(){
+	public boolean getManualArmToggle() {
 		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 180;
 	}
 
@@ -124,5 +152,56 @@ public class OI {
 		return operatorController.getY(GenericHID.Hand.kRight) * -1;
 	}
 
+	/* -- BEGIN SUBSYSTEM METHODS -- */
+
+	@Override
+	public void periodicOutput() {
+		double current_time = Timer.getFPGATimestamp();
+
+		// Handle driver haptics
+		if (m_shouldNotifyDriver) {
+			driverController.setRumble(RumbleType.kLeftRumble, 0.5);
+
+		} else if (m_shouldNotifyDriver && (current_time - m_driverNotifyTime) < 1) {
+			// If vibration has been enabled for over 1 second, disable it
+			driverController.setRumble(RumbleType.kLeftRumble, 0.0);
+
+			m_shouldNotifyDriver = false;
+
+		}
+
+		// Handle operator haptics
+		if (m_shouldNotifyOperator) {
+			operatorController.setRumble(RumbleType.kLeftRumble, 0.5);
+
+		} else if (m_shouldNotifyOperator && (current_time - m_operatorNofityTime) < 1) {
+			// If vibration has been enabled for over 1 second, disable it
+			operatorController.setRumble(RumbleType.kLeftRumble, 0.0);
+
+			m_shouldNotifyOperator = false;
+
+		}
+
+	}
+
+	@Override
+	public void outputTelemetry() {
+		SmartDashboard.putBoolean("[OI] Is notifying driver?", m_shouldNotifyDriver);
+		SmartDashboard.putBoolean("[OI] Is notifying operator?", m_shouldNotifyOperator);
+
+	}
+
+	@Override
+	public void stop() {
+		m_shouldNotifyDriver = false;
+		m_shouldNotifyOperator = false;
+
+	}
+
+	@Override
+	public void reset() {
+		stop();
+
+	}
 
 }

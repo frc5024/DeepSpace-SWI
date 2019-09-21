@@ -28,14 +28,16 @@ public class Intake extends LoopableSubsystem {
     DigitalInput m_leftHall;
     DigitalInput m_centreHall;
     DigitalInput m_rightHall;
+    DigitalInput m_hatchDetector;
 
     // Buffer readings
     boolean isLeftHall, isRightHall = false;
     boolean isLeft, isCentre, isRight = false;
     boolean isPistonExtended, isFingerLowered = false;
+    boolean hasHatch = false;
     double sliderSpeed = 0.0;
 
-    int sliderSide = 0; 
+    int sliderSide = 0;
     boolean sliderCanMove = true;
 
     public Intake() {
@@ -54,6 +56,9 @@ public class Intake extends LoopableSubsystem {
         m_leftHall = new DigitalInput(Constants.DIO.slider_left_limit);
         m_centreHall = new DigitalInput(Constants.DIO.slider_centre_limit);
         m_rightHall = new DigitalInput(Constants.DIO.slider_right_limit);
+
+        logger.log("[Intake] Constructing hatch detection sensor", Level.kRobot);
+        m_hatchDetector = new DigitalInput(Constants.DIO.hatch_sensor);
 
         // Set the subsystem name for logging
         name = "Intake";
@@ -92,17 +97,17 @@ public class Intake extends LoopableSubsystem {
      * 
      * 
      */
-    private double centerSlider() {
+    private double getDirectionToCentre() {
         if (!isCentre) {
-            if(sliderSide==1) {
+            if (sliderSide == 1) {
                 return -1;
             }
-            if(sliderSide==-1) {
+            if (sliderSide == -1) {
                 return 1;
             }
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     @Override
@@ -120,7 +125,7 @@ public class Intake extends LoopableSubsystem {
 
         // Handle slider
         m_slider.set(limitSliderMovement(sliderSpeed));
-        
+
     }
 
     public void periodicInput() {
@@ -141,7 +146,7 @@ public class Intake extends LoopableSubsystem {
             isCentre = true;
         }
 
-        // stop slider 
+        // stop slider
         if (sliderSpeed < 0 && isLeft) {
             sliderCanMove = false;
         } else if (sliderSpeed > 0 && isRight) {
@@ -162,6 +167,9 @@ public class Intake extends LoopableSubsystem {
         // Set bounding data
         isLeftHall = m_leftHall.get();
         isRightHall = m_rightHall.get();
+
+        // Read Hatch verification switch
+        hasHatch = m_hatchDetector.get();
     }
 
     /**
@@ -185,6 +193,14 @@ public class Intake extends LoopableSubsystem {
         this.sliderSpeed = sliderSpeed;
     }
 
+    /**
+     * Check if the robot has a hatch panel
+     * @return Is a hatch being held by the intake?
+     */
+    public boolean isHatchObtained() {
+        return hasHatch;
+    }
+
     @Override
     public void outputTelemetry() {
         SmartDashboard.putBoolean("[Intake] Is slider left", isLeft);
@@ -204,6 +220,7 @@ public class Intake extends LoopableSubsystem {
         sliderSpeed = 0.0;
         isFingerLowered = false;
         isPistonExtended = false;
+        hasHatch = false;
     }
 
     @Override

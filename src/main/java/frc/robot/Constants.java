@@ -106,6 +106,8 @@ public class Constants {
 		public static final int leg_top = 1;
 		public static final int leg_mid = 5;
 		public static final int leg_low = 6;
+
+		public static final int hatch_sensor = 2;
 	}
 
 	// Slider motor id

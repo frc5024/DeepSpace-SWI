@@ -24,7 +24,6 @@ public class IntakeControl extends Command {
     // immediately go from intake to outtake. This will fix data conflicts.
     boolean m_lastIntakeState = false;
 
-
     @SuppressWarnings("checkstyle:JavadocMethod")
     public IntakeControl() {
         logger.log("[IntakeControl] Creating Toggle objects", Level.kRobot);
@@ -82,6 +81,16 @@ public class IntakeControl extends Command {
             Robot.m_intake.setFingerLowered(m_shouldIntake);
         }
 
+        // Handle automatic hatch intake
+        if (Robot.m_intake.isHatchObtained()) {
+            // Resetting the intake toggle will both grab the hatch, and handle related
+            // states automatically. Much easier than manually resetting everything here
+            m_intakeToggle.reset();
+
+            // Notify the operator that the bot has taken control
+            Robot.m_oi.notifyOperator();
+        }
+
         // Set lastIntakeState to current state
         m_lastIntakeState = m_shouldIntake;
 
@@ -102,7 +111,7 @@ public class IntakeControl extends Command {
                         "[IntakeControl] Operator tried to outtake while the robot was already outtaking. Ignoring action");
             }
 
-            m_shouldOuttake = false; 
+            m_shouldOuttake = false;
         }
 
     }

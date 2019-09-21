@@ -96,6 +96,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_ledRing);
 		m_subsystemLooper.register(m_climber);
 		m_subsystemLooper.register(m_edgeLight);
+		m_subsystemLooper.register(m_oi);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
