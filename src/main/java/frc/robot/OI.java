@@ -156,31 +156,31 @@ public class OI extends LoopableSubsystem {
 
 	@Override
 	public void periodicOutput() {
-		double current_time = Timer.getFPGATimestamp();
+		// double current_time = Timer.getFPGATimestamp();
 
-		// Handle driver haptics
-		if (m_shouldNotifyDriver) {
-			driverController.setRumble(RumbleType.kLeftRumble, 0.5);
+		// // Handle driver haptics
+		// if (m_shouldNotifyDriver) {
+		// 	driverController.setRumble(RumbleType.kLeftRumble, 0.5);
 
-		} else if (m_shouldNotifyDriver && (current_time - m_driverNotifyTime) < 1) {
-			// If vibration has been enabled for over 1 second, disable it
-			driverController.setRumble(RumbleType.kLeftRumble, 0.0);
+		// } else if (m_shouldNotifyDriver && (current_time - m_driverNotifyTime) < 1) {
+		// 	// If vibration has been enabled for over 1 second, disable it
+		// 	driverController.setRumble(RumbleType.kLeftRumble, 0.0);
 
-			m_shouldNotifyDriver = false;
+		// 	m_shouldNotifyDriver = false;
 
-		}
+		// }
 
-		// Handle operator haptics
-		if (m_shouldNotifyOperator) {
-			operatorController.setRumble(RumbleType.kLeftRumble, 0.5);
+		// // Handle operator haptics
+		// if (m_shouldNotifyOperator) {
+		// 	operatorController.setRumble(RumbleType.kLeftRumble, 0.5);
 
-		} else if (m_shouldNotifyOperator && (current_time - m_operatorNofityTime) < 1) {
-			// If vibration has been enabled for over 1 second, disable it
-			operatorController.setRumble(RumbleType.kLeftRumble, 0.0);
+		// } else if (m_shouldNotifyOperator && (current_time - m_operatorNofityTime) < 1) {
+		// 	// If vibration has been enabled for over 1 second, disable it
+		// 	operatorController.setRumble(RumbleType.kLeftRumble, 0.0);
 
-			m_shouldNotifyOperator = false;
+		// 	m_shouldNotifyOperator = false;
 
-		}
+		// }
 
 	}
 
