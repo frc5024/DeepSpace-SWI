@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="frc.lib5k.control.ToggleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-09-21T20:28:27" hostname="laptop" time="0.001">
+<testsuite name="frc.lib5k.control.ToggleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-09-24T18:56:22" hostname="laptop" time="0.001">
   <properties/>
   <testcase name="testToggle" classname="frc.lib5k.control.ToggleTest" time="0.0"/>
   <testcase name="testToggleReset" classname="frc.lib5k.control.ToggleTest" time="0.0"/>
