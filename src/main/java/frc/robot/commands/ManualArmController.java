@@ -31,6 +31,7 @@ public class ManualArmController extends Command {
 
         // Set a constant crawl speed for Climber
         Robot.m_climber.setCrawlRate(1.0);
+        m_armSpeed = 0.0;
 
     }
 

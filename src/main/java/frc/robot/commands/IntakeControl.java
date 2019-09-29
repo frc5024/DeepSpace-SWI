@@ -82,14 +82,14 @@ public class IntakeControl extends Command {
         }
 
         // Handle automatic hatch intake
-        if (Robot.m_intake.isHatchObtained()) {
-            // Resetting the intake toggle will both grab the hatch, and handle related
-            // states automatically. Much easier than manually resetting everything here
-            m_intakeToggle.reset();
+        // if (Robot.m_intake.isHatchObtained()) {
+        //     // Resetting the intake toggle will both grab the hatch, and handle related
+        //     // states automatically. Much easier than manually resetting everything here
+        //     m_intakeToggle.reset();
 
-            // Notify the operator that the bot has taken control
-            Robot.m_oi.notifyOperator();
-        }
+        //     // Notify the operator that the bot has taken control
+        //     Robot.m_oi.notifyOperator();
+        // }
 
         // Set lastIntakeState to current state
         m_lastIntakeState = m_shouldIntake;

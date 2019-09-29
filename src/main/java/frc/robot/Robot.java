@@ -114,12 +114,12 @@ public class Robot extends TimedRobot {
 		logger.log("Configuring cameras", Level.kRobot);
 
 		// Main camera
-		m_mainCamera = new AutoCamera("Main camera", 0);
-		m_mainCamera.keepCameraAwake(true);
+		// m_mainCamera = new AutoCamera("Main camera", 0);
+		// m_mainCamera.keepCameraAwake(true);
 
-		// Rear camera
-		m_rearCamera = new AutoCamera("Rear camera", 1);
-		m_rearCamera.keepCameraAwake(true);
+		// // Rear camera
+		// m_rearCamera = new AutoCamera("Rear camera", 1);
+		// m_rearCamera.keepCameraAwake(true);
 
 		/* Start Threads */
 		logger.log("Starting threads", Level.kRobot);
