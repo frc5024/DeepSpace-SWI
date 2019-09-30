@@ -20,6 +20,7 @@ import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.EdgeLight;
+import frc.robot.subsystems.Gyroscope;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDring;
 import frc.robot.subsystems.Pneumatics;
@@ -97,6 +98,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_climber);
 		m_subsystemLooper.register(m_edgeLight);
 		m_subsystemLooper.register(m_oi);
+		m_subsystemLooper.register(Gyroscope.getInstance());
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
@@ -114,8 +116,8 @@ public class Robot extends TimedRobot {
 		logger.log("Configuring cameras", Level.kRobot);
 
 		// Main camera
-		// m_mainCamera = new AutoCamera("Main camera", 0);
-		// m_mainCamera.keepCameraAwake(true);
+		m_mainCamera = new AutoCamera("Main camera", 0);
+		m_mainCamera.keepCameraAwake(true);
 
 		// // Rear camera
 		// m_rearCamera = new AutoCamera("Rear camera", 1);
