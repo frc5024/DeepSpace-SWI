@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import frc.robot.autonomous.commandgroups.Climb;
 import edu.wpi.first.wpilibj.GenericHID;
 
-
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -54,7 +53,6 @@ public class OI {
 		speed += driverController.getTriggerAxis(GenericHID.Hand.kRight);
 		speed -= driverController.getTriggerAxis(GenericHID.Hand.kLeft);
 
-
 		return speed;
 	}
 
@@ -69,6 +67,7 @@ public class OI {
 
 	/**
 	 * Should the bot flip it's orientation (toggle input)
+	 * 
 	 * @return Output
 	 */
 	public boolean getDriveTrainInvert() {
@@ -116,13 +115,12 @@ public class OI {
 		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 0;
 	}
 
-	public boolean getManualArmToggle(){
+	public boolean getManualArmToggle() {
 		return operatorController.getBumperPressed(GenericHID.Hand.kRight) && operatorController.getPOV() == 180;
 	}
 
 	public double getArmMovementOverrideSpeed() {
 		return operatorController.getY(GenericHID.Hand.kRight) * -1;
 	}
-
 
 }
