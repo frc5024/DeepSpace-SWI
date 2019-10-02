@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.lib5k.control.Toggle;
 import frc.lib5k.utils.RobotLogger;
@@ -59,7 +60,9 @@ public class IntakeControl extends Command {
         // Feed cargo outtake button through a togglePressed
         m_shouldDropCargo = m_cargoToggle.feed(Robot.m_oi.getCargo());
 
-        // Do not allow an intake and an outtake at the same time
+        if(DriverStation.getInstance().isEnabled()) {
+
+            // Do not allow an intake and an outtake at the same time
         if (m_shouldOuttake) {
             // Disable intake and reset it's toggle
             m_shouldIntake = false;
@@ -104,7 +107,7 @@ public class IntakeControl extends Command {
 
             m_shouldOuttake = false; 
         }
-
+        }
     }
 
     @Override
