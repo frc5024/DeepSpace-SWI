@@ -100,7 +100,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_edgeLight);
 
 		/* Create Commands */
-		logger.log("Constructing Connamds", Level.kRobot);
+		logger.log("Constructing Commands", Level.kRobot);
 		m_driveControl = new DriveControl();
 		m_intakeControl = new IntakeControl();
 		m_compressorControl = new CompressorControl();
@@ -323,7 +323,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-
+		
+		if(m_isFirstControlFrame){
+			m_outtakeGroup.cancel();
+		}
+		
 		m_isFirstControlFrame = false;
 	}
 
