@@ -59,7 +59,7 @@ public class IntakeControl extends Command {
         // Feed cargo outtake button through a togglePressed
         m_shouldDropCargo = m_cargoToggle.feed(Robot.m_oi.getCargo());
 
-        if (DriverStation.getInstance().isEnabled()) {
+        if (!Robot.m_isFirstControlFrame) {
 
             // Do not allow an intake and an outtake at the same time
             if (m_shouldOuttake) {
@@ -98,6 +98,8 @@ public class IntakeControl extends Command {
                 // Only start if not already running
                 if (!Robot.m_outtakeGroup.isRunning()) {
                     Robot.m_outtakeGroup.start();
+                    logger.log("CommandGroup Started", Level.kWarning);
+                    
                 } else {
                     // Otherwise, warn to the logfile
                     logger.log(
@@ -106,6 +108,9 @@ public class IntakeControl extends Command {
 
                 m_shouldOuttake = false;
             }
+        } else {
+            // Reset buffered inputs
+            m_shouldOuttake = false;
         }
     }
 

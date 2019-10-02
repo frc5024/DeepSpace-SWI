@@ -66,6 +66,8 @@ public class Robot extends TimedRobot {
 	public static Climb m_climbGroup;
 	public static ManualArmController m_manualArmController;
 
+	public static boolean m_isFirstControlFrame = false;
+
 	/**
 	 * This function is run when the robot is first started up and should be used
 	 * for any initialization code.
@@ -288,6 +290,7 @@ public class Robot extends TimedRobot {
 
 		// Remove Buffered Commands during 
 		m_subsystemLooper.stopAll();
+		m_outtakeGroup.cancel();
 
 		logger.log("Teleop Starting");
 		// This makes sure that the autonomous stops running when
@@ -309,6 +312,9 @@ public class Robot extends TimedRobot {
 
 		// m_edgeLight.setDesiredLightingConfig(EdgeLightConfig.kSuccess);
 
+		// Set first control frame
+		m_isFirstControlFrame = true;
+
 	}
 
 	/**
@@ -317,6 +323,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+
+		m_isFirstControlFrame = false;
 	}
 
 	/**
