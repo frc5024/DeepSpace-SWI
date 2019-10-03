@@ -99,7 +99,7 @@ public class IntakeControl extends Command {
                 if (!Robot.m_outtakeGroup.isRunning()) {
                     Robot.m_outtakeGroup.start();
                     logger.log("CommandGroup Started", Level.kWarning);
-                    
+
                 } else {
                     // Otherwise, warn to the logfile
                     logger.log(
@@ -109,7 +109,7 @@ public class IntakeControl extends Command {
                 m_shouldOuttake = false;
             }
         } else {
-            // Reset buffered inputs
+            // Reset buffered input
             m_shouldOuttake = false;
         }
     }

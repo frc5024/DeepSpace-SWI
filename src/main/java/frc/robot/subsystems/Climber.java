@@ -126,7 +126,7 @@ public class Climber extends LoopableSubsystem {
     public boolean getArmSensor() {
         return !m_armHall.get();
     }
-    
+
     public boolean getOpticSensor() {
         return m_opticSensor.get();
     }
@@ -152,17 +152,19 @@ public class Climber extends LoopableSubsystem {
 
     /**
      * Check if the gyro pitch reading is in range +/- of the offset
+     * 
      * @param range Range of error around offset
      * @return Is the pitch in range
      */
     public boolean isGyroInRange(double range) {
         double currentPitch = m_gyro.getPitch();
-        
+
         return currentPitch - range <= m_pitchOffset && m_pitchOffset <= currentPitch + range;
     }
 
     /**
      * Get the robot's pitch
+     * 
      * @return Gyro pitch reading
      */
     public double getGyroPitch() {
@@ -179,6 +181,7 @@ public class Climber extends LoopableSubsystem {
 
     /**
      * Check if the climber is locked
+     * 
      * @return Is the climber locked
      */
     public boolean isLocked() {

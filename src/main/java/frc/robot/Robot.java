@@ -135,7 +135,7 @@ public class Robot extends TimedRobot {
 		if (m_intakeControl != null) {
 			run_fn.run();
 		} else {
-			logger.log("[Robot] "+ name +" could not be started due to a NullPointerException!", Level.kWarning);
+			logger.log("[Robot] " + name + " could not be started due to a NullPointerException!", Level.kWarning);
 		}
 	}
 
@@ -173,7 +173,6 @@ public class Robot extends TimedRobot {
 		} else {
 			logger.log("[Robot] IntakeControl could not be started due to a NullPointerException!", Level.kWarning);
 		}
-
 
 		m_climbControl.start();
 		m_compressorControl.start();
@@ -226,7 +225,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 
-		// Remove Buffered Commands during 
+		// Remove Buffered Commands during
 		m_subsystemLooper.stopAll();
 
 		logger.log("Autonomous Starting");
@@ -244,7 +243,6 @@ public class Robot extends TimedRobot {
 		// during auto
 		m_compressorControl.start();
 
-		
 	}
 
 	/**
@@ -290,7 +288,7 @@ public class Robot extends TimedRobot {
 	 */
 	public void teleopInit() {
 
-		// Remove Buffered Commands during 
+		// Remove Buffered Commands during
 		m_subsystemLooper.stopAll();
 		m_outtakeGroup.cancel();
 
@@ -325,11 +323,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
-		if(m_isFirstControlFrame){
+
+		if (m_isFirstControlFrame) {
 			m_outtakeGroup.cancel();
 		}
-		
+
 		m_isFirstControlFrame = false;
 	}
 
