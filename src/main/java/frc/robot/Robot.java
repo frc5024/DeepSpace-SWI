@@ -98,7 +98,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_edgeLight);
 
 		/* Create Commands */
-		logger.log("Constructing Connamds", Level.kRobot);
+		logger.log("Constructing Commands", Level.kRobot);
 		m_driveControl = new DriveControl();
 		m_intakeControl = new IntakeControl();
 		m_compressorControl = new CompressorControl();
@@ -125,13 +125,15 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.start(Constants.PeriodicTiming.robot_period);
 		logger.start(Constants.PeriodicTiming.logging_period);
 
+		m_intakeControl.setRunWhenDisabled(true);
+
 	}
 
 	public void handleCommandStart(Runnable run_fn, String name) {
 		if (m_intakeControl != null) {
 			run_fn.run();
 		} else {
-			logger.log("[Robot] "+ name +" could not be started due to a NullPointerException!", Level.kWarning);
+			logger.log("[Robot] " + name + " could not be started due to a NullPointerException!", Level.kWarning);
 		}
 	}
 
@@ -169,7 +171,6 @@ public class Robot extends TimedRobot {
 		} else {
 			logger.log("[Robot] IntakeControl could not be started due to a NullPointerException!", Level.kWarning);
 		}
-
 
 		m_climbControl.start();
 		m_compressorControl.start();
@@ -221,6 +222,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+
+		// Remove Buffered Commands during
+		m_subsystemLooper.stopAll();
+
 		logger.log("Autonomous Starting");
 		m_autonomousCommand = m_chooser.getAutonomousCommand();
 
@@ -235,6 +240,7 @@ public class Robot extends TimedRobot {
 		// Start the compressor control. Drivers may want to turn the compressor on
 		// during auto
 		m_compressorControl.start();
+
 	}
 
 	/**
@@ -279,6 +285,7 @@ public class Robot extends TimedRobot {
 	 * This is run once when the robot switches to Teleop mode.
 	 */
 	public void teleopInit() {
+
 		logger.log("Teleop Starting");
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -298,6 +305,7 @@ public class Robot extends TimedRobot {
 		startTeleopCommands();
 
 		// m_edgeLight.setDesiredLightingConfig(EdgeLightConfig.kSuccess);
+
 	}
 
 	/**
@@ -306,6 +314,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+
 	}
 
 	/**

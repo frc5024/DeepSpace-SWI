@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.lib5k.control.Toggle;
 import frc.lib5k.utils.RobotLogger;
@@ -23,7 +24,6 @@ public class IntakeControl extends Command {
     // Latch for intaking. This latch is needed because the OP might want to
     // immediately go from intake to outtake. This will fix data conflicts.
     boolean m_lastIntakeState = false;
-
 
     @SuppressWarnings("checkstyle:JavadocMethod")
     public IntakeControl() {
@@ -59,52 +59,59 @@ public class IntakeControl extends Command {
         // Feed cargo outtake button through a togglePressed
         m_shouldDropCargo = m_cargoToggle.feed(Robot.m_oi.getCargo());
 
-        // Do not allow an intake and an outtake at the same time
-        if (m_shouldOuttake) {
-            // Disable intake and reset it's toggle
-            m_shouldIntake = false;
-            m_intakeToggle.reset();
-        }
+        if (DriverStation.getInstance().isEnabled()) {
 
-        /* Send outputs to the subsystems */
-
-        // Only allow slider control if intaking
-        if (m_shouldIntake) {
-            // Send slider speed
-            Robot.m_intake.setSliderSpeed(m_sliderSpeed);
-        } else {
-            Robot.m_intake.setSliderSpeed(0.0);
-        }
-
-        // Send intake data to finger only if the intakeState is new. This will ensure
-        // that we are not overriding other commands
-        if (m_shouldIntake != m_lastIntakeState) {
-            Robot.m_intake.setFingerLowered(m_shouldIntake);
-        }
-
-        // Set lastIntakeState to current state
-        m_lastIntakeState = m_shouldIntake;
-
-        // Set cargo flap state
-        Robot.m_cargoflap.setFlapLowered(m_shouldDropCargo);
-
-        // Enable LED ring if intaking
-        Robot.m_ledRing.setEnabled(m_shouldIntake);
-
-        // Start the outtake commandgroup if outtaking
-        if (m_shouldOuttake) {
-            // Only start if not already running
-            if (!Robot.m_outtakeGroup.isRunning()) {
-                Robot.m_outtakeGroup.start();
-            } else {
-                // Otherwise, warn to the logfile
-                logger.log(
-                        "[IntakeControl] Operator tried to outtake while the robot was already outtaking. Ignoring action");
+            // Do not allow an intake and an outtake at the same time
+            if (m_shouldOuttake) {
+                // Disable intake and reset it's toggle
+                m_shouldIntake = false;
+                m_intakeToggle.reset();
             }
 
-            m_shouldOuttake = false; 
-        }
+            /* Send outputs to the subsystems */
 
+            // Only allow slider control if intaking
+            if (m_shouldIntake) {
+                // Send slider speed
+                Robot.m_intake.setSliderSpeed(m_sliderSpeed);
+            } else {
+                Robot.m_intake.setSliderSpeed(0.0);
+            }
+
+            // Send intake data to finger only if the intakeState is new. This will ensure
+            // that we are not overriding other commands
+            if (m_shouldIntake != m_lastIntakeState) {
+                Robot.m_intake.setFingerLowered(m_shouldIntake);
+            }
+
+            // Set lastIntakeState to current state
+            m_lastIntakeState = m_shouldIntake;
+
+            // Set cargo flap state
+            Robot.m_cargoflap.setFlapLowered(m_shouldDropCargo);
+
+            // Enable LED ring if intaking
+            Robot.m_ledRing.setEnabled(m_shouldIntake);
+
+            // Start the outtake commandgroup if outtaking
+            if (m_shouldOuttake) {
+                // Only start if not already running
+                if (!Robot.m_outtakeGroup.isRunning()) {
+                    Robot.m_outtakeGroup.start();
+                    logger.log("CommandGroup Started", Level.kWarning);
+
+                } else {
+                    // Otherwise, warn to the logfile
+                    logger.log(
+                            "[IntakeControl] Operator tried to outtake while the robot was already outtaking. Ignoring action");
+                }
+
+                m_shouldOuttake = false;
+            }
+        } else {
+            // Reset buffered input
+            m_shouldOuttake = false;
+        }
     }
 
     @Override
