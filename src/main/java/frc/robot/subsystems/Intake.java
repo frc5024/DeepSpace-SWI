@@ -29,6 +29,17 @@ public class Intake extends LoopableSubsystem {
         return m_instance;
     }
 
+    public void setFingerLowered(boolean lowered){
+    }
+
+    public void setPistonExtended(boolean extended){
+
+    }
+
+    public void setSliderSpeed(double speed){
+        
+    }
+
     @Override
     public void periodicOutput() {
 
