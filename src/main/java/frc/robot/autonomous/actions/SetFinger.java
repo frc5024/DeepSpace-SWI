@@ -26,7 +26,7 @@ public class SetFinger extends TimedCommand {
     @Override
     protected void execute() {
         // Tell the subsystem to move the finger
-        Robot.m_intake.setFingerLowered(m_desiredState);
+        // Robot.m_intake.setFingerLowered(m_desiredState);
     }
 
     

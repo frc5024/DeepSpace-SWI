@@ -14,13 +14,11 @@ import frc.robot.autonomous.commandgroups.Outtake;
 import frc.robot.commands.ClimbControl;
 import frc.robot.commands.CompressorControl;
 import frc.robot.commands.DriveControl;
-import frc.robot.commands.IntakeControl;
 import frc.robot.commands.ManualArmController;
 import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.EdgeLight;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDring;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.EdgeLight.EdgeLightConfig;
@@ -48,7 +46,6 @@ public class Robot extends TimedRobot {
 	SubsystemLooper m_subsystemLooper;
 	public static OI m_oi;
 	public static DriveTrain m_driveTrain;
-	public static Intake m_intake;
 	public static CargoFlap m_cargoflap;
 	public static Pneumatics m_pneumatics;
 	public static LEDring m_ledRing;
@@ -57,7 +54,6 @@ public class Robot extends TimedRobot {
 
 	/* COMMANDS */
 	private DriveControl m_driveControl;
-	private IntakeControl m_intakeControl;
 	private CompressorControl m_compressorControl;
 	private ClimbControl m_climbControl;
 
@@ -78,7 +74,6 @@ public class Robot extends TimedRobot {
 		logger.log("Constructing Subsystems", Level.kRobot);
 		m_oi = new OI();
 		m_driveTrain = DriveTrain.getInstance();
-		m_intake = Intake.getInstance();
 		m_cargoflap = new CargoFlap();
 		m_pneumatics = Pneumatics.getInstance();
 		m_ledRing = new LEDring();
@@ -90,7 +85,6 @@ public class Robot extends TimedRobot {
 
 		logger.log("Registering Subsystems with SubsystemLooper", Level.kRobot);
 		m_subsystemLooper.register(m_driveTrain);
-		m_subsystemLooper.register(m_intake);
 		m_subsystemLooper.register(m_cargoflap);
 		m_subsystemLooper.register(m_pneumatics);
 		m_subsystemLooper.register(m_ledRing);
@@ -100,7 +94,6 @@ public class Robot extends TimedRobot {
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
 		m_driveControl = new DriveControl();
-		m_intakeControl = new IntakeControl();
 		m_compressorControl = new CompressorControl();
 		m_climbControl = new ClimbControl();
 		m_manualArmController = new ManualArmController();
@@ -125,14 +118,6 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.start(Constants.PeriodicTiming.robot_period);
 		logger.start(Constants.PeriodicTiming.logging_period);
 
-	}
-
-	public void handleCommandStart(Runnable run_fn, String name) {
-		if (m_intakeControl != null) {
-			run_fn.run();
-		} else {
-			logger.log("[Robot] "+ name +" could not be started due to a NullPointerException!", Level.kWarning);
-		}
 	}
 
 	/**
@@ -164,11 +149,6 @@ public class Robot extends TimedRobot {
 			logger.log("[Robot] DriveControl could not be started due to a NullPointerException!", Level.kWarning);
 		}
 
-		if (m_intakeControl != null) {
-			m_intakeControl.start();
-		} else {
-			logger.log("[Robot] IntakeControl could not be started due to a NullPointerException!", Level.kWarning);
-		}
 
 
 		m_climbControl.start();
