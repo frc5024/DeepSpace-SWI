@@ -59,7 +59,7 @@ public class IntakeControl extends Command {
         // Feed cargo outtake button through a togglePressed
         m_shouldDropCargo = m_cargoToggle.feed(Robot.m_oi.getCargo());
 
-        if (!Robot.m_isFirstControlFrame) {
+        if (DriverStation.getInstance().isEnabled()) {
 
             // Do not allow an intake and an outtake at the same time
             if (m_shouldOuttake) {

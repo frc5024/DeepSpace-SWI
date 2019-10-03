@@ -127,6 +127,8 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.start(Constants.PeriodicTiming.robot_period);
 		logger.start(Constants.PeriodicTiming.logging_period);
 
+		m_intakeControl.setRunWhenDisabled(true);
+
 	}
 
 	public void handleCommandStart(Runnable run_fn, String name) {
