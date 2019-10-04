@@ -173,6 +173,13 @@ public class DriveTrain extends LoopableSubsystem {
         m_DifferentialDrive.curvatureDrive(speed, rotation, is_quick_turn);
     }
 
+    public void experimentalDrive(double speed, double rotation, boolean is_quick_turn) {
+        is_moving = (speed != 0.0);
+        is_turning = (rotation != 0.0);
+
+
+    }
+
     /**
      * A passthrough to WPILib's TankDrive method.
      * 
