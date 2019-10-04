@@ -19,6 +19,7 @@ import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.EdgeLight;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDring;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.EdgeLight.EdgeLightConfig;
@@ -51,6 +52,7 @@ public class Robot extends TimedRobot {
 	public static LEDring m_ledRing;
 	public static Climber m_climber;
 	public static EdgeLight m_edgeLight;
+	public static Intake m_intake;
 
 	/* COMMANDS */
 	private DriveControl m_driveControl;
@@ -79,6 +81,7 @@ public class Robot extends TimedRobot {
 		m_ledRing = new LEDring();
 		m_climber = new Climber();
 		m_edgeLight = new EdgeLight();
+		m_intake = Intake.getInstance();
 
 		logger.log("Constructing SubsystemLooper", Level.kRobot);
 		m_subsystemLooper = new SubsystemLooper();
@@ -90,6 +93,7 @@ public class Robot extends TimedRobot {
 		m_subsystemLooper.register(m_ledRing);
 		m_subsystemLooper.register(m_climber);
 		m_subsystemLooper.register(m_edgeLight);
+		m_subsystemLooper.register(m_intake);
 
 		/* Create Commands */
 		logger.log("Constructing Connamds", Level.kRobot);
