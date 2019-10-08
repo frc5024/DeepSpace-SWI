@@ -32,6 +32,7 @@ public class IntakeControl extends Command{
 
         //Force set intake systems
         m_sliderSpeed = 0;
+        m_lastIntakeState = false;
 
         // Force a CAN message
         Robot.m_intake.setFingerLowered(false);
@@ -61,11 +62,36 @@ public class IntakeControl extends Command{
             //Set Subsystem States
             Robot.m_cargoflap.setFlapLowered(m_cargoToggle.get());
 
+            //Set Slider Speed
+            Robot.m_intake.setSliderSpeed(m_sliderSpeed);
+            
+            //Set Finger State
+            if(m_lastIntakeState!=m_intakeToggle.get()){
+                Robot.m_intake.setFingerLowered(m_intakeToggle.get());
+            }
+
+            //Set LED Ring
+            Robot.m_ledRing.setEnabled(m_intakeToggle.get());
+
+            //Handle Hatch Placement
+            if(m_shouldOuttake){
+
+                //Only Start Command Group if not Already Running
+                if(!Robot.m_outtakeGroup.isRunning()){
+                    Robot.m_outtakeGroup.start();
+                    logger.log("[IntakeControl] Starting Hatch Placement");
+                }else{
+                    logger.log("[IntakeControl] Ignoring Duplicate Outtake Request");
+                }
+
+                m_shouldOuttake = false;
+            }
         }
 
         //Reset Stored Inputs
         m_shouldOuttake = false;
         m_sliderSpeed = 0;
+        m_lastIntakeState = m_intakeToggle.get();
     }
 
     @Override
