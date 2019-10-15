@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="frc.lib5k.control.ToggleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-03T21:46:05" hostname="DESKTOP-8IVHRRS" time="0.0">
+<testsuite name="frc.lib5k.control.ToggleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-15T20:23:41" hostname="DESKTOP-M43HCAR" time="0.003">
   <properties/>
   <testcase name="testToggle" classname="frc.lib5k.control.ToggleTest" time="0.0"/>
-  <testcase name="testToggleReset" classname="frc.lib5k.control.ToggleTest" time="0.0"/>
+  <testcase name="testToggleReset" classname="frc.lib5k.control.ToggleTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
