@@ -3,7 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import frc.lib5k.components.AutoCamera;
 import frc.lib5k.loops.loopers.SubsystemLooper;
 import frc.lib5k.utils.RobotLogger;
@@ -14,15 +14,16 @@ import frc.robot.autonomous.commandgroups.Outtake;
 import frc.robot.commands.ClimbControl;
 import frc.robot.commands.CompressorControl;
 import frc.robot.commands.DriveControl;
+import frc.robot.commands.IntakeControl;
 import frc.robot.commands.ManualArmController;
 import frc.robot.subsystems.CargoFlap;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.EdgeLight;
+import frc.robot.subsystems.EdgeLight.EdgeLightConfig;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDring;
 import frc.robot.subsystems.Pneumatics;
-import frc.robot.subsystems.EdgeLight.EdgeLightConfig;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -57,7 +58,8 @@ public class Robot extends TimedRobot {
 	/* COMMANDS */
 	private DriveControl m_driveControl;
 	private CompressorControl m_compressorControl;
-	private ClimbControl m_climbControl;
+    private ClimbControl m_climbControl;
+    public IntakeControl m_intakeControl;
 
 	/* COMMAND GROUPS */
 	public static Outtake m_outtakeGroup;
@@ -70,6 +72,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
+        LiveWindow.disableAllTelemetry();
 		logger.log("Welcome 5024!", Level.kRobot);
 
 		/* Create Subsystems */
@@ -101,7 +104,7 @@ public class Robot extends TimedRobot {
 		m_compressorControl = new CompressorControl();
 		m_climbControl = new ClimbControl();
 		m_manualArmController = new ManualArmController();
-
+        m_intakeControl = new IntakeControl();
 		/* Create CommandGroups */
 		m_outtakeGroup = new Outtake();
 		m_climbGroup = new Climb();
@@ -156,7 +159,8 @@ public class Robot extends TimedRobot {
 
 
 		m_climbControl.start();
-		m_compressorControl.start();
+        m_compressorControl.start();
+        m_intakeControl.start();
 
 		// reset lighting
 		m_edgeLight.setDesiredLightingConfig(EdgeLightConfig.kDisabled);

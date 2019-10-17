@@ -16,7 +16,7 @@ public class IntakeControl extends Command{
     boolean m_lastIntakeState = false;
     double m_sliderSpeed = 0;
 
-    IntakeControl(){
+    public IntakeControl(){
         logger.log("[IntakeControl] Constructing Command");
         m_intakeToggle = new Toggle();
         m_cargoToggle = new Toggle();

@@ -26,7 +26,7 @@ public class SetPiston extends TimedCommand {
     @Override
     protected void execute() {
         // Tell the subsystem to move the finger
-        // Robot.m_intake.setPistonExtended(m_desiredState);
+        Robot.m_intake.setPistonExtended(m_desiredState);
     }
 
     

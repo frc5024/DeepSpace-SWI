@@ -2,15 +2,16 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DigitalInput;
 import frc.lib5k.loops.loopables.LoopableSubsystem;
 import frc.lib5k.utils.RobotLogger;
 import frc.robot.Constants;
 
 public class Intake extends LoopableSubsystem {
+    static Intake m_instance = null;
     RobotLogger logger = RobotLogger.getInstance();
 
     // Creating components
@@ -34,11 +35,11 @@ public class Intake extends LoopableSubsystem {
     
     public Intake() {
         // Constructing Finger
-        m_finger = new DoubleSolenoid(Constants.PCM.finger_forward,Constants.PCM.finger_reverse);
+        m_finger = new DoubleSolenoid(Constants.PCM.can_id,Constants.PCM.finger_forward,Constants.PCM.finger_reverse);
         logger.log("[Intake] Constructing Double Solenoid");
 
         // Constructing Soleniod
-        m_piston = new Solenoid(Constants.PCM.piston);
+        m_piston = new Solenoid(Constants.PCM.can_id,Constants.PCM.piston);
         logger.log("[Intake] Constructing Solenoid");
               
         // Constructing Talon
@@ -53,6 +54,14 @@ public class Intake extends LoopableSubsystem {
 
         // Set the subsystem name for logging
         name = "Intake";
+    }
+
+    public static Intake getInstance() {
+        if (m_instance == null) {
+            m_instance = new Intake();
+        }
+
+        return m_instance;
     }
                             
     /**
