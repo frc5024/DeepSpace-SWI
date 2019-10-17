@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="frc.lib5k.control.ToggleTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-08T20:28:30" hostname="LAPTOP-R6NIQ8OQ" time="0.0">
-  <properties/>
-  <testcase name="testToggle" classname="frc.lib5k.control.ToggleTest" time="0.0"/>
-  <testcase name="testToggleReset" classname="frc.lib5k.control.ToggleTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
